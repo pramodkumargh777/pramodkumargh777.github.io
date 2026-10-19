@@ -20,7 +20,7 @@ body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 :root{
   --paper:#EEF0F4; --surface:#F9FAFC; --ink:#141A2C; --muted:#586078; --line:#D2D7E2;
   --accent:#3445C9; --ball:#C6D92A; --ball-ink:#1E2400; --clay:#B0502A;
-  --s1:#2B3A8C; --s2:#7A2E3A; --s3:#2F5D4A; --s4:#8A6A1F; --s5:#3E3F4F; --spine-ink:#F4F2EA;
+  --s1:#2B3A8C; --s2:#7A2E3A; --s3:#2F5D4A; --s4:#8A6A1F; --s5:#3E3F4F; --spine-ink:#F4F2EA; --logo-inv:0;
   --display:"Gloock", Georgia, "Times New Roman", serif;
   --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -30,11 +30,11 @@ body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#0C1020; --surface:#141A2D; --ink:#E6E9F3; --muted:#98A0B8; --line:#262E48;
   --accent:#93A0FF; --ball:#D6EE47; --ball-ink:#1A2000; --clay:#E58457;
-  --s1:#3A4BAE; --s2:#94404D; --s3:#3C7560; --s4:#A5822C; --s5:#4C4E63; --spine-ink:#F4F2EA; color-scheme:dark}}
+  --s1:#3A4BAE; --s2:#94404D; --s3:#3C7560; --s4:#A5822C; --s5:#4C4E63; --spine-ink:#F4F2EA; --logo-inv:1; color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#0C1020; --surface:#141A2D; --ink:#E6E9F3; --muted:#98A0B8; --line:#262E48;
   --accent:#93A0FF; --ball:#D6EE47; --ball-ink:#1A2000; --clay:#E58457;
-  --s1:#3A4BAE; --s2:#94404D; --s3:#3C7560; --s4:#A5822C; --s5:#4C4E63; --spine-ink:#F4F2EA; color-scheme:dark}
+  --s1:#3A4BAE; --s2:#94404D; --s3:#3C7560; --s4:#A5822C; --s5:#4C4E63; --spine-ink:#F4F2EA; --logo-inv:1; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -90,6 +90,7 @@ nav.top .wrap{display:flex;align-items:center;gap:20px;height:58px}
 .ticker-track{display:flex;gap:56px;width:max-content;padding-block:16px;animation:scroll 70s linear infinite}
 .ticker:hover .ticker-track{animation-play-state:paused}
 .ticker-track span{font-family:var(--display);font-size:20px;white-space:nowrap}
+.ticker-track em{font:400 11.5px var(--mono);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-left:12px;vertical-align:middle}
 .ticker-track span::after{content:"●";color:var(--ball);margin-left:56px;font-size:12px;vertical-align:middle}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
@@ -105,7 +106,7 @@ nav.top .wrap{display:flex;align-items:center;gap:20px;height:58px}
 .filters button,.seg button{font:500 13px var(--body);padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
 .filters button[aria-pressed="true"],.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .shelf{display:flex;align-items:flex-end;gap:5px;overflow-x:auto;padding:24px 18px 0;border-bottom:10px solid var(--ink);border-radius:8px 8px 0 0;background:linear-gradient(var(--surface),var(--paper));min-height:300px}
-.spine{flex:0 0 auto;width:46px;border:0;border-radius:3px 3px 0 0;color:var(--spine-ink);cursor:pointer;writing-mode:vertical-rl;transform:rotate(180deg);font:600 13px var(--body);padding:14px 0;display:flex;align-items:center;justify-content:space-between;transition:transform .25s ease,opacity .25s;box-shadow:inset -4px 0 0 rgba(0,0,0,.18)}
+.spine{flex:1 0 40px;max-width:66px;border:0;border-radius:3px 3px 0 0;color:var(--spine-ink);cursor:pointer;writing-mode:vertical-rl;transform:rotate(180deg);font:600 13px var(--body);padding:14px 0;display:flex;align-items:center;justify-content:space-between;transition:transform .25s ease,opacity .25s;box-shadow:inset -4px 0 0 rgba(0,0,0,.18)}
 .spine small{font:400 10px var(--mono);opacity:.8;letter-spacing:.08em;text-transform:uppercase}
 .spine:hover,.spine[aria-pressed="true"]{transform:rotate(180deg) translateY(14px)}
 .spine[aria-pressed="true"]{outline:2px solid var(--ball);outline-offset:2px}
@@ -219,10 +220,6 @@ svg text{font-family:var(--mono)}
 .job details ul{margin-top:10px}
 .agents{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .agents span{font-size:12.5px;padding:4px 10px;border-radius:6px;background:var(--paper);border:1px solid var(--line)}
-.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
-.skills div{min-width:0}
-.skills h4{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;font-weight:400}
-.skills p{font-size:15px}
 
 /* contact */
 .contact{padding-block:96px 72px;border-top:1px solid var(--line)}
@@ -307,14 +304,14 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
   .kn-sticker{left:-8px}
   .hero-grid,.mk-grid,.tn-grid,.rd-grid,.authors,.work-intro{grid-template-columns:1fr}
   .now-grid,.curios,.rules,.stats{grid-template-columns:1fr 1fr}
-  .quotes,.skills{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr 1fr}
   .quote.big{grid-column:span 2}
   .job{grid-template-columns:1fr;gap:12px}
 }
 @media (max-width:560px){
   body{font-size:16px}
   section.chapter{padding-block:68px}
-  .now-grid,.curios,.rules,.quotes,.skills,.result,.rt-list{grid-template-columns:1fr}
+  .now-grid,.curios,.rules,.quotes,.result,.rt-list{grid-template-columns:1fr}
   .kn-sticker{left:0}
   .loc{display:none}
   .bb,.cnpp{padding:22px}
@@ -376,7 +373,12 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
 .rd-detail .rn{font-size:13.5px;color:var(--muted)}
 .ring-guide{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;display:grid;gap:12px}
 .ring-guide ol{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.ring-guide li{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:baseline;padding:11px 0;border-top:1px solid var(--line)}
+.ring-guide li{display:grid;grid-template-columns:72px 1fr auto;gap:8px 12px;align-items:baseline;padding:12px 0;border-top:1px solid var(--line)}
+.rg-names{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:5px}
+.rg-names button{display:inline-flex;align-items:center;gap:6px;font:500 12.5px var(--body);padding:3px 9px;border-radius:99px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:border-color .2s,opacity .2s}
+.rg-names button i{width:6px;height:6px;border-radius:50%}
+.rg-names button:hover,.rg-names button.on{border-color:var(--ink)}
+.rg-names button.dim{opacity:.3}
 .ring-guide li:first-child{border-top:0}
 .ring-guide b{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
 .ring-guide span{font-size:14.5px;color:var(--muted)}
@@ -399,6 +401,83 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
 @media (max-width:900px){.rd-grid{grid-template-columns:1fr}.craft{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.qlists,.craft{grid-template-columns:1fr}.radar-box{padding:10px}}
 @media (prefers-reduced-motion:reduce){.sweep,.blip .halo{animation:none}.sweep{display:none}}
+
+/* shawshank */
+.ssr{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:36px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px;align-items:start}
+.ssr-text{display:grid;gap:14px;min-width:0}
+.ssr h3{font-size:clamp(36px,4.6vw,58px)}
+.ssr-tag{display:flex;flex-wrap:wrap;gap:8px}
+.ssr-tag span{font:500 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:6px;border:1px solid var(--line);color:var(--muted)}
+.ssr-tag .id{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.ssr-quote{margin:4px 0;padding:14px 18px;border-left:3px solid var(--s4);background:var(--paper);border-radius:0 12px 12px 0;font-family:var(--display);font-size:clamp(22px,2.4vw,28px);line-height:1.25}
+.ssr-quote cite{display:block;margin-top:6px;font:400 12px var(--mono);font-style:normal;color:var(--muted)}
+.ssr-facts li::marker{color:var(--s4)}
+.ssr-side{display:grid;gap:14px;min-width:0}
+.ssr-wall{position:relative;aspect-ratio:5/4;max-width:100%;border-radius:14px;overflow:hidden;background-color:#7E796F;
+  background-image:linear-gradient(transparent 31px,rgba(30,28,24,.32) 31px 33px),linear-gradient(90deg,transparent 62px,rgba(30,28,24,.26) 62px 64px),linear-gradient(90deg,transparent 30px,rgba(30,28,24,.26) 30px 32px),radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.12),transparent 60%);
+  background-size:100% 33px,64px 66px,64px 66px,100% 100%;background-position:0 0,0 0,0 33px,0 0;box-shadow:inset 0 0 70px rgba(0,0,0,.5)}
+.ssr-wall .hole{position:absolute;left:17%;top:18%;width:30%;aspect-ratio:3/4;border-radius:46% 46% 38% 38%;background:radial-gradient(closest-side,#050505 55%,#24211c 80%,transparent);opacity:0;transition:opacity .5s .35s}
+.ssr-wall .poster{position:absolute;left:11%;top:9%;width:40%;aspect-ratio:3/4;border-radius:3px;background:linear-gradient(#F6C27C,#E9865E 54%,#2E6C8E 54%,#1F4F6B);box-shadow:0 12px 26px rgba(0,0,0,.45);transform-origin:9% 4%;transition:transform .9s cubic-bezier(.3,1.35,.5,1)}
+.ssr-wall .poster::before,.ssr-wall .poster::after{content:"";position:absolute;top:5px;width:7px;height:7px;border-radius:50%;background:#B8433A;box-shadow:0 1px 2px rgba(0,0,0,.5)}
+.ssr-wall .poster::before{left:6px}.ssr-wall .poster::after{right:6px}
+.ssr-wall .sun{position:absolute;left:50%;top:38%;width:28%;aspect-ratio:1;border-radius:50%;background:#FFE9B8;transform:translate(-50%,-50%);box-shadow:0 0 22px #FFE2A0}
+.ssr-wall .sea{position:absolute;left:0;right:0;top:54%;bottom:0;background:repeating-linear-gradient(180deg,transparent 0 7px,rgba(255,255,255,.16) 7px 8px)}
+.ssr-wall .poster small{position:absolute;left:0;right:0;bottom:9px;text-align:center;font:600 8.5px var(--mono);letter-spacing:.22em;color:#F4F2EA;text-transform:uppercase}
+.ssr-wall.open .poster{transform:rotate(58deg)}
+.ssr-wall.open .poster::after{opacity:0}
+.ssr-wall.open .hole{opacity:1}
+.ssr-wall .tally{position:absolute;right:7%;top:10%;width:32%;height:auto}
+.ssr-wall .yr{position:absolute;right:7%;bottom:8%;text-align:right;font-family:var(--display);font-size:clamp(30px,3.6vw,44px);line-height:1;color:#F4F2EA;text-shadow:0 2px 12px rgba(0,0,0,.5);font-variant-numeric:tabular-nums}
+.ssr-wall .yr small{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-top:6px;opacity:.85}
+.ssr-side input[type=range]{accent-color:var(--s4)}
+.ssr-lesson{font-size:14.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
+@media (max-width:900px){.ssr{grid-template-columns:1fr;padding:24px}}
+@media (prefers-reduced-motion:reduce){.ssr-wall .poster,.ssr-wall .hole{transition:none}}
+
+/* tech stack */
+.stack{margin-top:56px;border:1px dashed var(--line);border-radius:22px;overflow:hidden;background:var(--surface)}
+.stack-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px 20px;flex-wrap:wrap;padding:22px 26px;border-bottom:1px dashed var(--line);
+  background:repeating-linear-gradient(-45deg,transparent 0 9px,color-mix(in srgb,var(--line) 55%,transparent) 9px 10px),var(--paper)}
+.stack-head h3{font-size:clamp(30px,3.6vw,42px)}
+.stack-head .hint{font:400 12.5px var(--mono);color:var(--muted)}
+.stack-body{padding:24px 26px 30px;display:grid;gap:24px}
+.stack-tabs{display:flex;gap:4px;padding:5px;border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow-x:auto;scrollbar-width:none}
+.stack-tabs::-webkit-scrollbar{display:none}
+.stack-tabs button{display:inline-flex;align-items:center;gap:8px;font:500 14px var(--body);padding:9px 14px;border-radius:10px;border:0;background:none;color:var(--muted);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.stack-tabs button:hover{color:var(--ink)}
+.stack-tabs button svg{width:16px;height:16px;flex:none}
+.stack-tabs button small{font:500 11px var(--mono);opacity:.65}
+.stack-tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);box-shadow:0 6px 16px -8px rgba(20,26,44,.6)}
+.tchips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.tchip{display:inline-flex;align-items:center;gap:10px;padding:9px 15px 9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font:500 14px var(--mono);color:var(--ink);transition:border-color .2s,transform .2s,box-shadow .2s;animation:chipIn .38s cubic-bezier(.2,.8,.3,1) both;animation-delay:calc(var(--i) * 16ms)}
+.tchip:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 22px -14px var(--accent)}
+.tchip img,.tchip svg,.tchip .tile{width:20px;height:20px;flex:none;display:block}
+.tchip svg{color:var(--ic,var(--muted))}
+.tchip img.inv{filter:invert(var(--logo-inv))}
+.tile{display:grid;place-items:center;border-radius:5px;font:700 9px var(--mono);background:var(--ic,var(--accent));color:#fff;letter-spacing:0}
+@keyframes chipIn{from{opacity:0;transform:translateY(8px) scale(.96)}}
+@media (max-width:560px){.stack-head,.stack-body{padding-left:18px;padding-right:18px}.tchip{font-size:13px;padding:8px 12px 8px 10px}}
+@media (prefers-reduced-motion:reduce){.tchip{animation:none;transition:none}}
+
+/* unified stack */
+.stack-body{grid-template-columns:minmax(0,1fr)}
+.stack-body>*{min-width:0}
+.stack-bar>*{min-width:0}
+@media (max-width:900px){.stack .rd-grid{grid-template-columns:minmax(0,1fr)}}
+.stack{margin:8px 0 56px}
+.stack-head p{color:var(--muted);font-size:15px;margin-top:8px;max-width:60ch}
+.stack-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.stack-bar .stack-tabs{min-width:0;max-width:100%}
+.stack .rd-grid{margin:0}
+.tchip{position:relative}
+.tchip .ad{width:6px;height:6px;border-radius:50%;background:var(--qc);margin-left:2px}
+.tchip.r1,.tchip.r2{border-style:dashed}
+.tchip.r3{opacity:.5}
+.tchip.on{border-color:var(--ink);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.chip-key{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font:400 12.5px var(--mono);color:var(--muted)}
+.chip-key span{padding:2px 8px;border-radius:6px;border:1px solid var(--line);color:var(--ink);margin-left:6px}
+.chip-key span:first-child{margin-left:0}
+.chip-key .k2{border-style:dashed}.chip-key .k3{opacity:.5}
 </style>
 </head>
 <body>
@@ -526,7 +605,7 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
       <div class="note"><span class="tag">On work</span><div><h3>Standards are contagious in both directions</h3><p>A team doesn't drift into mediocrity in one decision. It drifts one "good enough for now" at a time. The fix is boring: write down what good looks like, and refuse to ship below it even when nobody would notice.</p></div></div>
       <div class="note"><span class="tag">On AI</span><div><h3>An LLM is a consensus machine</h3><p>It predicts the most likely next word, so its default is the average of everything it has read. Markets punish the average view. Useful work with these models comes from feeding them what the average doesn't know: your data, your constraints, your taste.</p></div></div>
       <div class="note"><span class="tag">On money</span><div><h3>Compounding is a patience test disguised as a maths problem</h3><p>The formula is simple. The hard part is sitting through the first ten years, when it looks like nothing is happening, and not interrupting it.</p></div></div>
-      <div class="note"><span class="tag">On tennis</span><div><h3>You only need to win slightly more than half</h3><p>The scoring system amplifies small edges. A player who wins 54% of points wins most matches. Careers, portfolios and codebases work the same way. Consistency beats brilliance.</p></div></div>
+      <div class="note"><span class="tag">On mountains</span><div><h3>Altitude puts problems back to their real size</h3><p>Above the snowline, with thin air and a slow walk, a production incident or a red day in the market looks exactly as big as it is. I come back from every trek with fewer opinions and better priorities.</p></div></div>
       <div class="note"><span class="tag">On reading</span><div><h3>Read old books to understand new technology</h3><p>Karanth wrote about villages meeting modernity. Harari writes about species meeting algorithms. It's the same story at different scales, and both make me a better engineer than any framework changelog.</p></div></div>
     </div>
   </div>
@@ -641,10 +720,37 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
   <div class="wrap">
     <div class="chap-head">
       <span class="eyebrow">Chapter 6 · On screen</span>
-      <h2>Two stories I rewatch, for opposite reasons</h2>
-      <p class="lede">One is about a man who refuses mediocrity and loses himself. The other is about a system that accepted it and lost a city.</p>
+      <h2>Three stories I keep rewatching</h2>
+      <p class="lede">A man who never gave up hope. A man who refused mediocrity and lost himself. And a system that accepted mediocrity and lost a city.</p>
     </div>
     <div class="screen-grid">
+      <article class="ssr">
+        <div class="ssr-text">
+          <div class="ssr-tag"><span class="id">Inmate 37927</span><span>Shawshank State Prison · Maine</span></div>
+          <h3>The Shawshank Redemption</h3>
+          <p class="bb-meta">1994 · Written and directed by Frank Darabont · From Stephen King's novella <i>Rita Hayworth and Shawshank Redemption</i></p>
+          <p>My favourite film. It looks like a prison movie and turns out to be about patience. Andy Dufresne doesn't escape through one brilliant move. He escapes through thousands of small, boring, invisible ones, made every night for nineteen years.</p>
+          <blockquote class="ssr-quote">“Get busy living, or get busy dying.”<cite>Andy Dufresne</cite></blockquote>
+          <ul class="bb-facts ssr-facts">
+            <li>It struggled at the box office in 1994, then found its audience on video and cable reruns.</li>
+            <li>Seven Oscar nominations, zero wins. <i>Forrest Gump</i> took Best Picture that year.</li>
+            <li>Darabont bought the rights from Stephen King for $5,000. King never cashed the cheque, and years later sent it back to him, framed.</li>
+            <li>Filmed at the Ohio State Reformatory in Mansfield, which now runs Shawshank tours.</li>
+            <li>It has sat at or near No. 1 on IMDb's Top 250 for well over a decade.</li>
+          </ul>
+        </div>
+        <div class="ssr-side">
+          <div class="ssr-wall" id="ssrWall">
+            <div class="hole" aria-hidden="true"></div>
+            <div class="poster" aria-hidden="true"><span class="sun"></span><span class="sea"></span><small>Zihuatanejo</small></div>
+            <svg class="tally" id="ssrTally" viewBox="0 0 120 112" aria-hidden="true"></svg>
+            <div class="yr" id="ssrYr"></div>
+          </div>
+          <div class="ctrl"><label for="ssrStep">Andy's nineteen years <output id="ssrStepO"></output></label><input type="range" id="ssrStep" min="0" max="5" step="1" value="0"></div>
+          <p class="arc-text" id="ssrText" aria-live="polite"></p>
+          <p class="ssr-lesson">Red guessed a tunnel like that would take six hundred years. Andy needed under twenty. It's the best picture of compounding I know: a little every night, out of sight, until one morning the poster comes down.</p>
+        </div>
+      </article>
       <article class="bb">
         <div class="bb-title" aria-label="Breaking Bad">
           <span class="el"><small>35</small>Br<i>Bromine</i></span><span class="rest">eaking</span>
@@ -708,32 +814,6 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
     <div class="seg" id="rtTabs" role="tablist" aria-label="Reading categories"></div>
     <div class="rt-list" id="rtList"></div>
 
-    <div class="radar-head">
-      <div>
-        <span class="eyebrow">Personal tech stack radar</span>
-        <h3>Daily drivers vs. things I'm exploring</h3>
-        <p class="lede" style="font-size:16px;margin-top:8px">The centre is what I trust in production. The edges are weekend experiments. Tap any dot.</p>
-      </div>
-      <div class="seg" id="rdSeg" role="group" aria-label="Filter radar">
-        <button type="button" aria-pressed="true" data-f="all">Everything</button>
-        <button type="button" aria-pressed="false" data-f="daily">Use daily</button>
-        <button type="button" aria-pressed="false" data-f="explore">Exploring</button>
-      </div>
-    </div>
-    <div class="rd-grid">
-      <div class="radar-box">
-        <div class="radar-stage"><div class="sweep" aria-hidden="true"></div><svg id="radarSvg" viewBox="0 0 520 520" role="img" aria-label="Technology radar with numbered tools in four areas"></svg></div>
-        <div class="rd-legend" aria-hidden="true"><span><i style="background:var(--q0);color:var(--q0)"></i>AI &amp; LLM</span><span><i style="background:var(--q1);color:var(--q1)"></i>Backend &amp; APIs</span><span><i style="background:var(--q2);color:var(--q2)"></i>Data &amp; storage</span><span><i style="background:var(--q3);color:var(--q3)"></i>Cloud &amp; craft</span><span>● filled = daily · ○ outline = exploring</span></div>
-      </div>
-      <div class="rd-side">
-        <div class="rd-detail" id="rdDetail" aria-live="polite"></div>
-        <div class="ring-guide">
-          <span class="eyebrow">How to read the rings</span>
-          <ol id="ringGuide"></ol>
-        </div>
-      </div>
-    </div>
-    <div class="qlists" id="qLists"></div>
   </div>
 </section>
 
@@ -765,13 +845,33 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
       <div class="stat"><div class="v">~3×</div><div class="k">ingestion throughput after re-architecting to async</div></div>
       <div class="stat"><div class="v">~25%</div><div class="k">lower inference cost via smart routing</div></div>
     </div>
-    <div class="craft">
-      <div><span class="eyebrow">Backend craft</span><b>API design</b><p>Async REST services in FastAPI and Flask with clear contracts, versioning and validation.</p></div>
-      <div><span class="eyebrow">Backend craft</span><b>Data modelling</b><p>PostgreSQL schemas, indexing and query tuning; ORM layers with SQLAlchemy and Alembic.</p></div>
-      <div><span class="eyebrow">Backend craft</span><b>Concurrency</b><p>asyncio, worker pools and distributed task queues with retries and back-pressure.</p></div>
-      <div><span class="eyebrow">Backend craft</span><b>Distributed systems</b><p>Microservices, message queues, MQTT streams, circuit breakers and idempotent jobs.</p></div>
-      <div><span class="eyebrow">Backend craft</span><b>Performance</b><p>p95-driven tuning, caching, routing and cost controls that held up under real load.</p></div>
-      <div><span class="eyebrow">Backend craft</span><b>Shipping</b><p>Docker, CI/CD on Azure DevOps and Jenkins, and owning production after release.</p></div>
+    <div class="stack" id="stack">
+      <div class="stack-head">
+        <div><h3>Tech stack</h3><p>The centre of the radar is what I run in production. The edges are what I'm exploring. Hover any tool or dot.</p></div>
+        <span class="hint">( select a tab to filter )</span>
+      </div>
+      <div class="stack-body">
+        <div class="stack-bar">
+          <div class="stack-tabs" id="stackTabs" role="tablist" aria-label="Filter by area"></div>
+          <div class="seg" id="rdSeg" role="group" aria-label="Filter by adoption">
+            <button type="button" aria-pressed="true" data-f="all">Everything</button>
+            <button type="button" aria-pressed="false" data-f="daily">Use daily</button>
+            <button type="button" aria-pressed="false" data-f="explore">Exploring</button>
+          </div>
+        </div>
+        <div class="rd-grid">
+          <div class="radar-box">
+            <div class="radar-stage"><div class="sweep" aria-hidden="true"></div><svg id="radarSvg" viewBox="0 0 520 520" role="img" aria-label="Technology radar"></svg></div>
+            <div class="rd-legend" aria-hidden="true"><span><i style="background:var(--q0);color:var(--q0)"></i>AI &amp; LLM</span><span><i style="background:var(--q1);color:var(--q1)"></i>Backend &amp; APIs</span><span><i style="background:var(--q2);color:var(--q2)"></i>Data &amp; storage</span><span><i style="background:var(--q3);color:var(--q3)"></i>Cloud &amp; craft</span></div>
+          </div>
+          <div class="rd-side">
+            <div class="rd-detail" id="rdDetail" aria-live="polite"></div>
+            <div class="ring-guide"><span class="eyebrow">How to read the rings</span><ol id="ringGuide"></ol></div>
+          </div>
+        </div>
+        <ul class="tchips" id="stackChips"></ul>
+        <p class="chip-key"><span class="k1">Solid</span> use daily <span class="k2">Dashed</span> exploring <span class="k3">Faded</span> moving away</p>
+      </div>
     </div>
     <div class="jobs">
       <div class="job">
@@ -835,11 +935,6 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
         </div>
       </div>
     </div>
-    <div class="skills">
-      <div><h4>Languages &amp; frameworks</h4><p>Python, SQL, FastAPI, Flask, LangChain, Celery, SQLAlchemy, Alembic, Pydantic</p></div>
-      <div><h4>GenAI</h4><p>RAG, LLM agents &amp; orchestration, prompt engineering, embeddings, MCP, Azure OpenAI, Document Intelligence</p></div>
-      <div><h4>Data &amp; cloud</h4><p>PostgreSQL, MySQL, MongoDB, Redis, Azure AI Search, vector DBs, Azure Container Apps, Docker, Azure DevOps</p></div>
-    </div>
   </div>
 </section>
 
@@ -850,8 +945,8 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
     <p class="lede" style="margin-top:18px">Also open to conversations about GenAI systems, agents and RAG at scale.</p>
     <div class="contact-row">
       <button class="cbtn primary" type="button" id="copyMail"><code>pramodkumargh77@gmail.com</code><span id="copyLbl">Copy</span></button>
-      <a class="cbtn" href="https://www.linkedin.com/in/pramodkumargh" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="cbtn" href="https://github.com/pramodkumargh" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="cbtn" href="https://www.linkedin.com/in/pramod-kumar-g-h-4ba7a9157/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="cbtn" href="https://github.com/pramodkumargh777" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
 </section>
@@ -864,14 +959,20 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
   const $ = id => document.getElementById(id);
 
   /* ticker */
-  const lines = ["When mediocrity has been set as a standard, rubbish becomes acceptable.","A journey of a thousand miles begins with a single step.","Price is what you pay. Value is what you get.","Invert, always invert.","Start where you are. Use what you have. Do what you can.","Don't aim to be the best. Aim to be the only."];
+  const lines = [
+    ["Get busy living, or get busy dying.","The Shawshank Redemption"],
+    ["What is the cost of lies?","Chernobyl"],
+    ["Someone's sitting in the shade today because someone planted a tree a long time ago.","Warren Buffett"],
+    ["Hope is a good thing, maybe the best of things, and no good thing ever dies.","The Shawshank Redemption"],
+    ["The stock market is a device for transferring money from the impatient to the patient.","Warren Buffett"]
+  ];
   const tk = $("ticker");
-  [...lines, ...lines].forEach((l,i) => { const s=document.createElement("span"); s.textContent=l; if(i>=lines.length) s.setAttribute("aria-hidden","true"); tk.appendChild(s); });
+  [...lines, ...lines].forEach((l,i) => { const s=document.createElement("span"); s.textContent=l[0]; const e=document.createElement("em"); e.textContent=l[1]; s.appendChild(e); if(i>=lines.length) s.setAttribute("aria-hidden","true"); tk.appendChild(s); });
 
   /* books */
   const S = ["var(--s1)","var(--s2)","var(--s3)","var(--s4)","var(--s5)"];
   const books = [
-    {t:"Sapiens",a:"Yuval Noah Harari",y:2011,tag:"Big history",c:0,h:250,why:"How a mediocre ape took over the planet by believing in shared stories: gods, money, nations, companies.",take:"Reframed every org chart I've seen. A company is a story we agree to believe."},
+    {t:"Sapiens",a:"Yuval Noah Harari",y:2011,tag:"History",c:0,h:250,why:"How a mediocre ape took over the planet by believing in shared stories: gods, money, nations, companies.",take:"Reframed every org chart I've seen. A company is a story we agree to believe."},
     {t:"Homo Deus",a:"Yuval Noah Harari",y:2015,tag:"Future",c:1,h:232,why:"What happens when humans stop fighting famine, plague and war, and start chasing immortality and bliss.",take:"Read it as a GenAI engineer and the chapter on 'dataism' feels like a job description."},
     {t:"21 Lessons",a:"Yuval Noah Harari",y:2018,tag:"Future",c:4,h:220,why:"Harari zooms in from the deep past to the present: jobs, truth, meditation, meaning.",take:"The lesson on resilience and lifelong learning is the one I reread."},
     {t:"Nexus",a:"Yuval Noah Harari",y:2024,tag:"Future",c:2,h:244,why:"A history of information networks, and why AI is the first one that can decide things by itself.",take:"Currently reading. Uncomfortably relevant to the agents I ship."},
@@ -887,7 +988,13 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
     {t:"The Inevitable",a:"Kevin Kelly",y:2016,tag:"Future",c:0,h:226,why:"Twelve technological forces that will shape the next thirty years: flowing, screening, remixing, tracking.",take:"A decade later, he got most of it right."},
     {t:"Range",a:"David Epstein",y:2019,tag:"Mind",c:3,h:214,why:"Why generalists triumph in a specialised world. Opens with Federer versus Tiger Woods.",take:"Karanth would have loved this book."},
     {t:"Open",a:"Andre Agassi",y:2009,tag:"Tennis",c:1,h:236,why:"The best sports memoir ever written. He hated tennis, and still became great.",take:"The opening chapter about the night before a match is the best sports writing I know."},
-    {t:"The Inner Game of Tennis",a:"W. Timothy Gallwey",y:1974,tag:"Tennis",c:2,h:196,why:"Self 1 versus Self 2: the critic and the doer. A tennis book read mostly by executives.",take:"Quiet the commentator in your head. Works for code reviews too."}
+    {t:"The Inner Game of Tennis",a:"W. Timothy Gallwey",y:1974,tag:"Tennis",c:2,h:196,why:"Self 1 versus Self 2: the critic and the doer. A tennis book read mostly by executives.",take:"Quiet the commentator in your head. Works for code reviews too."},
+    {t:"Serve to Win",a:"Novak Djokovic",y:2013,tag:"Tennis",c:4,h:228,why:"Djokovic on the diet change, going gluten-free, that turned a gifted player into the best in the world.",take:"The lesson isn't really about gluten. It's about small inputs, compounded daily."},
+    {t:"Bhitti",a:"S. L. Bhyrappa",y:1996,tag:"Kannada classics",c:2,h:262,why:"Bhyrappa's autobiography: a childhood of poverty in Santheshivara, a family lost to plague, and the long road to becoming one of Kannada's most-read novelists.",take:"One of my favourite books. He turns the same unflinching eye on his own life that he gives his characters."},
+    {t:"Meditations",a:"Marcus Aurelius",y:"c. 170",tag:"Mind",c:3,h:244,why:"A Roman emperor's private notes to himself, never meant to be published.",take:"The original on-call journal: control what you can, accept what you can't, do the next right thing."},
+    {t:"Man's Search for Meaning",a:"Viktor Frankl",y:1946,tag:"Mind",c:0,h:216,why:"A psychiatrist's account of surviving the Nazi camps, and what it taught him about why people endure.",take:"Pairs perfectly with Shawshank. Hope as a discipline, not a feeling."},
+    {t:"Midnight in Chernobyl",a:"Adam Higginbotham",y:2019,tag:"History",c:1,h:254,why:"The fullest account of the disaster, built from years of interviews and newly opened archives.",take:"Read it after the HBO series. The real story is messier, and even more human."},
+    {t:"The Snowball",a:"Alice Schroeder",y:2008,tag:"Money",c:4,h:270,why:"The authorised biography of Warren Buffett, from paper routes in Omaha to Berkshire Hathaway.",take:"Buffett's line: find wet snow and a really long hill."},
   ];
   const tags = ["All", ...new Set(books.map(b=>b.tag))];
   let active = "All", sel = 0;
@@ -938,118 +1045,177 @@ a.rt:hover{border-color:var(--accent);transform:translateY(-2px)}
   }
   $("pp").addEventListener("input",tennis); tennis();
 
-  /* radar */
+  /* tech stack + radar: one data source */
+  const DV="https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/";
+  const L={
+    braces:'<path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1M16 3h1a2 2 0 0 1 2 2v5a2 2 0 0 0 2 2 2 2 0 0 0-2 2v5a2 2 0 0 1-2 2h-1"/>',
+    bolt:'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+    boxes:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+    layers:'<path d="m12 2 10 5-10 5L2 7z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/>',
+    shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+    sparkles:'<path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M19 15l.8 2.2 2.2.8-2.2.8L19 21l-.8-2.2-2.2-.8 2.2-.8z"/>',
+    link:'<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>',
+    nodes:'<circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.5 6h9M6.3 8.2l4.4 7.6M17.7 8.2l-4.4 7.6"/>',
+    rag:'<ellipse cx="10" cy="5" rx="7" ry="3"/><path d="M3 5v10c0 1.7 3.1 3 7 3M17 5v4"/><circle cx="17.5" cy="16.5" r="3"/><path d="m21.5 20.5-1.8-1.8"/>',
+    bot:'<rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/>',
+    chip:'<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>',
+    plug:'<path d="M9 2v6M15 2v6"/><path d="M6 8h12v4a6 6 0 0 1-12 0z"/><path d="M12 18v4"/>',
+    scatter:'<path d="M3 3v18h18"/><circle cx="8" cy="15" r="1.6"/><circle cx="11" cy="9" r="1.6"/><circle cx="17" cy="6" r="1.6"/><circle cx="16" cy="14" r="1.6"/>',
+    search:'<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M8 11h6M11 8v6"/>',
+    signal:'<circle cx="6" cy="18" r="1.6"/><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/>',
+    doc:'<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>',
+    checks:'<path d="m3 6 2 2 4-4M3 14l2 2 4-4M13 6h8M13 14h8M13 20h8"/>',
+    terminal:'<path d="m4 17 6-5-6-5M12 19h8"/>',
+    db:'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+    cloud:'<path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19z"/>',
+    migrate:'<path d="M4 7h13l-3-3M20 17H7l3 3"/>',
+    code:'<path d="m8 6-6 6 6 6M16 6l6 6-6 6"/>',
+    server:'<rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/>',
+    pulse:'<path d="M3 12h4l3-8 4 16 3-8h4"/>',
+    ban:'<circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/>'
+  };
+  const svgI=(k,c)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="--ic:${c||'var(--muted)'}">${L[k]}</svg>`;
   const rings=["Adopt","Trial","Assess","Hold"], quads=["AI & LLM","Backend & APIs","Data & storage","Cloud & craft"];
-  const qc=["var(--q0)","var(--q1)","var(--q2)","var(--q3)"];
+  const qc=["var(--q0)","var(--q1)","var(--q2)","var(--q3)"], qHex=["#9AA6FF","#5FE0C8","#FFC46B","#FF8FAE"];
   const ringNote={Adopt:"In production. I'd bet a deadline on it.",Trial:"Used on real projects, still learning its edges.",Assess:"Weekend experiments and reading.",Hold:"Moving away from it, on purpose."};
+  // [name, area, ring, devicon path | null, line icon, colour, note, invert logo in dark]
   const tech=[
-    ["Azure OpenAI",0,0,"GPT-4o family behind most of the agents I ship, with routing across deployments."],
-    ["RAG pipelines",0,0,"Seven-stage ingestion, chunking, hybrid search and reranking over 10,000+ documents."],
-    ["Embeddings & semantic search",0,0,"Vector search tuned against real user queries, not benchmarks."],
-    ["LLM agents & tool-calling",0,0,"15+ production agents, from ITSM triage to spec-sheet generation."],
-    ["MCP",0,1,"Model Context Protocol for agent tool access. In production, still evolving fast."],
-    ["LangGraph",0,1,"Stateful, graph-shaped agents with checkpoints and human-in-the-loop."],
-    ["LLM evals",0,1,"Golden datasets and judge models. The unit tests of GenAI."],
-    ["DSPy",0,2,"Prompts as programs you can optimise against a metric."],
-    ["Small local models",0,2,"Ollama-class models for cheap, private classification."],
-    ["Prompt-only agents",0,3,"Agents without evals or guardrails. Never again."],
+    ["Azure OpenAI",0,0,null,"sparkles","#10A37F","GPT-4o family behind most of the agents I ship, with routing across deployments."],
+    ["RAG",0,0,null,"rag","","Seven-stage ingestion, chunking, hybrid search and reranking over 10,000+ documents."],
+    ["AI Agents",0,0,null,"bot","","15+ production agents, from ITSM triage to spec-sheet generation."],
+    ["LangChain",0,0,null,"link","#1C9C8C","Loaders, splitters, retrievers. Use the parts, skip the magic."],
+    ["Embeddings",0,0,null,"scatter","","Vector search tuned against real user queries, not benchmarks."],
+    ["Document Intelligence",0,0,null,"doc","#0078D4","Layout-aware extraction from PDFs and scans before anything reaches the index."],
+    ["Prompt Engineering",0,0,null,"terminal","","Structured prompts, few-shot examples and typed outputs validated with Pydantic."],
+    ["MCP",0,1,null,"plug","#C9663D","Model Context Protocol for agent tool access. In production, still evolving fast."],
+    ["LangGraph",0,1,null,"nodes","#6B5BD2","Stateful, graph-shaped agents with checkpoints and human-in-the-loop."],
+    ["LLM Evals",0,1,null,"checks","","Golden datasets and judge models. The unit tests of GenAI."],
+    ["DSPy",0,2,null,"code","","Prompts as programs you can optimise against a metric."],
+    ["Small local models",0,2,null,"chip","","Ollama-class models for cheap, private classification."],
+    ["Prompt-only agents",0,3,null,"ban","","Agents without evals or guardrails. Never again."],
 
-    ["Python",1,0,"Home. Typed, async, tested."],
-    ["FastAPI",1,0,"My default for high-throughput async APIs with OpenAPI contracts out of the box."],
-    ["REST API design",1,0,"Versioning, pagination, idempotency keys and error contracts that clients can rely on."],
-    ["asyncio & concurrency",1,0,"Non-blocking I/O, bounded concurrency, back-pressure. Where most backend performance lives."],
-    ["SQLAlchemy + Alembic",1,0,"Clean data layers and migrations that are safe to run on Friday."],
-    ["Pydantic",1,0,"Typed boundaries everywhere, including validating LLM output."],
-    ["Distributed task queues",1,0,"Celery workers with retries, circuit breakers and task claiming at 1,000+ concurrent jobs."],
-    ["Microservices",1,1,"Split by business capability, and only when the seams are real."],
-    ["Event-driven design",1,1,"Queues and events to decouple services and absorb spikes."],
-    ["Go for services",1,2,"For small, fast network services with a tiny footprint."],
-    ["Rust via PyO3",1,2,"For the hot loops Python can't handle."],
-    ["Flask",1,3,"Shipped a lot with it. FastAPI replaced it for new work."],
+    ["Python",1,0,"python/python-original.svg","code","#3776AB","Home. Typed, async, tested."],
+    ["FastAPI",1,0,"fastapi/fastapi-original.svg","bolt","#009688","My default for high-throughput async APIs with OpenAPI contracts out of the box."],
+    ["REST APIs",1,0,null,"braces","","Versioning, pagination, idempotency keys and error contracts that clients can rely on."],
+    ["asyncio",1,0,null,"bolt","#3776AB","Non-blocking I/O, bounded concurrency, back-pressure. Where most backend performance lives."],
+    ["SQLAlchemy",1,0,"sqlalchemy/sqlalchemy-original.svg","db","#D71F00","Clean, testable data layers on top of PostgreSQL."],
+    ["Alembic",1,0,null,"migrate","#8A6A1F","Schema migrations that are safe to run on a Friday."],
+    ["Pydantic",1,0,null,"shield","#E92063","Typed boundaries everywhere, including validating LLM output."],
+    ["Celery",1,0,null,"layers","#37814A","Distributed task queues with retries, circuit breakers and task claiming at 1,000+ concurrent jobs."],
+    ["OpenAPI",1,0,"swagger/swagger-original.svg","braces","#85EA2D","Contract-first APIs with docs that never drift from the code."],
+    ["C++",1,0,"cplusplus/cplusplus-original.svg","code","#00599C","Shipped medical imaging software in it at Siemens Healthineers and Philips."],
+    ["Microservices",1,1,null,"boxes","","Split by business capability, and only when the seams are real."],
+    ["Event-driven design",1,1,null,"signal","","Queues and events to decouple services and absorb traffic spikes."],
+    ["Go",1,2,"go/go-original.svg","code","#00ADD8","For small, fast network services with a tiny footprint."],
+    ["Rust",1,2,"rust/rust-original.svg","code","#B7410E","Via PyO3, for the hot loops Python can't handle.",1],
+    ["Flask",1,3,"flask/flask-original.svg","code","#555","Shipped a lot with it at Axiscades. FastAPI replaced it for new work.",1],
 
-    ["PostgreSQL",2,0,"Indexing, query plans and schema design. The boring, correct answer to most storage questions."],
-    ["Redis",2,0,"Caching, rate limits, locks and brokers. Small tool, many jobs."],
-    ["Azure AI Search",2,0,"Hybrid vector and keyword retrieval at enterprise scale."],
-    ["MongoDB",2,0,"For document-shaped data that really is document-shaped."],
-    ["MQTT streams",2,0,"Real-time IoT ingestion for the predictive inventory system."],
-    ["pgvector",2,1,"Vectors next to relational data. Fewer moving parts."],
-    ["PySpark",2,2,"For when a document corpus outgrows a single box."],
-    ["InfluxDB",2,2,"Time-series for latency and cost telemetry. Also great for price data."],
-    ["DuckDB",2,2,"Analytics on a laptop that used to need a warehouse."],
-    ["Synchronous ingestion",2,3,"Replaced with async pipelines for a ~3× throughput gain."],
+    ["SQL",2,0,null,"db","#336791","Window functions, CTEs and query plans. Most performance problems end here."],
+    ["PostgreSQL",2,0,"postgresql/postgresql-original.svg","db","#336791","Indexing, query plans and schema design. The boring, correct answer to most storage questions."],
+    ["Redis",2,0,"redis/redis-original.svg","db","#DC382D","Caching, rate limits, locks and brokers. Small tool, many jobs."],
+    ["MongoDB",2,0,"mongodb/mongodb-original.svg","db","#47A248","For document-shaped data that really is document-shaped."],
+    ["MySQL",2,0,"mysql/mysql-original.svg","db","#00758F","A reliable relational workhorse on earlier projects."],
+    ["Azure AI Search",2,0,null,"search","#0078D4","Hybrid vector and keyword retrieval at enterprise scale."],
+    ["MQTT",2,0,null,"signal","#7B2D8E","Real-time IoT ingestion for the predictive inventory system."],
+    ["pgvector",2,1,null,"scatter","#336791","Vectors next to relational data. Fewer moving parts."],
+    ["PySpark",2,2,"apachespark/apachespark-original.svg","db","#E25A1C","For when a document corpus outgrows a single machine."],
+    ["InfluxDB",2,2,"influxdb/influxdb-original.svg","pulse","#22ADF6","Time-series for latency and cost telemetry. Also great for price data."],
+    ["DuckDB",2,2,null,"db","#C9A400","Analytics on a laptop that used to need a warehouse."],
+    ["Sync ingestion",2,3,null,"migrate","","Replaced with async pipelines for a ~3× throughput gain."],
 
-    ["Docker",3,0,"Same container from laptop to production."],
-    ["Azure Container Apps",3,0,"Serverless containers across Dev, Test and Production."],
-    ["CI/CD pipelines",3,0,"Azure DevOps. Boring deployments are good deployments."],
-    ["System design",3,0,"Trade-offs first: consistency, latency, cost, failure modes."],
-    ["Testing & code review",3,0,"Unit and integration tests, and reviews that teach rather than gatekeep."],
-    ["Observability",3,1,"Structured logs, p95 dashboards and OpenTelemetry traces per agent step."],
-    ["uv",3,1,"Python packaging that finally feels fast."],
-    ["Kubernetes",3,2,"When Container Apps stops being enough."],
-    ["Jenkins",3,3,"Migrated off in favour of Azure DevOps."]
+    ["Docker",3,0,"docker/docker-original.svg","boxes","#2496ED","Same container from laptop to production."],
+    ["Azure Container Apps",3,0,"azure/azure-original.svg","cloud","#0078D4","Serverless containers across Dev, Test and Production."],
+    ["Azure DevOps",3,0,"azuredevops/azuredevops-original.svg","cloud","#0078D4","CI/CD pipelines. Boring deployments are good deployments."],
+    ["Git",3,0,"git/git-original.svg","code","#F05032","Small commits, clear messages, reviewable diffs."],
+    ["GitHub",3,0,"github/github-original.svg","code","#555","Code review and side projects.",1],
+    ["Linux",3,0,"linux/linux-original.svg","terminal","#333","Where everything actually runs."],
+    ["Bash",3,0,"bash/bash-original.svg","terminal","#4EAA25","Glue for builds, deploys and one-off data fixes."],
+    ["Postman",3,0,"postman/postman-original.svg","braces","#FF6C37","Still the quickest way to poke an API."],
+    ["Pytest",3,0,"pytest/pytest-original.svg","checks","#0A9EDC","Unit and integration tests, fixtures for everything."],
+    ["System design",3,0,null,"server","","Trade-offs first: consistency, latency, cost, failure modes."],
+    ["Observability",3,1,null,"pulse","","Structured logs, p95 dashboards and OpenTelemetry traces per agent step."],
+    ["uv",3,1,null,"bolt","#DE5FE9","Python packaging that finally feels fast."],
+    ["Kubernetes",3,2,"kubernetes/kubernetes-original.svg","boxes","#326CE5","When Container Apps stops being enough."],
+    ["Jenkins",3,3,"jenkins/jenkins-original.svg","server","#D24939","Migrated off in favour of Azure DevOps."]
   ];
-  const svg=$("radarSvg"), C=260, RR=[104,164,208,242], ns="http://www.w3.org/2000/svg";
-  let h=`<defs>
-    <radialGradient id="rg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#9AA6FF" stop-opacity=".16"/><stop offset="1" stop-color="#9AA6FF" stop-opacity="0"/></radialGradient>
-    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  </defs>`;
+
+  /* radar drawing */
+  const svg=$("radarSvg"), C=260, RR=[124,174,212,242], ns="http://www.w3.org/2000/svg";
+  let h=`<defs><radialGradient id="rg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#9AA6FF" stop-opacity=".16"/><stop offset="1" stop-color="#9AA6FF" stop-opacity="0"/></radialGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>`;
   h+=`<circle cx="${C}" cy="${C}" r="${RR[3]}" fill="url(#rg)"/>`;
-  // quadrant tint wedges
-  const wedge=(q,r)=>{ const a0=[-Math.PI/2,Math.PI,Math.PI/2,0][q], a1=a0+Math.PI/2; return `M${C},${C}L${C+r*Math.cos(a0)},${C+r*Math.sin(a0)}A${r},${r} 0 0 1 ${C+r*Math.cos(a1)},${C+r*Math.sin(a1)}Z`; };
-  const qHex=["#9AA6FF","#5FE0C8","#FFC46B","#FF8FAE"];
-  [0,1,2,3].forEach(q=>{ h+=`<path d="${wedge(q,RR[3])}" fill="${qHex[q]}" fill-opacity=".045"/>`; });
+  const wedge=q=>{ const r=RR[3], a0=[-Math.PI/2,Math.PI,Math.PI/2,0][q], a1=a0+Math.PI/2; return `M${C},${C}L${C+r*Math.cos(a0)},${C+r*Math.sin(a0)}A${r},${r} 0 0 1 ${C+r*Math.cos(a1)},${C+r*Math.sin(a1)}Z`; };
+  [0,1,2,3].forEach(q=>{ h+=`<path d="${wedge(q)}" fill="${qHex[q]}" fill-opacity=".045"/>`; });
   RR.forEach((r,i)=>{ h+=`<circle cx="${C}" cy="${C}" r="${r}" fill="none" stroke="rgba(170,185,240,${i===0?.38:.2})" stroke-width="${i===0?1.4:1}" ${i===3?'':'stroke-dasharray="2 5"'}/>`; });
   h+=`<line x1="${C-RR[3]}" x2="${C+RR[3]}" y1="${C}" y2="${C}" stroke="rgba(170,185,240,.18)"/><line y1="${C-RR[3]}" y2="${C+RR[3]}" x1="${C}" x2="${C}" stroke="rgba(170,185,240,.18)"/>`;
-  rings.forEach((r,i)=>{ const rr=i?RR[i-1]:0, x=C+(rr+RR[i])/2+(i?0:8), y=C; h+=`<text x="${x}" y="${y-5}" font-size="7.5" fill="#8E97B5" text-anchor="middle" letter-spacing="1.4" font-family="JetBrains Mono, monospace">${r.toUpperCase()}</text>`; });
+  rings.forEach((r,i)=>{ const rr=i?RR[i-1]:0, x=C+(rr+RR[i])/2+(i?0:10); h+=`<text x="${x}" y="${C-5}" font-size="7.5" fill="#8E97B5" text-anchor="middle" letter-spacing="1.4" font-family="JetBrains Mono, monospace">${r.toUpperCase()}</text>`; });
   const qpos=[[C+RR[3],18,"end"],[C-RR[3],18,"start"],[C-RR[3],512,"start"],[C+RR[3],512,"end"]];
   quads.forEach((q,i)=>{ h+=`<text x="${qpos[i][0]}" y="${qpos[i][1]}" font-size="12" fill="${qHex[i]}" text-anchor="${qpos[i][2]}" font-weight="600" letter-spacing=".5" font-family="Figtree, system-ui, sans-serif">${q}</text>`; });
-  h+=`<circle cx="${C}" cy="${C}" r="3" fill="#E8EBF5"/>`;
-  svg.innerHTML=h;
-  const counts={}, blipEls=[], pos=[];
-  tech.forEach((t,idx)=>{
-    const [name,q,r]=t, key=q+"-"+r; counts[key]=(counts[key]||0)+1;
-    const n=tech.filter(x=>x[1]===q&&x[2]===r).length, k=counts[key];
-    const inner=r?RR[r-1]:0, band=RR[r]-inner;
-    const rad = r===0 ? (k%2 ? 50 : 86) : inner+band*(n>2 && k%2===0 ? .68 : .38);
-    const a0=[-Math.PI/2,Math.PI,Math.PI/2,0][q], pad=r===0?0.2:0.14;
-    const ang=a0+pad+(Math.PI/2-2*pad)*((k-0.5)/n);
-    const x=C+rad*Math.cos(ang), y=C+rad*Math.sin(ang); pos.push([x,y]);
-    const g=document.createElementNS(ns,"g"); g.setAttribute("class","blip"); g.setAttribute("tabindex","0"); g.setAttribute("role","button"); g.setAttribute("aria-label",`${idx+1}. ${name}, ${rings[r]}`);
-    const filled=r<2;
-    g.innerHTML=`<circle class="halo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" fill="none" stroke="${qHex[q]}" stroke-width="1.5" style="animation-delay:${(idx*0.37%3.6).toFixed(2)}s"/>
-      <g class="core"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" fill="${filled?qHex[q]:'#0B1024'}" stroke="${qHex[q]}" stroke-width="1.6" filter="url(#glow)"/>
-      <text x="${x.toFixed(1)}" y="${(y+3.2).toFixed(1)}" text-anchor="middle" fill="${filled?'#0B1024':qHex[q]}">${idx+1}</text></g>`;
+  svg.innerHTML=h+`<circle cx="${C}" cy="${C}" r="3" fill="#E8EBF5"/>`;
+  const pos=[], blipEls=[];
+  for(let q=0;q<4;q++) for(let r=0;r<4;r++){
+    const ids=tech.map((t,i)=>i).filter(i=>tech[i][1]===q&&tech[i][2]===r); if(!ids.length) continue;
+    const inner=r?RR[r-1]:28, outer=RR[r], rows=r===0?3:(ids.length>3?2:1);
+    const radii=[...Array(rows)].map((_,k)=>inner+(outer-inner)*((k+0.5)/rows));
+    const byRow=[...Array(rows)].map(()=>[]); ids.forEach((id,k)=>byRow[k%rows].push(id));
+    const a0=[-Math.PI/2,Math.PI,Math.PI/2,0][q];
+    byRow.forEach((row,ri)=>{ const pad=0.16+(rows-1-ri)*0.04; row.forEach((id,k)=>{ const ang=a0+pad+(Math.PI/2-2*pad)*((k+0.5+(ri%2?0.25:0))/(row.length+(ri%2?0.5:0)));
+      pos[id]=[C+radii[ri]*Math.cos(ang), C+radii[ri]*Math.sin(ang)]; }); });
+  }
+  tech.forEach((t,idx)=>{ const [name,q,r]=t, [x,y]=pos[idx], filled=r<2;
+    const g=document.createElementNS(ns,"g"); g.setAttribute("class","blip"); g.setAttribute("tabindex","0"); g.setAttribute("role","button"); g.setAttribute("aria-label",`${name}, ${rings[r]}`);
+    g.innerHTML=`<circle class="halo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="6.5" fill="none" stroke="${qHex[q]}" stroke-width="1.5" style="animation-delay:${(idx*0.37%3.6).toFixed(2)}s"/>
+      <g class="core"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="6.5" fill="${filled&&r===0?qHex[q]:'#0B1024'}" stroke="${qHex[q]}" stroke-width="2" ${r===1?'stroke-dasharray="3 2"':''} filter="url(#glow)"/></g>`;
     g.addEventListener("click",()=>showTech(idx)); g.addEventListener("mouseenter",()=>showTech(idx));
     g.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();showTech(idx);} });
-    svg.appendChild(g); blipEls.push(g);
-  });
+    svg.appendChild(g); blipEls[idx]=g; });
   const call=document.createElementNS(ns,"g"); call.setAttribute("class","callout"); call.setAttribute("pointer-events","none"); svg.appendChild(call);
 
-  // numbered lists per quadrant
-  const ql=$("qLists"), listBtns=[];
-  quads.forEach((qn,q)=>{ const d=document.createElement("div"); d.innerHTML=`<h4><i style="background:${qc[q]}"></i>${qn}</h4><ol></ol>`; const ol=d.querySelector("ol");
-    tech.forEach((t,i)=>{ if(t[1]!==q) return; const li=document.createElement("li"); const b=document.createElement("button"); b.type="button"; b.innerHTML=`<span>${i+1}</span>${t[0]}`; b.onclick=()=>showTech(i); listBtns[i]=b; li.appendChild(b); ol.appendChild(li); });
-    ql.appendChild(d); });
-
-  function showTech(i){
-    const [name,q,r,note]=tech[i];
-    blipEls.forEach((b,j)=>b.classList.toggle("on",j===i)); listBtns.forEach((b,j)=>b.classList.toggle("on",j===i));
-    const [x,y]=pos[i], w=name.length*6.6+22, left=x>C, bx=left?x-14-w:x+14;
+  /* chips: the single list */
+  const tabsEl=$("stackTabs"), chipsEl=$("stackChips"), chipEls=[];
+  let area="all", adopt="all", cur=-1;
+  const iconFor=t=>{ const [ , , ,dv,ic,col,,inv]=t; if(dv){ const img=new Image(20,20); img.alt=""; img.decoding="async"; img.src=DV+dv; if(inv) img.className="inv";
+      img.addEventListener("error",()=>{ const sp=document.createElement("span"); sp.innerHTML=svgI(ic,col); img.replaceWith(sp.firstChild); }); return img; }
+    const sp=document.createElement("span"); sp.innerHTML=svgI(ic,col); return sp.firstChild; };
+  tech.forEach((t,i)=>{ const li=document.createElement("li"); li.className="tchip r"+t[2]; li.style.setProperty("--qc",qHex[t[1]]); li.tabIndex=0;
+    li.appendChild(iconFor(t)); li.appendChild(document.createTextNode(t[0]));
+    li.addEventListener("mouseenter",()=>showTech(i)); li.addEventListener("focus",()=>showTech(i)); li.addEventListener("click",()=>showTech(i));
+    chipEls[i]=li; });
+  const stackTabs=[["all","All",null,"layers"],[0,"AI & LLM",0,"sparkles"],[1,"Backend",1,"server"],[2,"Data",2,"db"],[3,"Cloud & DevOps",3,"cloud"]];
+  stackTabs.forEach(([id,label,,ic])=>{ const n=id==="all"?tech.length:tech.filter(t=>t[1]===id).length;
+    const b=document.createElement("button"); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected",id===area);
+    b.innerHTML=`${svgI(ic,"currentColor")}${label}<small>${n}</small>`; b.onclick=()=>{ area=id; [...tabsEl.children].forEach(x=>x.setAttribute("aria-selected",x===b)); apply(); }; tabsEl.appendChild(b); });
+  $("rdSeg").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; [...$("rdSeg").children].forEach(x=>x.setAttribute("aria-pressed",x===b)); adopt=b.dataset.f; apply(); });
+  const visible=t=>(area==="all"||t[1]===area)&&(adopt==="all"||(adopt==="daily"?t[2]===0:(t[2]===1||t[2]===2)));
+  function apply(){ chipsEl.innerHTML=""; let k=0;
+    tech.forEach((t,i)=>{ const v=visible(t); blipEls[i].classList.toggle("dim",!v); if(v){ chipEls[i].style.setProperty("--i",k++); chipsEl.appendChild(chipEls[i]); } });
+    const first=tech.findIndex(visible); if(first>-1 && !visible(tech[cur]||[])) showTech(first); }
+  function showTech(i){ cur=i; const [name,q,r,,,,note]=tech[i];
+    blipEls.forEach((b,j)=>b.classList.toggle("on",j===i)); chipEls.forEach((c,j)=>c.classList.toggle("on",j===i));
+    const [x,y]=pos[i], w=name.length*6.6+22, bx=x>C?x-14-w:x+14;
     call.innerHTML=`<rect x="${bx.toFixed(1)}" y="${(y-12).toFixed(1)}" width="${w.toFixed(1)}" height="24" rx="12"/><text x="${(bx+w/2).toFixed(1)}" y="${(y+4).toFixed(1)}" text-anchor="middle">${name}</text>`;
     const d=$("rdDetail"); d.style.setProperty("--qc",qc[q]);
-    d.innerHTML=`<span class="num">#${String(i+1).padStart(2,"0")} · ${quads[q]}</span><h3>${name}</h3>
-      <div class="ring-row"><span class="ring-tag">${rings[r]}</span><span class="ring-meter" aria-hidden="true">${[0,1,2,3].map(k=>`<i class="${k<4-r?'on':''}"></i>`).join("")}</span></div>
-      <p>${note}</p><p class="rn">${ringNote[rings[r]]}</p>`;
-  }
+    d.innerHTML=`<span class="num">${quads[q]}</span><h3>${name}</h3><div class="ring-row"><span class="ring-tag">${rings[r]}</span><span class="ring-meter" aria-hidden="true">${[0,1,2,3].map(k=>`<i class="${k<4-r?'on':''}"></i>`).join("")}</span></div><p>${note}</p><p class="rn">${ringNote[rings[r]]}</p>`; }
+  const rg=$("ringGuide"); rings.forEach((r,ri)=>{ const li=document.createElement("li"); li.innerHTML=`<b>${r}</b><span>${ringNote[r]}</span><em>${tech.filter(t=>t[2]===ri).length}</em>`; rg.appendChild(li); });
+  apply(); showTech(14);
 
-  const rg=$("ringGuide"); rings.forEach((r,i)=>{ const li=document.createElement("li"); li.innerHTML=`<b>${r}</b><span>${ringNote[r]}</span><em>${tech.filter(t=>t[2]===i).length}</em>`; rg.appendChild(li); });
-  showTech(11);
-
-  /* radar filter */
-  const isDaily=t=>t[2]===0, isEx=t=>t[2]===1||t[2]===2;
-  $("rdSeg").addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return;
-    [...$("rdSeg").children].forEach(x=>x.setAttribute("aria-pressed",x===b));
-    const f=b.dataset.f; tech.forEach((t,i)=>{ const off=f==="daily"?!isDaily(t):f==="explore"?!isEx(t):false; blipEls[i].classList.toggle("dim",off); listBtns[i].classList.toggle("dim",off); }); });
+  /* shawshank */
+  const ssr=[
+    ["1947","1947","Andy arrives, convicted of a double murder he didn't commit. Two life sentences."],
+    ["1949","1949","He asks Red for a rock hammer. Red figures it would take six hundred years to tunnel through a wall with one."],
+    ["1954","1954","Brooks is paroled after fifty years inside and can't survive the outside world. Andy keeps going."],
+    ["1955","c. 1955","After six years of weekly letters, the state sends $200 and boxes of books for the library. He starts writing twice a week."],
+    ["1965","1965","Tommy Williams arrives and knows who really committed the murders. The warden makes sure that truth never leaves the prison."],
+    ["1966","1966","The poster comes down. Nineteen years, one rock hammer, five hundred yards of sewer pipe. Freedom."]
+  ];
+  function tallies(n){ let h=""; for(let k=0;k<n;k++){ const g=Math.floor(k/5), j=k%5, gx=(g%2)*62, gy=Math.floor(g/2)*58;
+      h+= j<4 ? `<line x1="${gx+6+j*11}" y1="${gy+6}" x2="${gx+4+j*11}" y2="${gy+48}"/>` : `<line x1="${gx}" y1="${gy+42}" x2="${gx+46}" y2="${gy+12}"/>`; }
+    $("ssrTally").innerHTML=`<g stroke="rgba(28,26,22,.78)" stroke-width="3.2" stroke-linecap="round">${h}</g>`; }
+  function ssrUpd(){ const i=+$("ssrStep").value, [y,label,t]=ssr[i], n=+y-1947;
+    $("ssrStepO").textContent=label; $("ssrText").innerHTML=`<b>${label}</b>${t}`;
+    $("ssrYr").innerHTML=`${y}<small>${n===0?"day one":"year "+n+" of 19"}</small>`;
+    tallies(n); $("ssrWall").classList.toggle("open", i===ssr.length-1); }
+  $("ssrStep").addEventListener("input",ssrUpd); ssrUpd();
 
   /* reading & thinking */
   const reads={
