@@ -223,7 +223,7 @@
     { group: 'Case studies', label: 'Predictive inventory platform — AXISCADES', icon: 'file', href: '/work/predictive-inventory.html', keywords: 'mqtt flask postgres backend' },
     { group: 'Actions', label: 'Copy email address', icon: 'copy', run: copyEmail, hint: EMAIL, keywords: 'mail contact' },
     { group: 'Actions', label: 'Toggle light / dark theme', icon: 'theme', run: toggleTheme, keywords: 'mode appearance' },
-    { group: 'Actions', label: 'Download résumé (PDF)', icon: 'down', href: '/resume.pdf', keywords: 'cv resume' },
+    { group: 'Actions', label: 'Download résumé (PDF)', icon: 'down', href: '/resume.pdf', download: 'Pramod_Kumar_GH_Resume.pdf', keywords: 'cv resume' },
     { group: 'Links', label: 'Adike Naadi (live)', icon: 'ext', href: 'https://adikenaadi.com', external: true },
     { group: 'Links', label: 'GitHub', icon: 'ext', href: 'https://github.com/pramodkumargh777', external: true },
     { group: 'Links', label: 'LinkedIn', icon: 'ext', href: 'https://www.linkedin.com/in/pramod-kumar-g-h/', external: true },
@@ -269,6 +269,12 @@
     closePalette();
     if (it.run) { it.run(); return; }
     if (it.external) { window.open(it.href, '_blank', 'noopener'); return; }
+    if (it.download) {
+      const a = document.createElement('a');
+      a.href = it.href; a.download = it.download;
+      document.body.append(a); a.click(); a.remove();
+      return;
+    }
     if (it.href.startsWith('#')) {
       const target = document.getElementById(it.href.slice(1));
       if (target) {
