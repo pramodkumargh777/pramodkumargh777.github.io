@@ -1,55 +1,481 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101b16">
-<title>Pramod Kumar G H — AI Engineer & Product Builder</title>
-<meta name="description" content="Pramod Kumar G H — AI engineer working across Generative AI, backend systems and independent products.">
-<meta property="og:title" content="Pramod Kumar G H — AI Engineer">
-<meta property="og:description" content="Serious about the work. Curious about everything.">
-<meta property="og:image" content="https://pramodkumargh777.github.io/photo.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#101b16;--panel:#17251e;--panel2:#1d2d24;--ivory:#f4f0e6;--muted:#a4b0a6;--line:#34443a;--lime:#c7df83;--green:#315b43;--mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Playfair Display',serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;background:var(--bg);color:var(--ivory);font:16px/1.7 var(--sans)}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 48px));margin:auto}.nav{position:sticky;top:0;z-index:20;background:#101b16eF;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff13}.navin{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font:24px var(--serif);letter-spacing:-.04em}.brand span{color:var(--lime)}nav{display:flex;gap:28px}nav a,.eyebrow,.mono{font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}nav a:hover,.textlink:hover{color:var(--lime)}.hero{position:relative;overflow:hidden;padding:105px 0 86px;background:radial-gradient(ellipse at 82% 24%,#294432 0,transparent 38%),linear-gradient(135deg,#101b16,#14231a)}.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,#000,transparent 90%);pointer-events:none}.heroGrid{position:relative;display:grid;grid-template-columns:1.5fr .55fr;gap:64px;align-items:center}.eyebrow{color:var(--lime)}h1{font:clamp(54px,8vw,96px)/1.02 var(--serif);letter-spacing:-.055em;margin:24px 0 26px;max-width:800px}h1 em{font-weight:500;color:var(--lime)}.lead{font-size:19px;color:#c1cbc2;max-width:670px;line-height:1.75}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid #718174;border-radius:3px;font-size:13px;font-weight:600;transition:.2s}.btn.primary{background:var(--lime);color:#17251e;border-color:var(--lime)}.btn:hover{transform:translateY(-2px);border-color:var(--lime)}.portrait{width:250px;justify-self:end;position:relative}.portrait:after{content:"";position:absolute;inset:13px -13px -13px 13px;border:1px solid #9eb57d80;border-radius:48% 48% 4px 4px;z-index:0}.portrait img{position:relative;z-index:1;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:48% 48% 4px 4px;filter:saturate(.78)}.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}.chips span,.tag{font:10px var(--mono);letter-spacing:.04em;color:#c4d0c5;border:1px solid #ffffff26;border-radius:99px;padding:6px 10px}.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#142119;padding:15px 0;color:#b6c1b7;font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}.ticker span{margin:0 28px}.ticker b{color:var(--lime);font-weight:400}.section{padding:88px 0;border-bottom:1px solid var(--line)}.section.light{background:var(--ivory);color:#1b2b21;border:0}.section.light .eyebrow{color:#55734c}.section.light .muted{color:#647166}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}.sectionHead h2,.aboutTitle{font:clamp(38px,5vw,60px)/1.1 var(--serif);letter-spacing:-.04em;margin:10px 0 0}.muted{color:var(--muted)}.projects{display:grid;gap:16px}.project{background:var(--panel);border:1px solid var(--line);padding:30px;border-radius:4px}.project.feature{background:#1b3325;border-color:#49634a}.projectTop{display:flex;justify-content:space-between;gap:20px;align-items:start}.project h3{font:30px var(--serif);margin:8px 0 12px}.project p{color:#bdc8be;max-width:850px;margin:0}.project.feature p{color:#d4ded3}.textlink{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--lime);white-space:nowrap}.tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.impact{display:flex;gap:34px;flex-wrap:wrap;margin-top:25px}.impact div{border-top:1px solid #ffffff3b;padding-top:9px;min-width:135px}.impact b{display:block;font:23px var(--serif);color:var(--lime)}.impact small{font-size:11px;color:#c0ccc1}.job{display:grid;grid-template-columns:190px 1fr;gap:34px;padding:27px 0;border-bottom:1px solid #d8d9ce}.job:last-child{border:0}.jobdate{font:11px var(--mono);color:#69756a}.job h3{font:27px var(--serif);margin:0;color:#1b2b21}.jobrole{font:10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#55734c;margin:5px 0 12px}.job ul{margin:0;padding-left:19px;color:#58665c;font-size:14px}.job li{padding:3px 0}.stack{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stackCard{padding:23px;border:1px solid var(--line);background:var(--panel);min-height:165px}.stackCard h3{font:23px var(--serif);margin:0 0 12px}.stackCard p{font-size:13px;color:#b5c1b7;margin:0}.aboutGrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px}.aboutTitle{font-size:clamp(42px,6vw,70px)}.aboutCopy{color:#c2ccc3}.aboutCopy p{margin:0 0 18px}.personal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:35px}.interest{border:1px solid var(--line);padding:21px;background:#142119;min-height:145px}.interest strong{display:block;font:22px var(--serif);margin:9px 0}.interest p{font-size:12px;color:#aab7ac;margin:0}.contact{padding:85px 0;background:var(--lime);color:#17251e}.contact .eyebrow{color:#3e6041}.contact h2{font:clamp(44px,7vw,78px)/1.05 var(--serif);letter-spacing:-.05em;margin:14px 0 20px}.contact p{color:#435745;max-width:540px}.contact .btn{border-color:#526c4c}.contact .btn.primary{background:#17251e;color:var(--ivory);border-color:#17251e}.footer{padding:24px 0;display:flex;justify-content:space-between;gap:20px;color:#8d9b90;font:10px var(--mono);letter-spacing:.08em}.social{display:flex;gap:20px}.social a:hover{color:var(--lime)}
-@media(max-width:760px){.wrap{width:min(100% - 36px,600px)}.navin{height:64px}nav{gap:13px}nav a{font-size:9px}.hero{padding:65px 0 58px}.heroGrid{grid-template-columns:1fr;gap:35px}.portrait{width:170px;justify-self:start;grid-row:1}.heroCopy{grid-row:2}h1{font-size:clamp(49px,13vw,72px);margin:17px 0}.lead{font-size:16px}.section{padding:62px 0}.sectionHead{display:block}.sectionHead .muted{margin-top:12px}.project{padding:23px}.projectTop{display:block}.projectTop .textlink{display:inline-block;margin-top:8px}.job{grid-template-columns:1fr;gap:8px;padding:23px 0}.stack{grid-template-columns:1fr 1fr}.aboutGrid{grid-template-columns:1fr;gap:25px}.personal{grid-template-columns:1fr 1fr}.contact{padding:65px 0}.footer{flex-direction:column}}
-@media(max-width:420px){nav{gap:9px}nav a{font-size:8px}.stack,.personal{grid-template-columns:1fr}.chips{gap:6px}.chips span{font-size:9px}}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pramod Kumar G H — AI &amp; Backend Engineer</title>
+<meta name="description" content="Senior GenAI and backend engineer in Bengaluru. Enterprise LLM agents and RAG, industrial IoT APIs, regulated healthcare imaging — and Adike Naadi, a live product.">
+<link rel="canonical" href="https://pramodkumargh777.github.io/">
+<meta name="theme-color" content="#0b1410">
+<meta name="color-scheme" content="dark light">
+<meta name="author" content="Pramod Kumar G H">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pramod Kumar G H">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://pramodkumargh777.github.io/">
+<meta property="og:title" content="Pramod Kumar G H — I build AI systems that hold up in production">
+<meta property="og:description" content="Senior GenAI and backend engineer in Bengaluru. Enterprise LLM agents and RAG, industrial IoT APIs, regulated healthcare imaging — and Adike Naadi, a live product.">
+<meta property="og:image" content="https://pramodkumargh777.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pramod Kumar G H — I build AI systems that hold up in production.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pramod Kumar G H — I build AI systems that hold up in production">
+<meta name="twitter:description" content="Senior GenAI and backend engineer in Bengaluru. Enterprise LLM agents and RAG, industrial IoT APIs, regulated healthcare imaging — and Adike Naadi.">
+<meta name="twitter:image" content="https://pramodkumargh777.github.io/og-image.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/geist-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light')d.setAttribute('data-theme','light');}catch(e){}})();</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://pramodkumargh777.github.io/#person",
+  "name": "Pramod Kumar G H",
+  "givenName": "Pramod Kumar",
+  "jobTitle": "Senior Software Engineer, Generative AI",
+  "description": "Senior GenAI and backend engineer building RAG, LLM agents and production backend systems.",
+  "url": "https://pramodkumargh777.github.io/",
+  "image": "https://pramodkumargh777.github.io/assets/img/portrait-640.webp",
+  "email": "mailto:pramodkumargh77@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressRegion": "Karnataka", "addressCountry": "IN" },
+  "worksFor": { "@type": "Organization", "name": "ITC Infotech" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Sri Jayachamarajendra College of Engineering (SJCE), Mysuru" },
+  "knowsAbout": ["Generative AI", "Retrieval-augmented generation", "LLM agents", "LLM evaluation", "Guardrails", "Embeddings", "Python", "FastAPI", "PostgreSQL", "Cloudflare Workers", "Azure OpenAI"],
+  "sameAs": ["https://www.linkedin.com/in/pramod-kumar-g-h/", "https://github.com/pramodkumargh777"]
+}
+</script>
+<script src="/assets/js/site.js" defer></script>
 </head>
 <body>
-<header class="nav"><div class="wrap navin"><a class="brand" href="#">Pramod<span>.</span></a><nav><a href="#work">Work</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#contact">Contact</a></nav></div></header>
-<main>
-<section class="hero"><div class="wrap heroGrid"><div class="heroCopy"><div class="eyebrow">AI Engineer · Backend · Independent Products</div><h1>Serious about the work.<br><em>Curious about everything.</em></h1><p class="lead">I work across Generative AI, agentic workflows and backend engineering — turning complex ideas into practical systems. Currently focused on enterprise AI platforms and a market-intelligence product rooted in Karnataka.</p><div class="actions"><a class="btn primary" href="#work">Explore selected work ↘</a><a class="btn" href="mailto:pramodkumargh77@gmail.com">Get in touch ↗</a></div><div class="chips"><span>Python</span><span>GenAI & Agents</span><span>FastAPI</span><span>RAG</span><span>Cloud</span></div></div><div class="portrait"><img src="photo.jpg" alt="Portrait of Pramod Kumar"></div></div></section>
-<div class="ticker"><span>Build useful things</span><b>✳</b><span>Stay curious</span><b>✳</b><span>Question assumptions</span><b>✳</b><span>Enjoy the long game</span><b>✳</b><span>Build useful things</span></div>
-<section class="section" id="work"><div class="wrap"><div class="sectionHead"><div><div class="eyebrow">01 / Selected work</div><h2>Ideas made useful.</h2></div><p class="muted">A mix of independent product work and engineering<br>across enterprise and healthcare systems.</p></div><div class="projects">
-<article class="project feature"><div class="projectTop"><div><div class="eyebrow">Founder & developer · Independent product</div><h3>ಅಡಿಕೆ ನಾಡಿ — Adike Naadi</h3></div><a class="textlink" href="https://adikenaadi.com" target="_blank" rel="noopener">Visit product ↗</a></div><p>A Kannada-first market intelligence platform for arecanut growers and traders. Brings source-aware market quotations, historical trends and market comparisons together with grounded AI assistance and automated data workflows.</p><div class="impact"><div><b>Market data</b><small>Source-aware quotations</small></div><div><b>Kannada AI</b><small>Grounded bilingual assistance</small></div><div><b>Automation</b><small>Data pipelines & publishing</small></div></div><div class="tagrow"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Cloudflare Workers</span><span class="tag">D1</span><span class="tag">Python</span><span class="tag">Workers AI</span><span class="tag">GitHub Actions</span></div></article>
-<article class="project"><div class="projectTop"><div><div class="eyebrow">Enterprise AI · ITC Infotech</div><h3>AI agents & knowledge workflows</h3></div><span class="eyebrow">2025 — Present</span></div><p>Work on a conversational AI platform and agent workflows using Python, FastAPI, LangChain and Azure OpenAI. Focus areas include retrieval quality, SharePoint integration, backend services and enterprise deployment. Client details intentionally omitted.</p><div class="tagrow"><span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">Azure OpenAI</span><span class="tag">RAG</span><span class="tag">SharePoint</span></div></article>
-<article class="project"><div class="projectTop"><div><div class="eyebrow">Industrial software · AXISCADES</div><h3>Inventory intelligence & APIs</h3></div><span class="eyebrow">2023 — 2025</span></div><p>Developed Flask and PostgreSQL inventory APIs with MQTT ingestion, improving stock visibility and operational planning. The system handled 10K+ requests per day.</p><div class="tagrow"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">MQTT</span><span class="tag">Docker</span><span class="tag">Jenkins</span></div></article>
-<article class="project"><div class="projectTop"><div><div class="eyebrow">Healthcare technology · Philips & Siemens</div><h3>Medical imaging & automation</h3></div><span class="eyebrow">2020 — 2023</span></div><p>Worked on medical image storage and retrieval, DICOM metadata handling, automation and performance monitoring for healthcare software.</p><div class="tagrow"><span class="tag">Python</span><span class="tag">DICOM</span><span class="tag">Automation</span><span class="tag">Image workflows</span></div></article>
-</div></div></section>
-<section class="section light" id="experience"><div class="wrap"><div class="sectionHead"><div><div class="eyebrow">02 / Career</div><h2>Where I've worked.</h2></div><p class="muted">Engineering across AI, industrial systems<br>and healthcare technology.</p></div>
-<div class="job"><div class="jobdate">MAY 2025 — PRESENT</div><div><h3>ITC Infotech</h3><div class="jobrole">Senior Software Engineer · Generative AI</div><ul><li>Develop enterprise conversational AI and agent workflows using Python, FastAPI, LangChain and Azure OpenAI.</li><li>Work on knowledge retrieval, SharePoint integration and RAG quality/performance improvements.</li><li>Contribute to deployment and delivery of an AI platform across enterprise environments.</li></ul></div></div>
-<div class="job"><div class="jobdate">DEC 2023 — MAY 2025</div><div><h3>AXISCADES</h3><div class="jobrole">Senior Software Engineer</div><ul><li>Developed Flask/PostgreSQL inventory APIs and MQTT pipelines processing 10K+ requests/day.</li><li>Helped reduce stockouts by 40% and supported estimated $200K annual savings.</li><li>Improved API response times by 30%; Jenkins/Docker automation reduced deployment time by 75%.</li></ul></div></div>
-<div class="job"><div class="jobdate">MAR 2022 — DEC 2023</div><div><h3>Philips</h3><div class="jobrole">Software Developer</div><ul><li>Worked on medical image storage and retrieval, metadata extraction and DICOM workflows.</li></ul></div></div>
-<div class="job"><div class="jobdate">SEP 2020 — JAN 2022</div><div><h3>Siemens Healthcare</h3><div class="jobrole">Software Engineer</div><ul><li>Worked on Python performance monitoring and medical imaging/X-ray visualization workflows.</li></ul></div></div>
-<div class="job"><div class="jobdate">JAN 2020 — APR 2020</div><div><h3>Siemens Healthcare</h3><div class="jobrole">Engineering Intern</div><ul><li>Created a Word-template migration tool used by approximately 75 employees.</li></ul></div></div>
-</div></section>
-<section class="section" id="stack"><div class="wrap"><div class="sectionHead"><div><div class="eyebrow">03 / Tools of the trade</div><h2>Technical stack.</h2></div><p class="muted">The tools I use to move from an idea<br>to a working system.</p></div><div class="stack">
-<div class="stackCard"><h3>AI & GenAI</h3><p>LangChain · Azure OpenAI · RAG · LLM agents · Embeddings · Vector search · Guardrails · Workers AI</p></div>
-<div class="stackCard"><h3>Backend</h3><p>Python · FastAPI · Flask · Hono · REST APIs · Microservices</p></div>
-<div class="stackCard"><h3>Data</h3><p>PostgreSQL · MySQL · MongoDB · Cloudflare D1 · MQTT · Kafka</p></div>
-<div class="stackCard"><h3>Cloud & delivery</h3><p>Azure · Cloudflare · Docker · Jenkins · GitHub Actions · CI/CD · SharePoint</p></div>
-</div></div></section>
-<section class="section" id="about"><div class="wrap"><div class="aboutGrid"><div><div class="eyebrow">04 / Beyond the job title</div><h2 class="aboutTitle">Engineer.<br>Observer.<br><em style="color:var(--lime)">Curious by default.</em></h2></div><div class="aboutCopy"><p>My work sits between backend engineering and applied AI. I like understanding a problem end-to-end — from data and system design to the interface and the people using it.</p><p>Outside work, I read about psychology, economics and technology, follow tennis, explore markets and keep an eye on ideas that explain how people and systems behave. Adike Naadi brings some of those interests back to the agricultural community I know.</p><p class="eyebrow">B.E. Electronics & Instrumentation Engineering · SJCE, Mysuru</p></div></div>
-<div class="personal">
-<div class="interest"><div class="eyebrow">01 / Stories</div><strong>Breaking Bad</strong><p>Character, choices, consequences — and the details that make a story stay with you.</p></div>
-<div class="interest"><div class="eyebrow">02 / Sport</div><strong>Tennis & Djokovic</strong><p>Discipline, longevity, movement and the mental side of performance.</p></div>
-<div class="interest"><div class="eyebrow">03 / Psychology</div><strong>How we think</strong><p>Kahneman, Blink and the patterns behind everyday decisions.</p></div>
-<div class="interest"><div class="eyebrow">04 / Economics</div><strong>Markets & incentives</strong><p>How people respond to information, uncertainty and changing systems.</p></div>
-<div class="interest"><div class="eyebrow">05 / Reading</div><strong>Books & ideas</strong><p>The Tipping Point, Thinking, Fast and Slow, and books that challenge assumptions.</p></div>
-<div class="interest"><div class="eyebrow">06 / Building</div><strong>Useful technology</strong><p>Small experiments, agricultural technology and products with a real-world purpose.</p></div>
-</div></div></section>
-<section class="contact" id="contact"><div class="wrap"><div class="eyebrow">05 / Contact</div><h2>Let's talk about<br>things worth building.</h2><p>Open to conversations around applied AI, backend systems, product ideas and meaningful engineering problems.</p><div class="actions"><a class="btn primary" href="mailto:pramodkumargh77@gmail.com">Email me ↗</a><a class="btn" href="https://www.linkedin.com/in/pramod-kumar-g-h/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn" href="https://github.com/pramodkumargh777" target="_blank" rel="noopener">GitHub ↗</a></div></div></section>
-</main><footer class="wrap footer"><span>© 2026 PRAMOD KUMAR G H</span><span>BUILT WITH CURIOSITY · BENGALURU, INDIA</span><div class="social"><a href="https://adikenaadi.com" target="_blank" rel="noopener">ADIKE NAADI</a><a href="https://github.com/pramodkumargh777" target="_blank" rel="noopener">GITHUB</a></div></footer>
-</body></html>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow-ur" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-arrow-d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9h16M4 15h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6v12M15 6v12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="#top" aria-label="Pramod — back to top">Pramod<span>.</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav__links">
+        <li class="nav__indicator" aria-hidden="true"></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Career</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav__actions">
+      <button class="cmdk-trigger" type="button" data-cmdk-open aria-haspopup="dialog"><svg aria-hidden="true"><use href="#i-search"/></svg>Jump to <kbd>⌘K</kbd></button>
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme"><svg class="moon" aria-hidden="true"><use href="#i-moon"/></svg><svg class="sun" aria-hidden="true"><use href="#i-sun"/></svg></button>
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="sheet" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="sheet__top">
+    <a class="brand" href="#top">Pramod<span>.</span></a>
+    <button class="icon-btn" type="button" data-close-sheet aria-label="Close menu"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <nav aria-label="Mobile">
+    <ul class="sheet__links">
+      <li><a href="#work"><span class="eyebrow">01</span>Work</a></li>
+      <li><a href="#experience"><span class="eyebrow">02</span>Career</a></li>
+      <li><a href="#stack"><span class="eyebrow">03</span>Stack</a></li>
+      <li><a href="#about"><span class="eyebrow">04</span>About</a></li>
+      <li><a href="#contact"><span class="eyebrow">05</span>Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sheet__foot">
+    <button class="btn" type="button" data-cmdk-open><svg aria-hidden="true"><use href="#i-search"/></svg>Quick jump</button>
+    <button class="btn" type="button" data-copy-email><svg aria-hidden="true"><use href="#i-copy"/></svg>Copy email</button>
+    <a class="btn" href="/resume.pdf"><svg aria-hidden="true"><use href="#i-download"/></svg>Résumé</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="container grid-12 hero__grid">
+      <div class="hero__copy">
+        <p class="status reveal"><span class="dot" aria-hidden="true"></span>Open to senior GenAI / backend roles · Bengaluru</p>
+        <h1 id="hero-title" class="reveal" style="--d:60ms">I build AI systems that <em>hold up</em> in production.</h1>
+        <p class="hero__tagline reveal" style="--d:120ms">Serious about the work. Curious about everything.</p>
+        <p class="hero__lede reveal" style="--d:160ms">Backend engineer at heart, six years in: regulated healthcare imaging, industrial IoT, and now enterprise RAG and agent platforms at ITC Infotech. On my own, I build and run <a class="text-link" href="/work/adike-naadi.html">Adike Naadi</a>, a live Kannada-first market tool for arecanut growers.</p>
+        <div class="hero__actions reveal" style="--d:200ms">
+          <a class="btn btn--primary" href="#work">View work <svg class="arrow arrow--down" aria-hidden="true"><use href="#i-arrow-d"/></svg></a>
+          <!-- TODO: add /resume.pdf to the repo root -->
+          <a class="btn" href="/resume.pdf">Download résumé <svg aria-hidden="true"><use href="#i-download"/></svg></a>
+          <ul class="socials" aria-label="Elsewhere">
+            <li><a class="icon-btn" href="https://github.com/pramodkumargh777" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><svg aria-hidden="true"><use href="#i-github"/></svg></a></li>
+            <li><a class="icon-btn" href="https://www.linkedin.com/in/pramod-kumar-g-h/" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a class="icon-btn" href="mailto:pramodkumargh77@gmail.com" aria-label="Email pramodkumargh77@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="hero__portrait reveal" style="--d:120ms">
+        <figure class="portrait">
+          <div class="portrait__ring" aria-hidden="true"></div>
+          <div class="portrait__frame">
+            <picture>
+              <source type="image/avif" srcset="/assets/img/portrait-320.avif 320w, /assets/img/portrait-480.avif 480w, /assets/img/portrait-640.avif 640w, /assets/img/portrait-760.avif 760w" sizes="(max-width: 759px) 168px, 300px">
+              <source type="image/webp" srcset="/assets/img/portrait-320.webp 320w, /assets/img/portrait-480.webp 480w, /assets/img/portrait-640.webp 640w, /assets/img/portrait-760.webp 760w" sizes="(max-width: 759px) 168px, 300px">
+              <img src="/assets/img/portrait-640.webp" width="640" height="800" decoding="async" fetchpriority="high" alt="Pramod in a puffer jacket and sunglasses, standing on snow with Himalayan peaks and the rising sun behind him">
+            </picture>
+          </div>
+          <figcaption class="mono-label">Above the snowline</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Proof strip ============ -->
+  <section class="proof" aria-label="Selected results">
+    <div class="container">
+      <ul class="proof__grid">
+        <li class="tile reveal"><span class="tile__value">40%</span><span><span class="tile__label">fewer stockouts</span><span class="tile__ctx">AXISCADES · predictive inventory</span></span></li>
+        <li class="tile reveal" style="--d:50ms"><span class="tile__value">~$200K</span><span><span class="tile__label">est. annual savings</span><span class="tile__ctx">AXISCADES · inventory costs</span></span></li>
+        <li class="tile reveal" style="--d:100ms"><span class="tile__value">30%</span><span><span class="tile__label">faster API responses</span><span class="tile__ctx">Query optimisation + indexing</span></span></li>
+        <li class="tile reveal" style="--d:150ms"><span class="tile__value">75%</span><span><span class="tile__label">faster deploys</span><span class="tile__ctx">Jenkins + Docker CI/CD</span></span></li>
+        <li class="tile tile--years reveal" style="--d:200ms"><span class="tile__value">6+<small>yrs</small></span><span><span class="tile__label">shipping production software</span><span class="tile__ctx">Healthcare → IoT → GenAI</span></span></li>
+        <li class="tile tile--live reveal" style="--d:250ms">
+          <span>
+            <span class="mono-label">Live product</span>
+            <span class="tile__value" style="display:block;margin-top:.5rem">Adike Naadi<span class="kn" lang="kn">ಅಡಿಕೆ ನಾಡಿ</span></span>
+            <span class="tile__ctx">Kannada-first arecanut market intelligence, built and run solo</span>
+          </span>
+          <a class="btn" href="https://adikenaadi.com" target="_blank" rel="noopener">adikenaadi.com <svg class="arrow" aria-hidden="true"><use href="#i-arrow-ur"/></svg><span class="sr-only">(opens in a new tab)</span></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 01 Work ============ -->
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="container">
+      <header class="section-head grid-12">
+        <p class="eyebrow"><span class="num">01</span>Selected work</p>
+        <h2 id="work-title" class="reveal">Systems that ship — <em>and keep working.</em></h2>
+        <p class="lede reveal">An independent product I run end to end, plus enterprise and regulated systems built inside larger teams. Client details are deliberately left out.</p>
+      </header>
+
+      <div class="work">
+        <article class="card project project--hero reveal" aria-labelledby="p-adike">
+          <div class="project__body">
+            <div class="project__meta">
+              <span class="eyebrow">Founder &amp; developer · Independent</span>
+              <!-- TODO: add start year, e.g. "2025 — Present" -->
+              <span class="chip chip--accent">Live · ongoing</span>
+            </div>
+            <h3 id="p-adike"><span class="kn" lang="kn">ಅಡಿಕೆ ನಾಡಿ</span><a class="stretch" href="/work/adike-naadi.html">Adike Naadi</a></h3>
+            <p class="project__problem">Arecanut prices are scattered across cooperative societies and APMC markets, each publishing on its own schedule, with its own grades and units. Growers need one trustworthy view.</p>
+            <div class="project__outcome"><b>5 sources</b><span>cooperative and APMC rates in one Kannada-first view — every figure dated and cited, with a grounded bilingual assistant.</span></div>
+            <ul class="chips" aria-label="Stack">
+              <li class="chip">React</li><li class="chip">TypeScript</li><li class="chip">Hono</li><li class="chip">Cloudflare Workers</li><li class="chip">D1</li><li class="chip">Workers AI</li><li class="chip">Python</li><li class="chip">GitHub Actions</li>
+            </ul>
+            <div class="project__foot" style="margin-top:var(--space-6)">
+              <ul class="links">
+                <li><a href="https://adikenaadi.com" target="_blank" rel="noopener">Live <svg aria-hidden="true"><use href="#i-arrow-ur"/></svg><span class="sr-only">(opens in a new tab)</span></a></li>
+                <li><a href="/work/adike-naadi.html">Case study <svg aria-hidden="true"><use href="#i-arrow-r"/></svg></a></li>
+                <li><span class="todo" title="Add the repository link if it is public">GitHub · TODO</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="project__media">
+            <div class="browser">
+              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">adikenaadi.com</span></div>
+              <img src="/assets/adike-naadi/home-desktop.webp" srcset="/assets/adike-naadi/home-desktop.webp 1440w, /assets/adike-naadi/home-desktop@2x.webp 2880w" sizes="(min-width: 980px) 820px, 110vw" width="1440" height="900" loading="lazy" decoding="async" alt="Adike Naadi desktop home in Kannada showing the latest Rashi rates from MAMCOS, TSS and TMS Sirsi, each with its reporting date">
+            </div>
+            <div class="phone">
+              <div class="phone__screen">
+                <img src="/assets/adike-naadi/assistant-mobile.webp" srcset="/assets/adike-naadi/assistant-mobile.webp 375w, /assets/adike-naadi/assistant-mobile@2x.webp 750w" sizes="210px" width="375" height="812" loading="lazy" decoding="async" alt="The Adike Naadi assistant on mobile answering a Kannada crop-care question by citing source documents">
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project project--half reveal" aria-labelledby="p-itc">
+          <div class="project__meta"><span class="eyebrow">Enterprise GenAI · ITC Infotech</span><span class="mono-label">2025 — Present</span></div>
+          <h3 id="p-itc"><a class="stretch" href="/work/enterprise-genai.html">Enterprise RAG &amp; agent platform</a></h3>
+          <p class="project__problem">A ChatGPT-style enterprise platform needed retrieval, connectors and task agents that hold up across real enterprise environments — with guardrails, not guesswork.</p>
+          <div class="project__outcome"><b>15+</b><span>LLM agents in production, cutting manual ticket triage by about 40%.</span></div>
+          <ul class="chips" aria-label="Stack">
+            <li class="chip">Python</li><li class="chip">FastAPI</li><li class="chip">LangChain</li><li class="chip">Azure OpenAI</li><li class="chip">Azure AI Search</li><li class="chip">MCP</li>
+          </ul>
+          <div class="project__foot" style="margin-top:var(--space-6)">
+            <ul class="links"><li><a href="/work/enterprise-genai.html">Case study <svg aria-hidden="true"><use href="#i-arrow-r"/></svg></a></li></ul>
+          </div>
+        </article>
+
+        <article class="card project project--half reveal" style="--d:80ms" aria-labelledby="p-axis">
+          <div class="project__meta"><span class="eyebrow">Industrial IoT · AXISCADES</span><span class="mono-label">2023 — 2025</span></div>
+          <h3 id="p-axis"><a class="stretch" href="/work/industrial-iot.html">Predictive inventory platform</a></h3>
+          <p class="project__problem">Manufacturing stock needed to be visible as it moved — from device data over MQTT to planning APIs serving 10K+ requests a day.</p>
+          <div class="project__outcome"><b>40%</b><span>fewer stockouts I helped deliver, supporting an estimated ~$200K a year in savings.</span></div>
+          <ul class="chips" aria-label="Stack">
+            <li class="chip">Python</li><li class="chip">Flask</li><li class="chip">PostgreSQL</li><li class="chip">MQTT</li><li class="chip">Docker</li><li class="chip">Jenkins</li>
+          </ul>
+          <div class="project__foot" style="margin-top:var(--space-6)">
+            <ul class="links"><li><a href="/work/industrial-iot.html">Case study <svg aria-hidden="true"><use href="#i-arrow-r"/></svg></a></li></ul>
+          </div>
+        </article>
+
+        <article class="card project reveal" aria-labelledby="p-health">
+          <div class="project__meta"><span class="eyebrow">Regulated healthcare · Siemens Healthineers &amp; Philips</span><span class="mono-label">2020 — 2023</span></div>
+          <div class="grid-12" style="row-gap:var(--space-5)">
+            <div style="grid-column:1/-1" class="health__copy">
+              <h3 id="p-health"><a class="stretch" href="#experience">Regulated healthcare software</a></h3>
+              <p class="project__problem" style="margin-bottom:0">DICOM, imaging pipelines, reliability. Medical imaging software where correctness is a safety property: PACS storage and retrieval, device interoperability, and performance tooling for angiography and X-ray systems.</p>
+            </div>
+            <div style="grid-column:1/-1" class="health__side">
+              <div class="project__outcome" style="margin-top:0"><b>Artis icono</b><span>Contributed to the product-line release and its hazard-related safety features at Siemens Healthineers.</span></div>
+              <ul class="chips" aria-label="Stack">
+                <li class="chip">C++</li><li class="chip">Python</li><li class="chip">DICOM</li><li class="chip">PACS</li><li class="chip">Performance monitoring</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project__foot" style="margin-top:var(--space-6)">
+            <ul class="links"><li><a href="#experience">Career details <svg aria-hidden="true"><use href="#i-arrow-d"/></svg></a></li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Ticker ============ -->
+  <section class="ticker" aria-label="Working principles">
+    <div class="ticker__viewport">
+      <div class="ticker__track">
+        <ul class="ticker__group">
+          <li>Build useful things</li><li class="sep" aria-hidden="true">✦</li>
+          <li>Stay curious</li><li class="sep" aria-hidden="true">✦</li>
+          <li>Question assumptions</li><li class="sep" aria-hidden="true">✦</li>
+          <li>Enjoy the long game</li><li class="sep" aria-hidden="true">✦</li>
+          <li>Ship it, then make it hold</li><li class="sep" aria-hidden="true">✦</li>
+        </ul>
+        <ul class="ticker__group" aria-hidden="true">
+          <li>Build useful things</li><li class="sep">✦</li>
+          <li>Stay curious</li><li class="sep">✦</li>
+          <li>Question assumptions</li><li class="sep">✦</li>
+          <li>Enjoy the long game</li><li class="sep">✦</li>
+          <li>Ship it, then make it hold</li><li class="sep">✦</li>
+        </ul>
+      </div>
+    </div>
+    <button class="icon-btn ticker__toggle" type="button" aria-pressed="false" aria-label="Pause scrolling text"><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg></button>
+  </section>
+
+  <!-- ============ 02 Career ============ -->
+  <section class="section section--alt" id="experience" aria-labelledby="career-title">
+    <div class="container">
+      <header class="section-head grid-12">
+        <p class="eyebrow"><span class="num">02</span>Career</p>
+        <h2 id="career-title" class="reveal">Healthcare to IoT to <em>GenAI.</em></h2>
+        <p class="lede reveal">Each move went closer to the data — and to the people relying on the system when it matters.</p>
+      </header>
+      <ol class="timeline">
+        <li class="job reveal">
+          <p class="job__when"><b>May 2025 — Present</b><br>Bengaluru</p>
+          <div class="job__body">
+            <h3 class="wordmark wordmark--itc">ITC <span>Infotech</span></h3>
+            <p class="job__role">Senior Software Engineer <span>· Generative AI</span></p>
+            <ul>
+              <li>Build backend services for an enterprise GenAI platform — conversational assistance, RAG and agent workflows — in Python, FastAPI and PostgreSQL on Azure OpenAI.</li>
+              <li>Shipped <b>15+ LLM agents</b> for enterprise automation, cutting manual ticket triage by <b>about 40%</b>.</li>
+              <li>RAG pipelines (LangChain, Azure AI Search) run <b>10,000+ documents</b> through a configurable 7-stage ingestion framework, deployed across <b>two large enterprise environments</b>.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job reveal">
+          <p class="job__when"><b>Dec 2023 — May 2025</b><br>Bengaluru</p>
+          <div class="job__body">
+            <h3 class="wordmark wordmark--axis">AXISCADES</h3>
+            <p class="job__role">Senior Software Engineer <span>· Backend &amp; IoT</span></p>
+            <ul>
+              <li>Built Flask/PostgreSQL inventory APIs and MQTT ingestion handling <b>10K+ requests a day</b>.</li>
+              <li>Helped reduce stockouts by <b>40%</b>, supporting an estimated <b>~$200K</b> in annual savings.</li>
+              <li>Cut API response times <b>30%</b> through query optimisation and indexing; Jenkins + Docker CI/CD cut deployment time <b>75%</b>.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job reveal">
+          <p class="job__when"><b>Mar 2022 — Dec 2023</b><br>Remote</p>
+          <div class="job__body">
+            <h3 class="wordmark wordmark--philips">Philips</h3>
+            <p class="job__role">Software Developer <span>· Medical imaging</span></p>
+            <ul>
+              <li>Engineered and optimised a PACS solution in Python and C++ for medical image storage and retrieval.</li>
+              <li>Automated image loading and metadata extraction, ensuring DICOM compliance for device interoperability.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job reveal">
+          <p class="job__when"><b>Sep 2020 — Jan 2022</b><br>Intern Jan — Apr 2020</p>
+          <div class="job__body">
+            <h3 class="wordmark wordmark--siemens">SIEMENS <span>Healthineers</span></h3>
+            <p class="job__role">Software Engineer <span>· Angiography &amp; X-ray</span></p>
+            <ul>
+              <li>Built performance-monitoring tools for angiography systems and X-ray visualisation software in C++ and Python.</li>
+              <li>Contributed to the <b>Artis icono</b> product-line release and hazard-related safety features.</li>
+            </ul>
+            <div class="job__sub">
+              <p class="job__role">Engineering Intern</p>
+              <ul><li>Built a Word-template migration tool used by about <b>75 colleagues</b>.</li></ul>
+            </div>
+          </div>
+        </li>
+        <li class="job reveal">
+          <p class="job__when"><b>2016 — 2020</b><br>Mysuru</p>
+          <div class="job__body">
+            <h3 class="wordmark wordmark--sjce">SJCE</h3>
+            <p class="job__role">B.E., Electronics &amp; Instrumentation <span>· Sri Jayachamarajendra College of Engineering</span></p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 03 Stack ============ -->
+  <section class="section" id="stack" aria-labelledby="stack-title">
+    <div class="container">
+      <header class="section-head grid-12">
+        <p class="eyebrow"><span class="num">03</span>Stack</p>
+        <h2 id="stack-title" class="reveal">Grouped by what it's <em>for.</em></h2>
+        <p class="lede reveal">Tools change; capabilities compound. Here is what I reach for, by the job it does.</p>
+      </header>
+      <div class="stack">
+        <article class="card cap reveal">
+          <div class="cap__head"><h3>Build agents</h3><span class="mono-label">A</span></div>
+          <p>Assistants and agents that call tools, cite their sources and know when to stop.</p>
+          <ul class="chips" aria-label="Tools"><li class="chip">LangChain</li><li class="chip">LangGraph</li><li class="chip">Azure OpenAI</li><li class="chip">Workers AI</li><li class="chip">MCP</li><li class="chip">Pydantic</li><li class="chip">Context engineering</li></ul>
+        </article>
+        <article class="card cap reveal" style="--d:60ms">
+          <div class="cap__head"><h3>Ship backends</h3><span class="mono-label">B</span></div>
+          <p>Typed, async APIs with clear contracts — the part that has to work at 3 a.m.</p>
+          <ul class="chips" aria-label="Tools"><li class="chip">Python</li><li class="chip">FastAPI</li><li class="chip">Flask</li><li class="chip">Hono</li><li class="chip">TypeScript</li><li class="chip">asyncio</li><li class="chip">Celery</li><li class="chip">Redis</li><li class="chip">C++</li></ul>
+        </article>
+        <article class="card cap reveal">
+          <div class="cap__head"><h3>Data</h3><span class="mono-label">C</span></div>
+          <p>Schemas, indexes, pipelines and retrieval. Most performance problems end here.</p>
+          <ul class="chips" aria-label="Tools"><li class="chip">PostgreSQL</li><li class="chip">SQLAlchemy</li><li class="chip">Alembic</li><li class="chip">Azure AI Search</li><li class="chip">Cloudflare D1</li><li class="chip">MongoDB</li><li class="chip">MySQL</li><li class="chip">MQTT</li><li class="chip">Kafka</li></ul>
+        </article>
+        <article class="card cap reveal" style="--d:60ms">
+          <div class="cap__head"><h3>Deploy</h3><span class="mono-label">D</span></div>
+          <p>Containers, pipelines and edge runtimes. Boring deployments are good deployments.</p>
+          <ul class="chips" aria-label="Tools"><li class="chip">Docker</li><li class="chip">Azure Container Apps</li><li class="chip">Azure DevOps</li><li class="chip">Jenkins</li><li class="chip">GitHub Actions</li><li class="chip">Cloudflare Workers</li><li class="chip">Pytest</li></ul>
+        </article>
+        <article class="card depth reveal" aria-labelledby="depth-title">
+          <div class="cap__head"><h3 id="depth-title" class="serif" style="font-size:var(--step-3);line-height:1">Where I go deep</h3><span class="chip chip--accent">Depth</span></div>
+          <ul class="depth__grid">
+            <li class="depth__item"><h4><span class="mono-label">01</span>RAG evaluation</h4><p>Golden datasets and judge models — the unit tests of GenAI. Retrieval order matters too: models read the start and end of a context better than the middle.</p></li>
+            <li class="depth__item"><h4><span class="mono-label">02</span>Guardrails</h4><p>Typed outputs validated with Pydantic, cited answers and graceful “I don't know” paths. Agents without evals or guardrails: never again.</p></li>
+            <li class="depth__item"><h4><span class="mono-label">03</span>Embeddings</h4><p>Vector and hybrid search tuned against real user queries, not benchmarks — with chunking and reranking over 10,000+ documents.</p></li>
+            <li class="depth__item"><h4><span class="mono-label">04</span>Edge deployment</h4><p>Adike Naadi runs on Cloudflare Workers, D1 and Workers AI: API, data and inference on one edge platform.</p></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 About ============ -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="grid-12 about">
+        <div class="about__title">
+          <p class="eyebrow" style="margin-bottom:var(--space-5)"><span class="num">04</span>About</p>
+          <h2 id="about-title" class="reveal">Engineer. Observer. <em>Curious by default.</em></h2>
+        </div>
+        <div class="about__body reveal">
+          <p>At heart I'm a <strong>backend engineer</strong> — APIs, data models, concurrency and systems that keep working at 3 a.m. Generative AI is what I build on top of that foundation.</p>
+          <p>I like understanding a problem end to end: from the data and system design to the interface and the people using it. Adike Naadi is where that meets the agricultural community I know.</p>
+          <p class="mono-label" style="font-size:var(--step--2)">B.E. Electronics &amp; Instrumentation · SJCE, Mysuru</p>
+          <ul class="offclock" aria-label="Off the clock">
+            <li class="mono-label" aria-hidden="true">Off the clock</li>
+            <li>Tennis <span>Team Djokovic</span></li>
+            <li>Psychology <span>Kahneman</span></li>
+            <li>Economics <span>markets &amp; incentives</span></li>
+            <li>Books <span>Harari, Karanth</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 Contact ============ -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="container grid-12 contact__grid">
+      <div class="contact__main">
+      <p class="eyebrow"><span class="num">05</span>Contact</p>
+      <h2 id="contact-title" class="contact__title reveal">Have a hard AI or backend problem? <em>Let's talk.</em></h2>
+      <p class="contact__lede reveal">Open to senior GenAI and backend roles, and to conversations about RAG, agents and systems that need to hold up in production.</p>
+      <div class="email-card reveal">
+        <a href="mailto:pramodkumargh77@gmail.com">pramodkumargh77@gmail.com</a>
+        <button class="icon-btn" type="button" data-copy-email aria-label="Copy email address"><svg aria-hidden="true"><use href="#i-copy"/></svg></button>
+      </div>
+      <div class="contact__actions reveal">
+        <a class="btn btn--primary" href="mailto:pramodkumargh77@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/pramod-kumar-g-h/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn" href="https://github.com/pramodkumargh777" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg>GitHub<span class="sr-only"> (opens in a new tab)</span></a>
+        <!-- TODO: replace with your Calendly link, e.g. <a class="btn" href="https://calendly.com/…"> -->
+        <span class="btn todo" style="border-radius:999px"><svg aria-hidden="true"><use href="#i-calendar"/></svg>Calendly · TODO</span>
+      </div>
+      </div>
+      <dl class="contact__facts reveal">
+        <div><dt class="mono-label">Based in</dt><dd>Bengaluru, India · IST (UTC+5:30)</dd></div>
+        <div><dt class="mono-label">Currently</dt><dd>Senior Software Engineer, GenAI at ITC Infotech</dd></div>
+        <div><dt class="mono-label">Open to</dt><dd>Senior GenAI / backend roles</dd></div>
+        <div><dt class="mono-label">Building</dt><dd><a class="text-link" href="https://adikenaadi.com" target="_blank" rel="noopener">Adike Naadi<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>© 2026 Pramod Kumar G H <span aria-hidden="true">·</span> Bengaluru, India</p>
+    <p>Built with curiosity, compounded daily.</p>
+    <ul class="footer__links">
+      <li><a href="#top">Back to top</a></li>
+      <li><a href="https://adikenaadi.com" target="_blank" rel="noopener">Adike Naadi</a></li>
+      <li><a href="https://github.com/pramodkumargh777" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/pramod-kumar-g-h/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="toast-region" role="status" aria-live="polite"></div>
+
+<dialog class="cmdk" id="cmdk" aria-label="Quick navigation">
+  <div class="cmdk__search">
+    <svg aria-hidden="true"><use href="#i-search"/></svg>
+    <input class="cmdk__input" type="text" role="combobox" aria-expanded="false" aria-controls="cmdk-list" aria-autocomplete="list" aria-label="Search sections, case studies and actions" placeholder="Jump to a section, case study or action…" autocomplete="off" spellcheck="false">
+    <kbd>esc</kbd>
+  </div>
+  <ul class="cmdk__list" id="cmdk-list" role="listbox" aria-label="Results"></ul>
+  <div class="cmdk__foot" aria-hidden="true"><span><kbd>↑</kbd> <kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></div>
+</dialog>
+</body>
+</html>
