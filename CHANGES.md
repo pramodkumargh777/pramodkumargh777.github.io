@@ -111,6 +111,11 @@ Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it
 - ITC internal agent names (client detail).
 - A personal contact detail removed in `42106e6`.
 
+### From your résumé and screenshots (27 Nov 2026)
+- **Résumé:** Adike Naadi "2025 – Present", "Founder & Sole Developer", AGMARKNET API ingestion with outlier checks against the recent median, automated tests gating deployment, Qwen3-30B + BGE-M3 on Workers AI, answer-sentence grounding checks with retry and data-only fallback, SEO-friendly market/variety pages, and automated daily rates videos with AI voice-over.
+- **Google Search Console** (adikenaadi.com, last 28 days): 65 clicks, 2.02K impressions, 3.2% CTR, avg. position 7.9.
+- **Facebook reels** (Adike Naadi page): 186K views on the top reel; the visible reels add up to 190K+.
+
 ### Read from the live site (adikenaadi.com, 27 Nov 2026)
 - **Sources:** MAMCOS, TSS, TMS Sirsi, TUMCOS and AGMARKNET/data.gov.in, plus KRAMA arrivals. Every rate carries its date and source.
 - **Coverage:** prices since 2014 from 50+ markets.
@@ -124,19 +129,20 @@ Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it
 Search the repo for `TODO`. Each one is marked in the HTML with a visible amber dashed badge and/or an HTML comment.
 
 ### Files
-- [ ] **Add `resume.pdf` to the repo root.** It's linked from the hero, the mobile menu, the ⌘K palette and every page's sheet menu, and currently returns 404. (`index.html:130`)
+- [x] ~~Add `resume.pdf` to the repo root~~ — added from `Pramod_Kumar_GH_Gen_AI_Engineer_Resume.pdf` (18 Nov 2026).
 
 ### Links
 - [ ] **Calendly link:** replace the `Calendly · TODO` pill in Contact. (`index.html:442–443`)
 - [ ] **Adike Naadi GitHub repo:** replace `GitHub · TODO` on the work card, or delete it if the repo is private. (`index.html:203`)
 
 ### Facts
-- [ ] **Adike Naadi start year:** on the work card chip and the case-study "Timeline". (`index.html:190`, `work/adike-naadi.html:128–129`)
+- [x] ~~Adike Naadi start year~~ — 2025 — Present (from the résumé).
 
 ### Adike Naadi case study (`work/adike-naadi.html`)
 - [ ] **Users:** add the user research. Who you spoke to, what they told you, how many people use it. (line 180–181)
 - [ ] **Decisions table:** review the "Why" column. I inferred it from how the product behaves; adjust it to your actual reasoning. (line 276)
-- [ ] **Results:** fill in or delete each tile: monthly active users, WhatsApp channel followers, assistant questions/month, organic search clicks, p95 API latency, monthly infra cost. (lines 334–341)
+- [x] ~~Organic search~~ — 2.02K impressions, 65 clicks, 3.2% CTR, avg. position 7.9 (Search Console, last 28 days) and 186K views on the top Facebook reel (190K+ across reels), from your screenshots.
+- [ ] **Results:** fill in or delete the remaining tiles: monthly active users, WhatsApp channel followers, assistant questions/month, p95 API latency, monthly infra cost.
 - [ ] **What's next:** add your roadmap. (lines 350–351)
 
 ### Review

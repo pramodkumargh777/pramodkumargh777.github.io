@@ -124,9 +124,8 @@
         <h1><span class="kn" lang="kn">ಅಡಿಕೆ ನಾಡಿ</span>Adike Naadi</h1>
         <p class="case-hero__lede">Kannada-first market intelligence for arecanut growers and traders — every price dated, sourced and explained.</p>
         <dl class="facts">
-          <div><dt class="mono-label">Role</dt><dd>Founder &amp; developer — product, data, backend, frontend and AI</dd></div>
-          <!-- TODO: add the start year, e.g. "2025 — Present" -->
-          <div><dt class="mono-label">Timeline</dt><dd>Ongoing <span class="todo">start year · TODO</span></dd></div>
+          <div><dt class="mono-label">Role</dt><dd>Founder &amp; sole developer — product, data, backend, frontend and AI</dd></div>
+          <div><dt class="mono-label">Timeline</dt><dd>2025 — Present</dd></div>
           <div><dt class="mono-label">Stack</dt><dd>React · TypeScript · Hono · Cloudflare Workers · D1 · Workers AI · Python · GitHub Actions</dd></div>
           <div><dt class="mono-label">Live</dt><dd><a class="text-link" href="https://adikenaadi.com" target="_blank" rel="noopener">adikenaadi.com<span class="sr-only"> (opens in a new tab)</span></a><br><span class="muted">English mode: “Areca Pulse”</span></dd></div>
         </dl>
@@ -175,7 +174,7 @@
             <ul>
               <li><strong>Growers</strong> deciding when and where to sell — the product covers towns from Shivamogga, Sagara and Thirthahalli to Sirsi, Puttur, Channagiri and Sringeri.</li>
               <li><strong>Traders</strong> comparing cooperative branches and APMC markets for the same variety on the same date.</li>
-              <li><strong>Reach:</strong> the site works in Kannada and English, and daily rates also go out through a WhatsApp channel.</li>
+              <li><strong>Reach:</strong> the site works in Kannada and English; daily rates also go out through a WhatsApp channel and as short videos on social media.</li>
             </ul>
             <!-- TODO: add user research — who you spoke to, what they told you, how many people use it -->
             <p><span class="todo">TODO · add user research and who you built it with</span></p>
@@ -193,6 +192,8 @@
               <li><strong>Monthly trends</strong> since 2014 from 50+ markets, annotated with import-price and tax policy events, plus an anomaly review that flags one-month blips.</li>
               <li><strong>Forecast evaluation</strong> — statistical, machine-learning and foundation models backtested month by month against a simple baseline.</li>
               <li><strong>Ask a question</strong> — a grounded assistant for prices, crop care and weather (chapter 06).</li>
+              <li><strong>Daily rates videos</strong> — an automated pipeline turns live API data into a short rates video with AI voice-over.</li>
+              <li><strong>SEO-friendly market and variety pages</strong>, so growers searching for a town or grade land on the right rates.</li>
             </ul>
           </div>
           <figure class="figure reveal">
@@ -215,7 +216,7 @@
           <p class="eyebrow"><span class="num">04</span>Architecture</p>
           <h2 id="architecture-title">Batch pipelines in, edge runtime out.</h2>
           <div class="prose">
-            <p>Scheduled <strong>Python pipelines in GitHub Actions</strong> fetch each source, normalise it and run quality checks before writing to <strong>Cloudflare D1</strong>. A <strong>Hono API on Cloudflare Workers</strong> serves the <strong>React + TypeScript</strong> app and orchestrates the assistant, which calls <strong>Workers AI</strong> with the rows it has retrieved.</p>
+            <p>Scheduled <strong>Python pipelines in GitHub Actions</strong> pull cooperative rates and the government <strong>AGMARKNET API</strong>, normalise them and validate each value — outliers are checked against the recent median — before publishing to <strong>Cloudflare D1</strong>. Automated tests gate every deployment. A <strong>Hono API on Cloudflare Workers</strong> serves the <strong>React + TypeScript</strong> app and orchestrates the assistant, which calls <strong>Workers AI</strong> with the rows it has retrieved.</p>
           </div>
           <figure class="figure reveal">
             <div class="diagram">
@@ -279,7 +280,7 @@
             <tbody>
               <tr><td>Every rate carries its date and source</td><td data-label="Why">Sources report on different days; a price without a date invites a bad decision.</td><td data-label="Trade-off">Denser cards, and more UI to design and translate.</td></tr>
               <tr><td>Never merge different measures</td><td data-label="Why">Branch averages, APMC modal prices and arrival-weighted monthly prices mean different things.</td><td data-label="Trade-off">No single “price of the day”; comparisons only on the same source, variety and date.</td></tr>
-              <tr><td>No interpolation; outliers flagged, not hidden</td><td data-label="Why">A missing month means no report, not zero. One-month swings of 20%+ that snap back are reviewed as likely data issues.</td><td data-label="Trade-off">Visible gaps in charts, and an extra anomaly-review step.</td></tr>
+              <tr><td>No interpolation; outliers flagged, not hidden</td><td data-label="Why">A missing month means no report, not zero. New values are checked against the recent median before publishing; one-month swings of 20%+ that snap back are treated as likely data issues.</td><td data-label="Trade-off">Visible gaps in charts, and an extra anomaly-review step.</td></tr>
               <tr><td>Publish forecast accuracy — even when it's unflattering</td><td data-label="Why">The evaluation page says plainly when no model, including the AI models, beats “last month's price”.</td><td data-label="Trade-off">A less impressive headline in exchange for trust.</td></tr>
               <tr><td>One edge platform: Workers, D1, Workers AI</td><td data-label="Why">API, data and inference in one place keeps the operational surface small for an independent product.</td><td data-label="Trade-off">SQLite-at-the-edge limits, and model choice bounded by the Workers AI catalogue.</td></tr>
               <tr><td>Batch ingestion in GitHub Actions</td><td data-label="Why">Sources publish on schedules, so scheduled jobs with quality checks are enough.</td><td data-label="Trade-off">Freshness is bounded by the schedule — which is why each rate shows its date.</td></tr>
@@ -306,7 +307,7 @@
               <li><strong>Refuses to paraphrase what it can't quote.</strong> Asked in Kannada how to manage koleroga, it lists the relevant source pages instead of summarising scanned text, and points to the nearest Krishi Vigyan Kendra, ICAR-CPCRI (Vittal) or taluk horticulture office.</li>
               <li><strong>Limits:</strong> 30 questions an hour; questions are not stored. Every answer ends with a disclaimer — no price guarantees, financial advice or disease diagnosis.</li>
             </ul>
-            <p>The model runs on Workers AI — an open-weights Qwen3 model at the time of writing — behind the same Hono API as the rest of the product.</p>
+            <p>Under the hood it is a RAG pipeline on Workers AI — <strong>Qwen3-30B</strong> for generation and <strong>BGE-M3</strong> embeddings for retrieval — behind the same Hono API as the rest of the product. <strong>Answer-sentence grounding checks</strong>, a retry and a data-only fallback keep unsupported claims out of answers.</p>
           </div>
           <figure class="figure figure--pair reveal">
             <div class="browser browser--full">
@@ -322,7 +323,7 @@
 
         <section class="chapter" id="results" aria-labelledby="results-title">
           <p class="eyebrow"><span class="num">07</span>Results</p>
-          <h2 id="results-title">Live and updated daily — usage numbers to come.</h2>
+          <h2 id="results-title">Live, updated daily — and finding an audience.</h2>
           <div class="prose">
             <p>What's shipped and public today:</p>
           </div>
@@ -331,12 +332,19 @@
             <li class="tile"><span class="tile__value">2014→</span><span><span class="tile__label">monthly price history</span><span class="tile__ctx">50+ markets</span></span></li>
             <li class="tile"><span class="tile__value">KN · EN</span><span><span class="tile__label">bilingual product + assistant</span><span class="tile__ctx">every figure cited</span></span></li>
           </ul>
+          <div class="prose">
+            <p>Early reach, as of late November 2026:</p>
+          </div>
+          <ul class="results">
+            <li class="tile"><span class="tile__value">186K</span><span><span class="tile__label">views on the top daily-rates reel</span><span class="tile__ctx">Facebook · 190K+ across reels</span></span></li>
+            <li class="tile"><span class="tile__value">2.02K</span><span><span class="tile__label">Google Search impressions</span><span class="tile__ctx">avg. position 7.9 · last 28 days</span></span></li>
+            <li class="tile"><span class="tile__value">65</span><span><span class="tile__label">organic search clicks</span><span class="tile__ctx">3.2% CTR · last 28 days</span></span></li>
+          </ul>
           <!-- TODO: replace each placeholder below with a real number (or delete the tile) -->
           <ul class="results">
             <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">Monthly active users</span><span class="tile__ctx">analytics</span></span></li>
             <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">WhatsApp channel followers</span><span class="tile__ctx">daily rates</span></span></li>
             <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">Assistant questions / month</span><span class="tile__ctx">usage</span></span></li>
-            <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">Organic search clicks</span><span class="tile__ctx">Search Console</span></span></li>
             <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">p95 API latency</span><span class="tile__ctx">Workers analytics</span></span></li>
             <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">Monthly infra cost</span><span class="tile__ctx">Cloudflare bill</span></span></li>
           </ul>
