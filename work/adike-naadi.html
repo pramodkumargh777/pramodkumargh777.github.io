@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adike Naadi case study — Pramod Kumar G H</title>
+<meta name="description" content="How I designed and built Adike Naadi: Kannada-first arecanut market intelligence on Cloudflare Workers, D1 and Workers AI, with a grounded bilingual assistant.">
+<link rel="canonical" href="https://pramodkumargh777.github.io/work/adike-naadi.html">
+<meta name="theme-color" content="#0b1410">
+<meta name="color-scheme" content="dark light">
+<meta name="author" content="Pramod Kumar G H">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Pramod Kumar G H">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://pramodkumargh777.github.io/work/adike-naadi.html">
+<meta property="og:title" content="Adike Naadi case study — Pramod Kumar G H">
+<meta property="og:description" content="Kannada-first arecanut market intelligence on Cloudflare Workers, D1 and Workers AI, with a grounded bilingual assistant.">
+<meta property="og:image" content="https://pramodkumargh777.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pramod Kumar G H — I build AI systems that hold up in production.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Adike Naadi case study — Pramod Kumar G H">
+<meta name="twitter:description" content="Kannada-first arecanut market intelligence on Cloudflare Workers, D1 and Workers AI, with a grounded bilingual assistant.">
+<meta name="twitter:image" content="https://pramodkumargh777.github.io/og-image.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/geist-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light')d.setAttribute('data-theme','light');}catch(e){}})();</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Adike Naadi — Kannada-first arecanut market intelligence",
+  "description": "Case study: designing and building Adike Naadi on Cloudflare Workers, D1 and Workers AI, with a grounded bilingual assistant.",
+  "url": "https://pramodkumargh777.github.io/work/adike-naadi.html",
+  "image": "https://pramodkumargh777.github.io/assets/adike-naadi/home-desktop.webp",
+  "inLanguage": "en",
+  "author": { "@type": "Person", "@id": "https://pramodkumargh777.github.io/#person", "name": "Pramod Kumar G H", "url": "https://pramodkumargh777.github.io/" },
+  "about": { "@type": "WebApplication", "name": "Adike Naadi", "alternateName": "Areca Pulse", "url": "https://adikenaadi.com", "applicationCategory": "BusinessApplication", "inLanguage": ["kn", "en"] }
+}
+</script>
+<script src="/assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow-ur" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-arrow-d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9h16M4 15h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6v12M15 6v12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="/" aria-label="Pramod — home">Pramod<span>.</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav__links">
+        <li class="nav__indicator" aria-hidden="true"></li>
+        <li><a href="/#work" aria-current="page">Work</a></li>
+        <li><a href="/#experience">Career</a></li>
+        <li><a href="/#stack">Stack</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav__actions">
+      <button class="cmdk-trigger" type="button" data-cmdk-open aria-haspopup="dialog"><svg aria-hidden="true"><use href="#i-search"/></svg>Jump to <kbd>⌘K</kbd></button>
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme"><svg class="moon" aria-hidden="true"><use href="#i-moon"/></svg><svg class="sun" aria-hidden="true"><use href="#i-sun"/></svg></button>
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="sheet" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="sheet__top">
+    <a class="brand" href="/">Pramod<span>.</span></a>
+    <button class="icon-btn" type="button" data-close-sheet aria-label="Close menu"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <nav aria-label="Mobile">
+    <ul class="sheet__links">
+      <li><a href="/#work"><span class="eyebrow">01</span>Work</a></li>
+      <li><a href="/#experience"><span class="eyebrow">02</span>Career</a></li>
+      <li><a href="/#stack"><span class="eyebrow">03</span>Stack</a></li>
+      <li><a href="/#about"><span class="eyebrow">04</span>About</a></li>
+      <li><a href="/#contact"><span class="eyebrow">05</span>Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sheet__foot">
+    <button class="btn" type="button" data-cmdk-open><svg aria-hidden="true"><use href="#i-search"/></svg>Quick jump</button>
+    <button class="btn" type="button" data-copy-email><svg aria-hidden="true"><use href="#i-copy"/></svg>Copy email</button>
+    <a class="btn" href="/resume.pdf"><svg aria-hidden="true"><use href="#i-download"/></svg>Résumé</a>
+  </div>
+</div>
+
+<main id="main">
+  <article>
+    <header class="case-hero">
+      <div class="container">
+        <nav aria-label="Breadcrumb">
+          <ol class="crumbs">
+            <li><a href="/#work">Work</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page">Adike Naadi</li>
+          </ol>
+        </nav>
+        <p class="eyebrow" style="margin-top:var(--space-6)"><span class="num">Case study</span>Independent product · Live</p>
+        <h1><span class="kn" lang="kn">ಅಡಿಕೆ ನಾಡಿ</span>Adike Naadi</h1>
+        <p class="case-hero__lede">Kannada-first market intelligence for arecanut growers and traders — every price dated, sourced and explained.</p>
+        <dl class="facts">
+          <div><dt class="mono-label">Role</dt><dd>Founder &amp; developer — product, data, backend, frontend and AI</dd></div>
+          <!-- TODO: add the start year, e.g. "2025 — Present" -->
+          <div><dt class="mono-label">Timeline</dt><dd>Ongoing <span class="todo">start year · TODO</span></dd></div>
+          <div><dt class="mono-label">Stack</dt><dd>React · TypeScript · Hono · Cloudflare Workers · D1 · Workers AI · Python · GitHub Actions</dd></div>
+          <div><dt class="mono-label">Live</dt><dd><a class="text-link" href="https://adikenaadi.com" target="_blank" rel="noopener">adikenaadi.com<span class="sr-only"> (opens in a new tab)</span></a><br><span class="muted">English mode: “Areca Pulse”</span></dd></div>
+        </dl>
+        <div class="case-media reveal">
+          <div class="browser browser--full">
+            <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">adikenaadi.com</span></div>
+            <img src="/assets/adike-naadi/home-desktop.webp" srcset="/assets/adike-naadi/home-desktop.webp 1440w, /assets/adike-naadi/home-desktop@2x.webp 2880w" sizes="(min-width: 1280px) 1200px, 100vw" width="1440" height="900" decoding="async" fetchpriority="high" alt="Adike Naadi desktop home in Kannada: a sidebar of tools, variety filters, and Rashi rates from MAMCOS, TSS and TMS Sirsi, each with its reporting date and change">
+          </div>
+          <div class="phone">
+            <div class="phone__screen"><img src="/assets/adike-naadi/home-mobile.webp" srcset="/assets/adike-naadi/home-mobile.webp 375w, /assets/adike-naadi/home-mobile@2x.webp 750w" sizes="220px" width="375" height="812" decoding="async" alt="Adike Naadi on mobile in Kannada: Rashi rates by cooperative, a daily WhatsApp rates link and a bottom tab bar"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container case-layout">
+      <aside class="toc" aria-label="On this page">
+        <p class="mono-label" style="margin-bottom:var(--space-4)">On this page</p>
+        <ol>
+          <li><a href="#problem"><span>01</span>Problem</a></li>
+          <li><a href="#users"><span>02</span>Users</a></li>
+          <li><a href="#solution"><span>03</span>Solution</a></li>
+          <li><a href="#architecture"><span>04</span>Architecture</a></li>
+          <li><a href="#decisions"><span>05</span>Decisions &amp; trade-offs</a></li>
+          <li><a href="#assistant"><span>06</span>Bilingual AI assistant</a></li>
+          <li><a href="#results"><span>07</span>Results</a></li>
+          <li><a href="#next"><span>08</span>What's next</a></li>
+        </ol>
+        <div class="toc__progress" aria-hidden="true"><i></i></div>
+      </aside>
+
+      <div class="case-content">
+        <section class="chapter" id="problem" aria-labelledby="problem-title">
+          <p class="eyebrow"><span class="num">01</span>Problem</p>
+          <h2 id="problem-title">Prices exist. A trustworthy view of them didn't.</h2>
+          <div class="prose">
+            <p>Arecanut is traded through cooperative societies — <strong>MAMCOS</strong> in Shivamogga, <strong>TSS</strong> and <strong>TMS</strong> in Sirsi, <strong>TUMCOS</strong> in Channagiri — and through APMC markets reported on <strong>AGMARKNET</strong>. Each publishes on its own schedule, under its own variety names, and with different measures: a cooperative branch average is not an APMC modal price.</p>
+            <p>So the question a grower actually has — <em>what is my crop worth today, and should I sell now or wait?</em> — needs several fragmented sources reconciled first. Adike Naadi is designed for that reader: Kannada first, phone first.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="users" aria-labelledby="users-title">
+          <p class="eyebrow"><span class="num">02</span>Users</p>
+          <h2 id="users-title">Growers and traders across Karnataka's arecanut belt.</h2>
+          <div class="prose">
+            <ul>
+              <li><strong>Growers</strong> deciding when and where to sell — the product covers towns from Shivamogga, Sagara and Thirthahalli to Sirsi, Puttur, Channagiri and Sringeri.</li>
+              <li><strong>Traders</strong> comparing cooperative branches and APMC markets for the same variety on the same date.</li>
+              <li><strong>Reach:</strong> the site works in Kannada and English, and daily rates also go out through a WhatsApp channel.</li>
+            </ul>
+            <!-- TODO: add user research — who you spoke to, what they told you, how many people use it -->
+            <p><span class="todo">TODO · add user research and who you built it with</span></p>
+          </div>
+        </section>
+
+        <section class="chapter" id="solution" aria-labelledby="solution-title">
+          <p class="eyebrow"><span class="num">03</span>Solution</p>
+          <h2 id="solution-title">One place to read the market — without hiding the seams.</h2>
+          <div class="prose">
+            <ul>
+              <li><strong>Latest rates</strong> by variety and town, from cooperatives and APMCs, each with its reporting date and a link to the source.</li>
+              <li><strong>Compare markets</strong> — branches ranked for the same variety and the same reporting date, with CSV export.</li>
+              <li><strong>Sell now or wait?</strong> — what prices did after this month in past years, net of interest, weight loss and storage costs. Explicitly “neither a forecast nor advice”.</li>
+              <li><strong>Monthly trends</strong> since 2014 from 50+ markets, annotated with import-price and tax policy events, plus an anomaly review that flags one-month blips.</li>
+              <li><strong>Forecast evaluation</strong> — statistical, machine-learning and foundation models backtested month by month against a simple baseline.</li>
+              <li><strong>Ask a question</strong> — a grounded assistant for prices, crop care and weather (chapter 06).</li>
+            </ul>
+          </div>
+          <figure class="figure reveal">
+            <div class="browser browser--full">
+              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">adikenaadi.com/monthly-trends</span></div>
+              <img src="/assets/adike-naadi/trends-desktop.webp" srcset="/assets/adike-naadi/trends-desktop.webp 1440w, /assets/adike-naadi/trends-desktop@2x.webp 2880w" sizes="(min-width: 1024px) 900px, 100vw" width="1440" height="900" loading="lazy" decoding="async" alt="Monthly trends: Rashi observed monthly weighted prices from 2021 to 2026 with latest, high, low and average values, and four numbered policy events marked on the chart">
+            </div>
+            <figcaption>Monthly trends — no interpolation; policy events annotated on the series.</figcaption>
+          </figure>
+          <figure class="figure reveal">
+            <div class="browser browser--full">
+              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">adikenaadi.com/sell-or-hold</span></div>
+              <img src="/assets/adike-naadi/sell-or-hold-desktop.webp" srcset="/assets/adike-naadi/sell-or-hold-desktop.webp 1440w, /assets/adike-naadi/sell-or-hold-desktop@2x.webp 2880w" sizes="(min-width: 1024px) 900px, 100vw" width="1440" height="900" loading="lazy" decoding="async" alt="Sell now or wait: variety and month selectors, editable costs, and a summary comparing the current Rashi price with its one-year average and past-year outcomes">
+            </div>
+            <figcaption>Sell now or wait — past-year outcomes after the grower's own costs, framed as history rather than prediction.</figcaption>
+          </figure>
+        </section>
+
+        <section class="chapter" id="architecture" aria-labelledby="architecture-title">
+          <p class="eyebrow"><span class="num">04</span>Architecture</p>
+          <h2 id="architecture-title">Batch pipelines in, edge runtime out.</h2>
+          <div class="prose">
+            <p>Scheduled <strong>Python pipelines in GitHub Actions</strong> fetch each source, normalise it and run quality checks before writing to <strong>Cloudflare D1</strong>. A <strong>Hono API on Cloudflare Workers</strong> serves the <strong>React + TypeScript</strong> app and orchestrates the assistant, which calls <strong>Workers AI</strong> with the rows it has retrieved.</p>
+          </div>
+          <figure class="figure reveal">
+            <div class="diagram">
+              <svg viewBox="0 0 1000 420" role="img" aria-labelledby="arch-t arch-d">
+                <title id="arch-t">Adike Naadi architecture</title>
+                <desc id="arch-d">Cooperative, AGMARKNET and KRAMA sources feed scheduled Python pipelines in GitHub Actions, which fetch, normalise and validate data and write it to Cloudflare D1. A Hono API on Cloudflare Workers reads D1 with SQL, calls Workers AI with retrieved rows to produce cited answers, and serves a React and TypeScript web app in Kannada and English to growers and traders.</desc>
+                <defs>
+                  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead" d="M0 0 10 5 0 10z"/></marker>
+                  <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead--accent" d="M0 0 10 5 0 10z"/></marker>
+                </defs>
+                <!-- Sources -->
+                <rect class="n-group" x="16" y="40" width="236" height="290" rx="16"/>
+                <text class="n-glabel" x="34" y="66">Data sources</text>
+                <rect class="n-box" x="34" y="86" width="200" height="64" rx="10"/>
+                <text class="n-title" x="50" y="113">Cooperatives</text><text class="n-sub" x="50" y="133">MAMCOS, TSS, TMS, TUMCOS</text>
+                <rect class="n-box" x="34" y="166" width="200" height="64" rx="10"/>
+                <text class="n-title" x="50" y="193">AGMARKNET</text><text class="n-sub" x="50" y="213">APMC prices · data.gov.in</text>
+                <rect class="n-box" x="34" y="246" width="200" height="64" rx="10"/>
+                <text class="n-title" x="50" y="273">KRAMA</text><text class="n-sub" x="50" y="293">market arrivals</text>
+                <path class="edge" d="M234 118H264M234 198H264M234 278H264M264 118V278"/>
+                <path class="edge" d="M264 198H294" marker-end="url(#ah)"/>
+                <!-- Pipeline -->
+                <text class="edge-label" x="298" y="144">scheduled fetch</text>
+                <rect class="n-box" x="298" y="156" width="218" height="84" rx="10"/>
+                <text class="n-title" x="314" y="184">GitHub Actions</text><text class="n-sub" x="314" y="204">Python pipelines</text><text class="n-sub" x="314" y="222">fetch · normalise · validate</text>
+                <path class="edge" d="M516 198H534V354H562" marker-end="url(#ah)"/>
+                <text class="edge-label" x="314" y="264">upsert + quality checks</text>
+                <!-- Cloudflare -->
+                <rect class="n-group" x="546" y="40" width="262" height="364" rx="16"/>
+                <text class="n-glabel" x="564" y="66">Cloudflare edge</text>
+                <rect class="n-box" x="566" y="84" width="220" height="68" rx="10"/>
+                <text class="n-title" x="582" y="112">Workers AI</text><text class="n-sub" x="582" y="132">grounded, cited answers</text>
+                <rect class="n-box n-box--accent" x="566" y="200" width="220" height="68" rx="10"/>
+                <text class="n-title" x="582" y="228">Hono API · Workers</text><text class="n-sub" x="582" y="248">rates · compare · assistant</text>
+                <rect class="n-box" x="566" y="320" width="220" height="68" rx="10"/>
+                <text class="n-title" x="582" y="348">Cloudflare D1</text><text class="n-sub" x="582" y="368">rates · series · sources</text>
+                <path class="edge edge--accent" d="M676 200V156" marker-end="url(#aha)" marker-start="url(#aha)"/>
+                <text class="edge-label" x="686" y="182">rows → cited answer</text>
+                <path class="edge" d="M676 268V316" marker-end="url(#ah)" marker-start="url(#ah)"/>
+                <text class="edge-label" x="686" y="298">SQL</text>
+                <!-- Client -->
+                <rect class="n-box" x="838" y="200" width="146" height="68" rx="10"/>
+                <text class="n-title" x="854" y="228">React + TS</text><text class="n-sub" x="854" y="248">Kannada / English</text>
+                <path class="edge" d="M790 234H834" marker-end="url(#ah)" marker-start="url(#ah)"/>
+                <text class="edge-label" x="794" y="222">HTTPS</text>
+                <rect class="n-box" x="838" y="84" width="146" height="68" rx="10"/>
+                <text class="n-title" x="854" y="112">Growers</text><text class="n-sub" x="854" y="132">&amp; traders</text>
+                <path class="edge" d="M911 156V196" marker-end="url(#ah)" marker-start="url(#ah)"/>
+              </svg>
+            </div>
+            <figcaption>Architecture — scheduled batch ingestion, single edge platform for API, data and inference.</figcaption>
+          </figure>
+        </section>
+
+        <section class="chapter" id="decisions" aria-labelledby="decisions-title">
+          <p class="eyebrow"><span class="num">05</span>Key decisions &amp; trade-offs</p>
+          <h2 id="decisions-title">Honest data over a tidy headline.</h2>
+          <!-- TODO: review the "Why" column — written from the product's observable behaviour; adjust to your actual reasoning -->
+          <table class="tradeoffs">
+            <thead><tr><th scope="col">Decision</th><th scope="col">Why</th><th scope="col">Trade-off</th></tr></thead>
+            <tbody>
+              <tr><td>Every rate carries its date and source</td><td data-label="Why">Sources report on different days; a price without a date invites a bad decision.</td><td data-label="Trade-off">Denser cards, and more UI to design and translate.</td></tr>
+              <tr><td>Never merge different measures</td><td data-label="Why">Branch averages, APMC modal prices and arrival-weighted monthly prices mean different things.</td><td data-label="Trade-off">No single “price of the day”; comparisons only on the same source, variety and date.</td></tr>
+              <tr><td>No interpolation; outliers flagged, not hidden</td><td data-label="Why">A missing month means no report, not zero. One-month swings of 20%+ that snap back are reviewed as likely data issues.</td><td data-label="Trade-off">Visible gaps in charts, and an extra anomaly-review step.</td></tr>
+              <tr><td>Publish forecast accuracy — even when it's unflattering</td><td data-label="Why">The evaluation page says plainly when no model, including the AI models, beats “last month's price”.</td><td data-label="Trade-off">A less impressive headline in exchange for trust.</td></tr>
+              <tr><td>One edge platform: Workers, D1, Workers AI</td><td data-label="Why">API, data and inference in one place keeps the operational surface small for an independent product.</td><td data-label="Trade-off">SQLite-at-the-edge limits, and model choice bounded by the Workers AI catalogue.</td></tr>
+              <tr><td>Batch ingestion in GitHub Actions</td><td data-label="Why">Sources publish on schedules, so scheduled jobs with quality checks are enough.</td><td data-label="Trade-off">Freshness is bounded by the schedule — which is why each rate shows its date.</td></tr>
+            </tbody>
+          </table>
+          <figure class="figure reveal">
+            <div class="browser browser--full">
+              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">adikenaadi.com/forecasts/evaluation</span></div>
+              <img src="/assets/adike-naadi/forecast-desktop.webp" srcset="/assets/adike-naadi/forecast-desktop.webp 1440w, /assets/adike-naadi/forecast-desktop@2x.webp 2880w" sizes="(min-width: 1024px) 900px, 100vw" width="1440" height="900" loading="lazy" decoding="async" alt="Forecast model evaluation: the verdict 'Not yet better than last month's price', typical miss and coverage figures, and a leaderboard comparing LightGBM, Chronos-2, TimesFM 2.5, ARIMA and other models with the simple rule">
+            </div>
+            <figcaption>Forecast evaluation — models are ranked against “last month's price”, and the page says so when none beats it.</figcaption>
+          </figure>
+        </section>
+
+        <section class="chapter" id="assistant" aria-labelledby="assistant-title">
+          <p class="eyebrow"><span class="num">06</span>Bilingual AI assistant</p>
+          <h2 id="assistant-title">An assistant that shows its working.</h2>
+          <div class="prose">
+            <p><strong>Ask Areca Pulse</strong> answers questions about prices, markets, crop care and weather in Kannada or English. Answers are built from retrieved data, and every figure is cited — <code>S1–S4</code> for price feeds, <code>D1–D4</code> for documents — with chips showing how old each source is.</p>
+            <ul>
+              <li><strong>“How this answer was made”</strong> under every answer lists the data used, the assumptions, the uncertainty, the limitations, the model and the response time.</li>
+              <li><strong>No invented inputs.</strong> For “Should I sell now?” it asks for quantity, commission, transport, storage, interest and weight loss — “Areca Pulse does not assume costs you have not given.”</li>
+              <li><strong>Graceful degradation.</strong> When the language model is unavailable, the answer is written directly from the data, and says so.</li>
+              <li><strong>Refuses to paraphrase what it can't quote.</strong> Asked in Kannada how to manage koleroga, it lists the relevant source pages instead of summarising scanned text, and points to the nearest Krishi Vigyan Kendra, ICAR-CPCRI (Vittal) or taluk horticulture office.</li>
+              <li><strong>Limits:</strong> 30 questions an hour; questions are not stored. Every answer ends with a disclaimer — no price guarantees, financial advice or disease diagnosis.</li>
+            </ul>
+            <p>The model runs on Workers AI — an open-weights Qwen3 model at the time of writing — behind the same Hono API as the rest of the product.</p>
+          </div>
+          <figure class="figure figure--pair reveal">
+            <div class="browser browser--full">
+              <div class="browser__bar" aria-hidden="true"><span class="browser__dots"><i></i><i></i><i></i></span><span class="browser__url">adikenaadi.com/assistant</span></div>
+              <img src="/assets/adike-naadi/assistant-desktop.webp" srcset="/assets/adike-naadi/assistant-desktop.webp 1440w, /assets/adike-naadi/assistant-desktop@2x.webp 2880w" sizes="(min-width: 1024px) 640px, 100vw" width="1440" height="900" loading="lazy" decoding="async" alt="English answer to 'What is the latest Rashi price?': price-date chips per source and six rate cards, each labelled with its source, measure, date and citation">
+            </div>
+            <div class="phone figure__phone">
+              <div class="phone__screen"><img src="/assets/adike-naadi/assistant-mobile.webp" srcset="/assets/adike-naadi/assistant-mobile.webp 375w, /assets/adike-naadi/assistant-mobile@2x.webp 750w" sizes="240px" width="375" height="812" loading="lazy" decoding="async" alt="Kannada answer about koleroga management that lists cited source pages D1 to D3 and recommends contacting local agricultural offices"></div>
+            </div>
+            <figcaption style="grid-column:1/-1">Browser: an English price question — every rate labelled and cited. Phone: a Kannada crop-care question — the assistant cites pages rather than paraphrasing scanned text.</figcaption>
+          </figure>
+        </section>
+
+        <section class="chapter" id="results" aria-labelledby="results-title">
+          <p class="eyebrow"><span class="num">07</span>Results</p>
+          <h2 id="results-title">Live and updated daily — usage numbers to come.</h2>
+          <div class="prose">
+            <p>What's shipped and public today:</p>
+          </div>
+          <ul class="results">
+            <li class="tile"><span class="tile__value">5</span><span><span class="tile__label">price sources unified</span><span class="tile__ctx">4 cooperatives + AGMARKNET</span></span></li>
+            <li class="tile"><span class="tile__value">2014→</span><span><span class="tile__label">monthly price history</span><span class="tile__ctx">50+ markets</span></span></li>
+            <li class="tile"><span class="tile__value">KN · EN</span><span><span class="tile__label">bilingual product + assistant</span><span class="tile__ctx">every figure cited</span></span></li>
+          </ul>
+          <!-- TODO: replace each placeholder below with a real number (or delete the tile) -->
+          <ul class="results">
+            <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">Monthly active users</span><span class="tile__ctx">analytics</span></span></li>
+            <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">WhatsApp channel followers</span><span class="tile__ctx">daily rates</span></span></li>
+            <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">Assistant questions / month</span><span class="tile__ctx">usage</span></span></li>
+            <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">Organic search clicks</span><span class="tile__ctx">Search Console</span></span></li>
+            <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">p95 API latency</span><span class="tile__ctx">Workers analytics</span></span></li>
+            <li class="tile tile--todo"><span class="todo">TODO</span><span><span class="tile__label">Monthly infra cost</span><span class="tile__ctx">Cloudflare bill</span></span></li>
+          </ul>
+        </section>
+
+        <section class="chapter" id="next" aria-labelledby="next-title">
+          <p class="eyebrow"><span class="num">08</span>What's next</p>
+          <h2 id="next-title">Beat the baseline, honestly.</h2>
+          <div class="prose">
+            <p>The forecast leaderboard is the clearest open problem: by the product's own evaluation, no model yet beats “last month's price” by a margin that holds up. Closing that gap — without overstating what the models can do — is the bar for any forecast feature.</p>
+            <!-- TODO: add your roadmap (features, markets, crops, partnerships) -->
+            <p><span class="todo">TODO · add your roadmap</span></p>
+          </div>
+        </section>
+
+        <a class="card next-case" href="/work/enterprise-genai.html">
+          <span>
+            <span class="mono-label">Next case study</span>
+            <span class="serif" style="display:block;font-size:var(--step-3);line-height:1.05;margin-top:.4rem">Enterprise RAG &amp; agent platform</span>
+          </span>
+          <svg aria-hidden="true" style="width:22px;height:22px;flex:none"><use href="#i-arrow-r"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>© 2026 Pramod Kumar G H <span aria-hidden="true">·</span> Bengaluru, India</p>
+    <p>Built with curiosity, compounded daily.</p>
+    <ul class="footer__links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="https://github.com/pramodkumargh777" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/pramod-kumar-g-h/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="toast-region" role="status" aria-live="polite"></div>
+
+<dialog class="cmdk" id="cmdk" aria-label="Quick navigation">
+  <div class="cmdk__search">
+    <svg aria-hidden="true"><use href="#i-search"/></svg>
+    <input class="cmdk__input" type="text" role="combobox" aria-expanded="false" aria-controls="cmdk-list" aria-autocomplete="list" aria-label="Search sections, case studies and actions" placeholder="Jump to a section, case study or action…" autocomplete="off" spellcheck="false">
+    <kbd>esc</kbd>
+  </div>
+  <ul class="cmdk__list" id="cmdk-list" role="listbox" aria-label="Results"></ul>
+  <div class="cmdk__foot" aria-hidden="true"><span><kbd>↑</kbd> <kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></div>
+</dialog>
+</body>
+</html>

@@ -627,3 +627,10 @@ body.no-scroll { overflow: hidden; }
   body { background: #fff; color: #000; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* Inline code */
+code { font: 450 0.86em/1 var(--mono); padding: 0.15em 0.4em; border-radius: 6px; background: var(--surface-3); border: 1px solid var(--line); color: var(--text); }
+.tile .todo { align-self: flex-start; }
+code { white-space: nowrap; }
+.figure__phone { max-width: 200px; justify-self: center; }
+@media (min-width: 760px) { .figure__phone { max-width: 240px; } }
