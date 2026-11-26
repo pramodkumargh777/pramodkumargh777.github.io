@@ -285,9 +285,10 @@ body.no-scroll { overflow: hidden; }
 @media (max-width: 479px) {
   .status { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0; }
 }
-@media (min-width: 900px) {
+@media (min-width: 760px) {
   .hero__copy { grid-column: 1 / 9; }
   .hero__portrait { grid-column: 9 / 13; }
+  .portrait { width: min(300px, 100%); }
 }
 
 /* ---------- Proof strip (bento) ---------- */
@@ -300,15 +301,23 @@ body.no-scroll { overflow: hidden; }
 }
 .tile__value { font: 400 clamp(2.4rem, 1.8rem + 2.4vw, 3.6rem)/0.9 var(--serif); letter-spacing: -0.02em; color: var(--text); }
 .tile__value small { font-size: 0.5em; color: var(--text-3); margin-left: 0.1em; letter-spacing: 0; }
-.tile__label { font-weight: 520; color: var(--text); font-size: var(--step--1); line-height: 1.35; }
+.tile > span:last-child { display: block; line-height: 1.35; }
+.tile__label { display: block; font-weight: 520; color: var(--text); font-size: var(--step--1); line-height: 1.35; }
 .tile__ctx { display: block; margin-top: 4px; font: 450 0.75rem/1.4 var(--mono); color: var(--text-3); letter-spacing: 0.01em; }
-.tile--wide { grid-column: span 2; }
+.tile--years, .tile--live { grid-column: span 2; }
+.tile--years { flex-direction: row; align-items: flex-end; justify-content: space-between; min-height: 0; }
+.tile--years > span:last-child { text-align: right; }
 .tile--live { background: radial-gradient(120% 140% at 100% 0%, var(--accent-soft), transparent 60%), var(--surface); border-color: var(--accent-line); flex-direction: row; align-items: center; }
 .tile--live .tile__value { font-size: clamp(1.9rem, 1.4rem + 1.8vw, 2.75rem); }
 .tile--live .kn { font-family: var(--sans); font-size: 0.62em; color: var(--text-2); margin-left: 0.35em; letter-spacing: 0; }
 .tile--live .btn { flex: none; }
-@media (min-width: 760px) { .proof__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } .tile--years { grid-column: span 1; } .tile--live { grid-column: span 3; } }
-@media (max-width: 759px) { .tile--live { flex-direction: column; align-items: flex-start; } }
+@media (min-width: 1024px) {
+  .proof__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .tile--years { grid-column: span 1; flex-direction: column; align-items: stretch; min-height: 148px; }
+  .tile--years > span:last-child { text-align: left; }
+  .tile--live { grid-column: span 3; }
+}
+@media (max-width: 599px) { .tile--live { flex-direction: column; align-items: flex-start; } }
 
 /* ---------- Cards (shared) ---------- */
 .card {
@@ -371,7 +380,7 @@ body.no-scroll { overflow: hidden; }
 :root[data-theme="light"] .browser__bar { background: #e6e2d6; }
 .browser__dots { display: flex; gap: 6px; }
 .browser__dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--line-3); }
-.browser__url { flex: 1; max-width: 260px; margin-inline: auto; height: 22px; border-radius: 6px; display: grid; place-items: center; font: 450 11px/1 var(--mono); color: var(--text-3); background: var(--line); }
+.browser__url { flex: 1; max-width: 260px; margin-inline: auto; height: 22px; border-radius: 6px; display: grid; place-items: center; font: 450 11px/1 var(--mono); color: var(--text-2); background: var(--line); }
 .browser img { width: 100%; }
 .phone { position: relative; width: 100%; border-radius: 38px; padding: 9px; background: #0a0f0c; border: 1px solid rgba(255, 255, 255, 0.14); box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.5); }
 .phone::before { content: ""; position: absolute; z-index: 2; top: 17px; left: 50%; width: 74px; height: 20px; border-radius: 999px; background: #050806; transform: translateX(-50%); }
@@ -476,7 +485,7 @@ body.no-scroll { overflow: hidden; }
 .contact__lede { font-size: var(--step-1); color: var(--text-2); max-width: 52ch; }
 .contact__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: var(--space-6); }
 .email-card { display: inline-flex; align-items: center; gap: 4px; padding: 6px 6px 6px 18px; margin-top: var(--space-6); border-radius: 999px; border: 1px solid var(--line-2); background: var(--surface); font: 450 var(--step-0)/1 var(--mono); }
-.email-card a { padding-block: 12px; }
+.email-card a { display: inline-flex; align-items: center; min-height: 44px; }
 .contact__main { grid-column: 1 / -1; }
 .contact__facts { grid-column: 1 / -1; margin: var(--space-7) 0 0; border-top: 1px solid var(--line); }
 .contact__facts > div { display: grid; gap: 4px; padding: var(--space-4) 0; border-bottom: 1px solid var(--line); }
