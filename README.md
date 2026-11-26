@@ -4,7 +4,7 @@ Personal portfolio of Pramod Kumar G H. It's a static site for GitHub Pages, wri
 
 ```
 index.html               homepage (sections 01–05)
-work/*.html              case studies (adike-naadi, enterprise-genai, industrial-iot)
+work/*.html              case studies (adike-naadi, enterprise-genai, predictive-inventory)
 404.html                 not-found page
 assets/css/site.css      design system (tokens, dark + light theme, components)
 assets/js/site.js        interactions (theme, nav, sheet menu, reveal, ⌘K palette, toast)

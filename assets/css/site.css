@@ -271,14 +271,15 @@ body.no-scroll { overflow: hidden; }
 .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: var(--space-6); }
 .socials { display: flex; gap: 2px; margin-left: 6px; list-style: none; }
 .portrait { position: relative; width: min(300px, 70vw); margin-inline: auto 0; }
-.portrait__frame { position: relative; border-radius: 180px 180px var(--radius) var(--radius); overflow: hidden; border: 1px solid var(--line-2); box-shadow: var(--shadow-lg); background: var(--surface); aspect-ratio: 4 / 5; }
+.portrait__frame { position: relative; border-radius: 50% 50% var(--radius) var(--radius) / 40% 40% var(--radius) var(--radius); overflow: hidden; border: 1px solid var(--line-2); box-shadow: var(--shadow-lg); background: var(--surface); aspect-ratio: 4 / 5; }
 .portrait__frame img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) contrast(1.02); }
 .portrait__frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(11, 20, 16, 0.55)); pointer-events: none; }
 .portrait figcaption { position: absolute; left: 16px; bottom: 14px; z-index: 1; color: #f3efe4; }
-.portrait__ring { position: absolute; inset: 14px -14px -14px 14px; z-index: -1; border: 1px solid var(--accent-line); border-radius: 180px 180px var(--radius) var(--radius); }
+/* Concentric hairline: top radius = half the ring width, so the arch stays parallel to the photo */
+.portrait__ring { --gap: 9px; position: absolute; inset: calc(var(--gap) * -1); z-index: -1; pointer-events: none; border: 1px solid var(--accent-line); border-radius: 50% 50% calc(var(--radius) + var(--gap)) calc(var(--radius) + var(--gap)) / 40.5% 40.5% calc(var(--radius) + var(--gap)) calc(var(--radius) + var(--gap)); }
 @media (max-width: 759px) {
   .portrait { width: 168px; margin: 0; }
-  .portrait__ring { inset: 8px -8px -8px 8px; }
+  .portrait__ring { --gap: 7px; }
   .portrait figcaption { display: none; }
   .hero__grid { row-gap: var(--space-6); }
 }
@@ -598,7 +599,7 @@ body.no-scroll { overflow: hidden; }
   .tradeoffs td[data-label]::before { content: attr(data-label) " · "; font: 500 0.72rem/1 var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-3); }
 }
 .results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; list-style: none; margin: var(--space-5) 0; }
-@media (min-width: 900px) { .results { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .results { grid-template-columns: repeat(3, minmax(0, 1fr)); } .results--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 899px) { .results > .tile:last-child:nth-child(odd) { grid-column: 1 / -1; min-height: 0; } }
 .results .tile { min-height: 132px; }
 .results .tile--todo { border-style: dashed; border-color: rgba(240, 180, 90, 0.45); box-shadow: none; background: transparent; }

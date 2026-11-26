@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Predictive inventory platform — Pramod Kumar G H</title>
 <meta name="description" content="Sanitized case study: MQTT ingestion into Flask and PostgreSQL APIs handling 10K+ requests a day for a manufacturing inventory platform at AXISCADES.">
-<link rel="canonical" href="https://pramodkumargh777.github.io/work/industrial-iot.html">
+<link rel="canonical" href="https://pramodkumargh777.github.io/work/predictive-inventory.html">
 <meta name="theme-color" content="#0b1410">
 <meta name="color-scheme" content="dark light">
 <meta name="author" content="Pramod Kumar G H">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Pramod Kumar G H">
 <meta property="og:locale" content="en_IN">
-<meta property="og:url" content="https://pramodkumargh777.github.io/work/industrial-iot.html">
+<meta property="og:url" content="https://pramodkumargh777.github.io/work/predictive-inventory.html">
 <meta property="og:title" content="Predictive inventory platform — Pramod Kumar G H">
 <meta property="og:description" content="Sanitized case study: MQTT ingestion into Flask and PostgreSQL APIs handling 10K+ requests a day for a manufacturing inventory platform at AXISCADES.">
 <meta property="og:image" content="https://pramodkumargh777.github.io/og-image.png">
@@ -36,7 +36,7 @@
   "@type": "Article",
   "headline": "Predictive inventory platform — AXISCADES (sanitized)",
   "description": "Sanitized case study: MQTT ingestion into Flask and PostgreSQL APIs handling 10K+ requests a day for a manufacturing inventory platform at AXISCADES.",
-  "url": "https://pramodkumargh777.github.io/work/industrial-iot.html",
+  "url": "https://pramodkumargh777.github.io/work/predictive-inventory.html",
   "inLanguage": "en",
   "author": { "@type": "Person", "@id": "https://pramodkumargh777.github.io/#person", "name": "Pramod Kumar G H", "url": "https://pramodkumargh777.github.io/" }
 }
@@ -115,14 +115,14 @@
           <ol class="crumbs">
             <li><a href="/#work">Work</a></li>
             <li aria-hidden="true">/</li>
-            <li aria-current="page">Industrial IoT</li>
+            <li aria-current="page">Predictive inventory</li>
           </ol>
         </nav>
         <p class="eyebrow" style="margin-top:var(--space-6)"><span class="num">Case study</span>AXISCADES · Sanitized</p>
         <h1>Predictive inventory platform</h1>
-        <p class="case-hero__lede">From device data over MQTT to planning APIs — making manufacturing stock visible as it moves.</p>
+        <p class="case-hero__lede">From real-time MQTT ingestion to planning APIs — making manufacturing stock visible as it moves.</p>
         <dl class="facts">
-          <div><dt class="mono-label">Role</dt><dd>Senior Software Engineer — backend, IoT ingestion, CI/CD</dd></div>
+          <div><dt class="mono-label">Role</dt><dd>Senior Software Engineer — backend, data ingestion, CI/CD</dd></div>
           <div><dt class="mono-label">Timeline</dt><dd>Dec 2023 — May 2025</dd></div>
           <div><dt class="mono-label">Stack</dt><dd>Python · Flask · PostgreSQL · MQTT · REST · Docker · Jenkins</dd></div>
           <div><dt class="mono-label">Scale</dt><dd>10K+ API requests a day</dd></div>
@@ -151,7 +151,7 @@
           <p class="eyebrow"><span class="num">01</span>Context</p>
           <h2 id="context-title">Stock you can't see is stock you can't plan.</h2>
           <div class="prose">
-            <p>A manufacturing inventory platform needed live stock visibility to improve planning. Device data arrived over <strong>MQTT</strong> and was served to planning through <strong>REST APIs</strong>.</p>
+            <p>A manufacturing inventory platform needed live stock visibility to improve planning. Data arrived in real time over <strong>MQTT</strong> and was served to planning through <strong>REST APIs</strong>.</p>
             <p>I built the APIs and ingestion workflows in Python, Flask and PostgreSQL, and automated how they shipped.</p>
           </div>
         </section>
@@ -161,15 +161,15 @@
           <h2 id="architecture-title">Ingest in real time, serve from one source of truth.</h2>
           <figure class="figure reveal">
             <div class="diagram">
-              <svg viewBox="0 0 1000 300" role="img" aria-labelledby="iot-t iot-d">
-                <title id="iot-t">Predictive inventory platform architecture (sanitized)</title>
-                <desc id="iot-d">Devices publish readings over MQTT. Python ingestion workflows write them to PostgreSQL. Flask REST APIs serve more than ten thousand requests a day to planning and stock-visibility clients. Jenkins builds Docker images and deploys the services.</desc>
+              <svg viewBox="0 0 1000 300" role="img" aria-labelledby="inv-t inv-d">
+                <title id="inv-t">Predictive inventory platform architecture (sanitized)</title>
+                <desc id="inv-d">Real-time data arrives over MQTT. Python ingestion workflows write them to PostgreSQL. Flask REST APIs serve more than ten thousand requests a day to planning and stock-visibility clients. Jenkins builds Docker images and deploys the services.</desc>
                 <defs>
                   <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead" d="M0 0 10 5 0 10z"/></marker>
                   <marker id="aha3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead--accent" d="M0 0 10 5 0 10z"/></marker>
                 </defs>
                 <rect class="n-box" x="16" y="70" width="150" height="72" rx="10"/>
-                <text class="n-title" x="32" y="100">Devices</text><text class="n-sub" x="32" y="120">device data</text>
+                <text class="n-title" x="32" y="100">Data sources</text><text class="n-sub" x="32" y="120">real-time events</text>
                 <path class="edge" d="M166 106H206" marker-end="url(#ah3)"/>
                 <text class="edge-label" x="170" y="94">MQTT</text>
                 <rect class="n-box" x="210" y="70" width="170" height="72" rx="10"/>
@@ -194,7 +194,7 @@
                 <text class="n-sub" x="680" y="246">−75% deploy time</text>
               </svg>
             </div>
-            <figcaption>Sanitized architecture — device data to planning APIs, shipped through a containerised pipeline.</figcaption>
+            <figcaption>Sanitized architecture — real-time data to planning APIs, shipped through a containerised pipeline.</figcaption>
           </figure>
         </section>
 

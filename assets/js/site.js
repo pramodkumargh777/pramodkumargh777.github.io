@@ -220,7 +220,7 @@
     { group: 'Navigate', label: 'Contact', icon: 'hash', href: sec('contact'), keywords: 'email hire 05' },
     { group: 'Case studies', label: 'Adike Naadi — market intelligence', icon: 'file', href: '/work/adike-naadi.html', keywords: 'arecanut kannada cloudflare product' },
     { group: 'Case studies', label: 'Enterprise GenAI platform — ITC Infotech', icon: 'file', href: '/work/enterprise-genai.html', keywords: 'rag agents guardrails llm' },
-    { group: 'Case studies', label: 'Industrial IoT inventory — AXISCADES', icon: 'file', href: '/work/industrial-iot.html', keywords: 'mqtt flask postgres' },
+    { group: 'Case studies', label: 'Predictive inventory platform — AXISCADES', icon: 'file', href: '/work/predictive-inventory.html', keywords: 'mqtt flask postgres backend' },
     { group: 'Actions', label: 'Copy email address', icon: 'copy', run: copyEmail, hint: EMAIL, keywords: 'mail contact' },
     { group: 'Actions', label: 'Toggle light / dark theme', icon: 'theme', run: toggleTheme, keywords: 'mode appearance' },
     { group: 'Actions', label: 'Download résumé (PDF)', icon: 'down', href: '/resume.pdf', keywords: 'cv resume' },
