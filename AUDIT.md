@@ -139,6 +139,14 @@ Older versions (`50c8c90` → `dd3cd04`, Oct 2026) were a large "personal almana
 | C2 | Siemens entity name | "Siemens **Healthineers**" (`50c8c90`–`dd3cd04`) | "Siemens **Healthcare**" | Your call. Healthineers has been the brand name since 2016 |
 | C3 | AXISCADES ownership | "**Led** a predictive inventory system … reduced stockouts by 40% … **saving around $200K a year**" (`dd3cd04`) | "**Helped** reduce stockouts by 40% and **supported estimated** $200K annual savings" | Your call. The brief's "~$200K est." matches the current hedged wording |
 
+**Decisions (approved 27 Nov 2026):**
+- **Accent:** lime.
+- **ITC metrics restored:** 15+ agents / ~40% triage, 10K+ docs / 7-stage ingestion, two enterprise environments. All others stay out.
+- **C1:** LinkedIn `/in/pramod-kumar-g-h/`.
+- **C2:** "Siemens Healthineers".
+- **C3:** hedged AXISCADES wording.
+- **Q4:** separate case-study pages.
+
 ---
 
 ## 5. Adike Naadi capture (Step 0.5)
