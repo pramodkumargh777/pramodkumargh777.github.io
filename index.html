@@ -213,6 +213,27 @@
               </div>
             </div>
           </div>
+          <figure class="market" data-market-chart data-src="/assets/data/rashi-monthly.json" aria-labelledby="market-title">
+            <div class="market__head">
+              <div>
+                <p class="mono-label market__kicker"><span class="market__dot" aria-hidden="true"></span>Real data · refreshed daily from the Adike Naadi API</p>
+                <p class="market__title" id="market-title">Rashi arecanut, Karnataka monthly price</p>
+              </div>
+              <dl class="market__stats">
+                <div><dt class="mono-label">Latest · <span data-stat="latest-month">Oct 2026</span></dt><dd data-stat="latest">₹47,063</dd></div>
+                <div><dt class="mono-label">Year on year</dt><dd data-stat="yoy" class="is-down">−19.1%</dd></div>
+                <div class="market__stat--wide"><dt class="mono-label">High · <span data-stat="high-month">Oct 2025</span></dt><dd data-stat="high">₹58,194</dd></div>
+                <div class="market__stat--wide"><dt class="mono-label">Low · <span data-stat="low-month">Jan 2024</span></dt><dd data-stat="low">₹36,367</dd></div>
+              </dl>
+            </div>
+            <div class="market__plot" tabindex="0" role="group" aria-roledescription="chart" aria-label="Monthly Rashi price chart. Use the left and right arrow keys to read each month.">
+              <p class="sr-only" data-stat="summary">Rashi arecanut monthly price in Karnataka from Jan 2021 to Oct 2026: latest ₹47,063 per quintal, 19.1% lower than a year earlier; high ₹58,194 in Oct 2025, low ₹36,367 in Jan 2024.</p>
+              <svg class="market__svg" aria-hidden="true" focusable="false"></svg>
+              <div class="market__tip" aria-hidden="true" hidden><span class="market__tip-m"></span><span class="market__tip-v"></span></div>
+              <p class="sr-only" aria-live="polite" data-live></p>
+            </div>
+            <figcaption class="market__foot mono-label">₹ per quintal · AGMARKNET arrival-weighted monthly price · <a class="text-link" href="https://adikenaadi.com/monthly-trends" target="_blank" rel="noopener">explore on adikenaadi.com<span class="sr-only"> (opens in a new tab)</span></a></figcaption>
+          </figure>
         </article>
 
         <article class="card project project--half reveal" aria-labelledby="p-itc">
@@ -294,6 +315,37 @@
         <h2 id="career-title" class="reveal">From healthcare to <em>GenAI.</em></h2>
         <p class="lede reveal">Each move went closer to the data — and to the people relying on the system when it matters.</p>
       </header>
+      <figure class="careerband reveal" aria-labelledby="careerband-cap">
+        <div class="careerband__chart" data-careerband data-from="2020-01" data-to="2026-12" aria-hidden="true">
+          <div class="careerband__lane">
+            <span class="careerband__label mono-label">Career</span>
+            <div class="careerband__track">
+              <span class="cb-seg cb-seg--health" data-start="2020-01" data-end="2020-04" title="Siemens Healthineers · Engineering intern · Jan – Apr 2020"><span class="cb-text"></span></span>
+              <span class="cb-seg cb-seg--health" data-start="2020-09" data-end="2022-01" title="Siemens Healthineers · Software Engineer · Sep 2020 – Jan 2022"><span class="cb-text"><span class="cb-long">Siemens Healthineers</span><span class="cb-short">Siemens</span></span></span>
+              <span class="cb-seg cb-seg--health" data-start="2022-03" data-end="2023-12" title="Philips · Software Developer · Mar 2022 – Dec 2023"><span class="cb-text"><span class="cb-long">Philips</span><span class="cb-short">Philips</span></span></span>
+              <span class="cb-seg cb-seg--backend" data-start="2023-12" data-end="2025-05" title="AXISCADES · Senior Software Engineer · Dec 2023 – May 2025"><span class="cb-text"><span class="cb-long">AXISCADES</span><span class="cb-short">AXIS</span></span></span>
+              <span class="cb-seg cb-seg--genai" data-start="2025-05" data-end="present" title="ITC Infotech · Senior Software Engineer, GenAI · May 2025 – Present"><span class="cb-text"><span class="cb-long">ITC Infotech</span><span class="cb-short">ITC</span></span></span>
+            </div>
+          </div>
+          <div class="careerband__lane">
+            <span class="careerband__label mono-label">Own product</span>
+            <div class="careerband__track">
+              <span class="cb-seg cb-seg--own" data-start="2025-01" data-end="present" title="Adike Naadi · Founder &amp; sole developer · 2025 – Present"><span class="cb-text"><span class="cb-long">Adike Naadi</span><span class="cb-short">Adike Naadi</span></span></span>
+            </div>
+          </div>
+          <div class="careerband__axis">
+            <span class="careerband__label" aria-hidden="true"></span>
+            <div class="careerband__track careerband__ticks"></div>
+          </div>
+          <span class="cb-now" data-now><span class="mono-label">Now</span></span>
+        </div>
+        <figcaption id="careerband-cap" class="careerband__legend">
+          <span class="cb-key cb-key--health">Healthcare imaging <span class="mono-label">2020 – 2023</span></span>
+          <span class="cb-key cb-key--backend">Backend &amp; data <span class="mono-label">2023 – 2025</span></span>
+          <span class="cb-key cb-key--genai">Generative AI <span class="mono-label">2025 →</span></span>
+          <span class="cb-key cb-key--own">Adike Naadi, alongside <span class="mono-label">2025 →</span></span>
+        </figcaption>
+      </figure>
       <ol class="timeline">
         <li class="job reveal">
           <p class="job__when"><b>May 2025 — Present</b><br>Bengaluru</p>

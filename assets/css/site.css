@@ -658,3 +658,101 @@ code { font: 450 0.86em/1 var(--mono); padding: 0.15em 0.4em; border-radius: 6px
 code { white-space: nowrap; }
 .figure__phone { max-width: 200px; justify-self: center; }
 @media (min-width: 760px) { .figure__phone { max-width: 240px; } }
+
+/* ---------- Market chart (Adike Naadi card) ---------- */
+.project--hero .market { grid-column: 1 / -1; }
+.market { position: relative; z-index: 1; margin: 0; padding: clamp(1.25rem, 1rem + 1.6vw, 2.5rem); border-top: 1px solid var(--line); background: linear-gradient(180deg, color-mix(in srgb, var(--surface-2) 55%, transparent), transparent); }
+.market__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--space-4) var(--space-6); margin-bottom: var(--space-4); }
+.market__kicker { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--accent-text); }
+.market__dot { position: relative; width: 7px; height: 7px; border-radius: 50%; background: #8fd27a; flex: none; }
+.market__dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid #8fd27a; animation: ping 2.4s var(--ease) infinite; }
+.market__title { margin: 0.35rem 0 0; font: 400 var(--step-2)/1.15 var(--serif); color: var(--text); }
+.market__stats { display: grid; grid-template-columns: repeat(2, auto); gap: var(--space-3) var(--space-6); margin: 0; }
+.market__stats > div { display: grid; gap: 2px; }
+.market__stats dd { margin: 0; font: 400 clamp(1.35rem, 1.1rem + 0.8vw, 1.75rem)/1 var(--serif); color: var(--text); font-variant-numeric: tabular-nums; }
+.market__stats dd.is-down { color: #f0a38c; }
+.market__stats dd.is-up { color: #8fd27a; }
+:root[data-theme="light"] .market__stats dd.is-down { color: #a2391f; }
+:root[data-theme="light"] .market__stats dd.is-up { color: #2f6b1f; }
+@media (min-width: 760px) { .market__stats { grid-template-columns: repeat(4, auto); } }
+.market__plot { position: relative; height: clamp(190px, 14vw + 110px, 290px); border-radius: var(--radius-sm); outline-offset: 4px; touch-action: pan-y; }
+.market__svg { width: 100%; height: 100%; overflow: visible; }
+.market__svg .grid { stroke: var(--line); stroke-width: 1; }
+.market__svg .ylab, .market__svg .xlab { fill: var(--text-3); font: 450 11px var(--mono); }
+.market__svg .line { fill: none; stroke: var(--accent-text); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.market__svg .area { fill: url(#mkt-fill); }
+.market__svg .stop-a { stop-color: var(--accent-text); stop-opacity: 0.28; }
+.market__svg .stop-b { stop-color: var(--accent-text); stop-opacity: 0; }
+.market__svg .mark { fill: var(--bg); stroke: var(--accent-text); stroke-width: 2; }
+.market__svg .mark--last { fill: var(--accent-text); }
+.market__svg .mark-lab { fill: var(--text); font: 500 11px var(--mono); paint-order: stroke; stroke: var(--surface); stroke-width: 5px; stroke-linejoin: round; }
+.market__svg .halo { fill: var(--accent-text); opacity: 0.25; transform-box: fill-box; transform-origin: center; animation: halo 2.4s var(--ease) infinite; }
+@keyframes halo { 0% { transform: scale(0.6); opacity: 0.45; } 80%, 100% { transform: scale(2.6); opacity: 0; } }
+.market__svg .cross { stroke: var(--line-3); stroke-dasharray: 3 4; }
+.market__svg .cross-dot { fill: var(--accent-text); stroke: var(--bg); stroke-width: 2; }
+.market__svg .draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); }
+.market.is-in .market__svg .draw { transition: stroke-dashoffset 1600ms var(--ease); stroke-dashoffset: 0; }
+.market__svg .fade { opacity: 0; transition: opacity 900ms var(--ease) 500ms; }
+.market.is-in .market__svg .fade { opacity: 1; }
+.market__tip { position: absolute; top: 0; left: 0; z-index: 2; display: grid; gap: 2px; padding: 8px 10px; border-radius: 10px; background: var(--text); color: var(--bg); box-shadow: var(--shadow-lg); pointer-events: none; transform: translate(var(--tx, 0), var(--ty, 0)); white-space: nowrap; }
+.market__tip-m { font: 500 0.7rem/1 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.75; }
+.market__tip-v { font: 600 0.95rem/1.1 var(--sans); font-variant-numeric: tabular-nums; }
+.market__foot { margin-top: var(--space-4); color: var(--text-3); text-transform: none; letter-spacing: 0.01em; }
+.market__foot .text-link { color: var(--text-2); }
+
+/* ---------- Career band ---------- */
+.careerband { margin: 0 0 clamp(2.5rem, 2rem + 2vw, 4rem); padding: clamp(1rem, 0.8rem + 1vw, 1.75rem); border-radius: var(--radius-lg); border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+.careerband__chart { --labelw: 6.5rem; --lgap: var(--space-4); position: relative; display: grid; gap: 10px; }
+.careerband__lane, .careerband__axis { display: grid; grid-template-columns: var(--labelw) minmax(0, 1fr); align-items: center; gap: var(--lgap); }
+.careerband__label { color: var(--text-3); }
+.careerband__track { position: relative; height: 40px; border-radius: 10px; background: repeating-linear-gradient(90deg, transparent 0 calc(100% / var(--years, 7) - 1px), var(--line) calc(100% / var(--years, 7) - 1px) calc(100% / var(--years, 7))); }
+.careerband__ticks { height: 22px; background: none; border-top: 1px solid var(--line); }
+.cb-tick { position: absolute; top: 6px; transform: translateX(-50%); font: 450 11px/1 var(--mono); color: var(--text-3); }
+.cb-tick:first-child { transform: none; }
+.cb-seg { position: absolute; top: 0; bottom: 0; left: var(--l, 0); width: var(--w, 0); display: flex; align-items: center; overflow: hidden; border-radius: 9px; box-shadow: 0 0 0 2px var(--surface); transform-origin: left center; }
+.cb-text { padding: 0 10px; font: 600 12px/1 var(--sans); letter-spacing: -0.005em; white-space: nowrap; }
+.cb-short { display: none; }
+.cb-seg.is-tight .cb-long { display: none; }
+.cb-seg.is-tight .cb-short { display: inline; }
+.cb-seg.is-tiny .cb-text { display: none; }
+.cb-seg--health { background: #2c4a3b; color: #e5ece5; }
+.cb-seg--backend { background: #4c6c36; color: #f4f7ee; }
+.cb-seg--genai { background: var(--accent); color: #0b1410; }
+.cb-seg--own { background: linear-gradient(90deg, transparent, rgba(207, 227, 138, 0.16) 30%), repeating-linear-gradient(135deg, rgba(207, 227, 138, 0.16) 0 6px, transparent 6px 12px); color: var(--accent-text); box-shadow: inset 0 0 0 1px var(--accent-line); justify-content: flex-end; }
+/* Start month of Adike Naadi is only known as "2025", so the bar fades in rather than starting on a hard edge */
+.cb-seg--own { -webkit-mask-image: linear-gradient(90deg, transparent, #000 28%); mask-image: linear-gradient(90deg, transparent, #000 28%); }
+:root[data-theme="light"] .cb-seg--health { background: #c9d6c8; color: #14241b; }
+:root[data-theme="light"] .cb-seg--backend { background: #8fae6a; color: #0f1c13; }
+:root[data-theme="light"] .cb-seg--own { background: linear-gradient(90deg, transparent, rgba(70, 96, 26, 0.12) 30%), repeating-linear-gradient(135deg, rgba(70, 96, 26, 0.12) 0 6px, transparent 6px 12px); }
+/* "Now" line spans every lane: positioned across the track column only */
+.cb-now { position: absolute; top: -6px; bottom: 0; left: calc(var(--labelw) + var(--lgap) + (100% - var(--labelw) - var(--lgap)) * var(--p, 1)); width: 0; border-left: 1px dashed var(--accent-text); pointer-events: none; }
+.cb-now .mono-label { position: absolute; bottom: 4px; left: 6px; color: var(--accent-text); font-size: 10px; }
+.careerband__legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--line); font-size: var(--step--1); color: var(--text); }
+.cb-key { display: inline-flex; align-items: center; gap: 8px; }
+.cb-key::before { content: ""; width: 12px; height: 12px; border-radius: 4px; flex: none; }
+.cb-key .mono-label { color: var(--text-3); }
+.cb-key--health::before { background: #2c4a3b; box-shadow: inset 0 0 0 1px var(--line-2); }
+.cb-key--backend::before { background: #4c6c36; }
+.cb-key--genai::before { background: var(--accent); }
+.cb-key--own::before { background: repeating-linear-gradient(135deg, var(--accent-soft) 0 3px, transparent 3px 6px); box-shadow: inset 0 0 0 1px var(--accent-line); }
+:root[data-theme="light"] .cb-key--health::before { background: #c9d6c8; }
+:root[data-theme="light"] .cb-key--backend::before { background: #8fae6a; }
+@media (max-width: 599px) {
+  .careerband__chart { --labelw: 0px; --lgap: 0px; }
+  .careerband__lane, .careerband__axis { grid-template-columns: 1fr; gap: 6px; }
+  .careerband__axis .careerband__label { display: none; }
+  .careerband__track { height: 34px; }
+  .cb-now { top: 4px; }
+  .cb-now .mono-label { left: auto; right: 5px; bottom: auto; top: -4px; }
+}
+.js .careerband .cb-seg { transform: scaleX(0); }
+.js .careerband.in .cb-seg { transform: scaleX(1); transition: transform 900ms var(--ease) var(--sd, 0ms); }
+@media (prefers-reduced-motion: reduce) {
+  .js .careerband .cb-seg { transform: none; }
+  .market__svg .draw { stroke-dasharray: none; stroke-dashoffset: 0; }
+  .market__svg .fade { opacity: 1; }
+  .market__svg .halo, .market__dot::after { display: none; }
+}
+.market.is-error .market__svg { display: none; }
+.market.is-error .market__plot { display: grid; place-items: center; border: 1px dashed var(--line-2); }
+.market.is-error .market__plot::after { content: "Chart data is unavailable right now."; color: var(--text-3); font-size: var(--step--1); }

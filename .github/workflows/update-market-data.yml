@@ -1,0 +1,50 @@
+name: Update market data
+
+# Refreshes assets/data/rashi-monthly.json (homepage Adike Naadi chart) from the Adike Naadi API.
+# Commits only when the data changes, then asks GitHub Pages to rebuild.
+on:
+  schedule:
+    - cron: '30 3 * * *' # 09:00 IST daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: update-market-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch latest series
+        run: node scripts/update-market-data.mjs
+
+      - name: Commit if changed
+        id: commit
+        run: |
+          if git diff --quiet -- assets/data; then
+            echo "Data unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data
+          git commit -m "Update Adike Naadi market data"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Request Pages build
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages build request failed; the push will still trigger a build."

@@ -24,6 +24,11 @@ Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it
 
 ## What changed
 
+> **27 Nov — data visuals.**
+> - **Market chart** on the Adike Naadi card: real Rashi arecanut monthly prices (Jan 2021 → latest, AGMARKNET via the Adike Naadi API) with latest, year-on-year, high and low; hover, tap or arrow keys to read any month. The data is a snapshot in `assets/data/rashi-monthly.json`, refreshed daily by `.github/workflows/update-market-data.yml` (the API doesn't allow cross-origin browser requests, so the site doesn't call it directly). If the file can't load, the stats stay and the plot shows a short notice.
+> - **Career band** above the timeline: 2020 → now by domain (healthcare → backend & data → GenAI) with Adike Naadi alongside. Its start fades in because only the year (2025) is known.
+> - Both respect reduced motion; Lighthouse stays 100/100/100/100 and axe reports 0 violations.
+
 > **27 Nov — space optimisation across devices.** Checked at 14 real viewports (Android 360, iPhone SE/15, Pixel, iPad, Windows 1366×625 and 1536×730 at 125% scaling, 1920, MacBook Air/Pro, 1728, 2560):
 > - Hero is height-aware (`vh`-based spacing, headline capped at 12vh, portrait capped at 40vh), so the CTAs sit above the fold on every laptop, including 1366×625 and 1536×730 where they used to be cut off.
 > - Phones: the large portrait is replaced by a 2 KB face avatar in the status chip; the hero is ~330 px shorter and the page ~520 px shorter.

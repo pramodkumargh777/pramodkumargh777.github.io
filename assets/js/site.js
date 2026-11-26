@@ -196,6 +196,212 @@
     }
   }
 
+  /* ---------- Career band: position segments by month, "now" marker, tight labels ---------- */
+  const band = $('[data-careerband]');
+  if (band) {
+    const monthIdx = (s) => { const [y, m] = s.split('-').map(Number); return y * 12 + m - 1; };
+    const today = new Date();
+    const nowIdx = today.getFullYear() * 12 + today.getMonth() + today.getDate() / 31;
+    const from = monthIdx(band.dataset.from);
+    const to = Math.max(monthIdx(band.dataset.to) + 1, (today.getFullYear() + 1) * 12);
+    const total = to - from;
+    const pct = (i) => `${(Math.min(Math.max(i - from, 0), total) / total) * 100}%`;
+    band.style.setProperty('--years', String(total / 12));
+    $$('.cb-seg', band).forEach((seg, i) => {
+      const s = monthIdx(seg.dataset.start);
+      const e = seg.dataset.end === 'present' ? nowIdx : monthIdx(seg.dataset.end) + 1;
+      seg.style.setProperty('--l', pct(s));
+      seg.style.setProperty('--w', `${((Math.min(e, to) - s) / total) * 100}%`);
+      seg.style.setProperty('--sd', `${i * 90}ms`);
+    });
+    const ticks = $('.careerband__ticks', band);
+    const drawTicks = () => {
+      if (!ticks) return;
+      const short = ticks.clientWidth / (total / 12) < 56;
+      ticks.innerHTML = '';
+      for (let y = Math.floor(from / 12); y < to / 12; y++) {
+        const t = document.createElement('span');
+        t.className = 'cb-tick'; t.textContent = short ? `’${String(y).slice(2)}` : String(y); t.style.left = pct(y * 12);
+        ticks.append(t);
+      }
+    };
+    drawTicks();
+    const now = $('[data-now]', band);
+    if (now) now.style.setProperty('--p', String((nowIdx - from) / total));
+    const fit = () => $$('.cb-seg', band).forEach((seg) => {
+      seg.classList.remove('is-tight', 'is-tiny');
+      const txt = $('.cb-text', seg);
+      if (!txt || !txt.textContent.trim()) return;
+      if (txt.scrollWidth > seg.clientWidth - 2) seg.classList.add('is-tight');
+      if (txt.scrollWidth > seg.clientWidth - 2) seg.classList.add('is-tiny');
+    });
+    fit();
+    if ('ResizeObserver' in window) new ResizeObserver(() => requestAnimationFrame(() => { fit(); drawTicks(); })).observe(band);
+  }
+
+  /* ---------- Market chart: real Rashi monthly prices from the Adike Naadi API snapshot ---------- */
+  const market = $('[data-market-chart]');
+  if (market) initMarket(market);
+
+  function initMarket(fig) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const plot = $('.market__plot', fig);
+    const svg = $('.market__svg', fig);
+    const tip = $('.market__tip', fig);
+    const live = $('[data-live]', fig);
+    const inr = (v) => `₹${Math.round(v).toLocaleString('en-IN')}`;
+    const label = (m) => { const [y, mo] = m.split('-').map(Number); return new Date(Date.UTC(y, mo - 1, 1)).toLocaleString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' }); };
+    const setStat = (k, v) => { const el = $(`[data-stat="${k}"]`, fig); if (el) el.textContent = v; };
+    const el = (tag, attrs = {}, parent = svg) => { const n = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v); parent.append(n); return n; };
+    let pts = []; let geo = null; let active = -1;
+
+    function stats() {
+      const obs = pts.map((p, i) => [p[0], p[1], i]).filter((p) => p[1] != null);
+      const last = obs[obs.length - 1];
+      const hi = obs.reduce((a, b) => (b[1] > a[1] ? b : a));
+      const lo = obs.reduce((a, b) => (b[1] < a[1] ? b : a));
+      const [ly, lm] = last[0].split('-');
+      const prev = obs.find((p) => p[0] === `${+ly - 1}-${lm}`);
+      const yoy = prev ? ((last[1] - prev[1]) / prev[1]) * 100 : null;
+      setStat('latest', inr(last[1])); setStat('latest-month', label(last[0]));
+      setStat('high', inr(hi[1])); setStat('high-month', label(hi[0]));
+      setStat('low', inr(lo[1])); setStat('low-month', label(lo[0]));
+      const yoyEl = $('[data-stat="yoy"]', fig);
+      if (yoyEl) {
+        yoyEl.textContent = yoy == null ? '—' : `${yoy < 0 ? '−' : '+'}${Math.abs(yoy).toFixed(1)}%`;
+        yoyEl.classList.toggle('is-down', yoy != null && yoy < 0);
+        yoyEl.classList.toggle('is-up', yoy != null && yoy >= 0);
+      }
+      setStat('summary', `Rashi arecanut monthly price in Karnataka from ${label(obs[0][0])} to ${label(last[0])}: latest ${inr(last[1])} per quintal${yoy == null ? '' : `, ${Math.abs(yoy).toFixed(1)}% ${yoy < 0 ? 'lower' : 'higher'} than a year earlier`}; high ${inr(hi[1])} in ${label(hi[0])}, low ${inr(lo[1])} in ${label(lo[0])}.`);
+      return { hi: hi[2], lo: lo[2], last: last[2] };
+    }
+
+    function render() {
+      const W = plot.clientWidth; const H = plot.clientHeight;
+      if (!W || !H || !pts.length) return;
+      svg.replaceChildren();
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      const narrow = W < 520;
+      const pad = { l: 46, r: narrow ? 10 : 16, t: 22, b: 24 };
+      const vals = pts.map((p) => p[1]).filter((v) => v != null);
+      const step = 5000;
+      const y0 = Math.floor((Math.min(...vals) * 0.97) / step) * step;
+      const y1 = Math.ceil((Math.max(...vals) * 1.02) / step) * step;
+      const n = pts.length;
+      const x = (i) => pad.l + (i / (n - 1)) * (W - pad.l - pad.r);
+      const y = (v) => pad.t + (1 - (v - y0) / (y1 - y0)) * (H - pad.t - pad.b);
+      const defs = el('defs');
+      const grad = el('linearGradient', { id: 'mkt-fill', x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+      el('stop', { offset: '0%', class: 'stop-a' }, grad); el('stop', { offset: '100%', class: 'stop-b' }, grad);
+      const yStep = (y1 - y0) / step > 5 ? step * 2 : step;
+      for (let v = y0; v <= y1; v += yStep) {
+        el('line', { class: 'grid', x1: pad.l, x2: W - pad.r, y1: y(v), y2: y(v) });
+        el('text', { class: 'ylab', x: pad.l - 8, y: y(v) + 4, 'text-anchor': 'end' }).textContent = `₹${v / 1000}K`;
+      }
+      let lastX = -Infinity;
+      pts.forEach((p, i) => {
+        if (!p[0].endsWith('-01') || x(i) - lastX < 38) return;
+        lastX = x(i);
+        el('text', { class: 'xlab', x: x(i), y: H - 6, 'text-anchor': i === 0 ? 'start' : 'middle' }).textContent = narrow ? `’${p[0].slice(2, 4)}` : p[0].slice(0, 4);
+      });
+      // Line + area, broken at missing months (a missing month means no report, not zero)
+      let d = ''; let area = ''; let run = [];
+      const flush = () => {
+        if (run.length > 1) area += `M${x(run[0])},${y(y0)}L${run.map((i) => `${x(i)},${y(pts[i][1])}`).join('L')}L${x(run[run.length - 1])},${y(y0)}Z`;
+        run = [];
+      };
+      pts.forEach((p, i) => {
+        if (p[1] == null) { flush(); return; }
+        d += `${run.length ? 'L' : 'M'}${x(i)},${y(p[1])}`;
+        run.push(i);
+      });
+      flush();
+      el('path', { class: 'area fade', d: area });
+      const line = el('path', { class: 'line draw', d });
+      line.style.setProperty('--len', String(Math.ceil(line.getTotalLength())));
+      const s = stats();
+      // Labels sit beside their point (high to the left, low to the right) so they never sit on the line
+      const mark = (i, text, cls = '', side = 'left') => {
+        const cx = x(i); const cy = y(pts[i][1]);
+        el('circle', { class: `mark fade ${cls}`, cx, cy, r: 4 });
+        if (!text) return;
+        const roomLeft = cx - pad.l > 120;
+        const left = side === 'left' ? roomLeft : cx > W - pad.r - 120;
+        el('text', { class: 'mark-lab fade', x: left ? cx - 10 : cx + 10, y: cy + 4, 'text-anchor': left ? 'end' : 'start' }).textContent = text;
+      };
+      mark(s.hi, narrow ? inr(pts[s.hi][1]) : `High ${inr(pts[s.hi][1])}`);
+      mark(s.lo, narrow ? '' : `Low ${inr(pts[s.lo][1])}`, '', 'right');
+      el('circle', { class: 'halo', cx: x(s.last), cy: y(pts[s.last][1]), r: 5 });
+      mark(s.last, '', 'mark--last');
+      const cross = el('g', { class: 'crosshair', visibility: 'hidden' });
+      el('line', { class: 'cross', x1: 0, x2: 0, y1: pad.t - 6, y2: H - pad.b });
+      cross.append(svg.lastChild);
+      el('circle', { class: 'cross-dot', r: 5 }, cross);
+      geo = { x, y, pad, W, H, n };
+      if (active >= 0) show(active, false);
+    }
+
+    function show(i, announce) {
+      if (!geo || pts[i]?.[1] == null) return;
+      active = i;
+      const cx = geo.x(i); const cy = geo.y(pts[i][1]);
+      const g = $('.crosshair', svg);
+      g.setAttribute('visibility', 'visible');
+      g.firstChild.setAttribute('x1', cx); g.firstChild.setAttribute('x2', cx);
+      g.lastChild.setAttribute('cx', cx); g.lastChild.setAttribute('cy', cy);
+      $('.market__tip-m', tip).textContent = label(pts[i][0]);
+      $('.market__tip-v', tip).textContent = `${inr(pts[i][1])} / qtl`;
+      tip.hidden = false;
+      const tw = tip.offsetWidth; const th = tip.offsetHeight;
+      const tx = Math.min(Math.max(cx - tw / 2, 0), geo.W - tw);
+      const ty = cy - th - 14 < 0 ? cy + 14 : cy - th - 14;
+      tip.style.setProperty('--tx', `${tx}px`); tip.style.setProperty('--ty', `${ty}px`);
+      if (announce && live) live.textContent = `${label(pts[i][0])}: ${inr(pts[i][1])} per quintal`;
+    }
+    function hide() { active = -1; tip.hidden = true; const g = $('.crosshair', svg); if (g) g.setAttribute('visibility', 'hidden'); }
+    const nearest = (clientX) => {
+      const r = plot.getBoundingClientRect();
+      const t = (clientX - r.left - geo.pad.l) / (geo.W - geo.pad.l - geo.pad.r);
+      let i = Math.round(Math.min(Math.max(t, 0), 1) * (geo.n - 1));
+      for (let k = 0; pts[i]?.[1] == null && k < geo.n; k++) i = Math.max(0, i - 1);
+      return i;
+    };
+    plot.addEventListener('pointermove', (e) => { if (geo) show(nearest(e.clientX), false); });
+    plot.addEventListener('pointerdown', (e) => { if (geo) show(nearest(e.clientX), false); });
+    plot.addEventListener('pointerleave', () => { if (document.activeElement !== plot) hide(); });
+    plot.addEventListener('blur', hide);
+    plot.addEventListener('keydown', (e) => {
+      if (!geo) return;
+      const last = pts.length - 1;
+      const keys = { ArrowLeft: -1, ArrowRight: 1, Home: -Infinity, End: Infinity };
+      if (e.key === 'Escape') { hide(); return; }
+      if (!(e.key in keys)) return;
+      e.preventDefault();
+      let i = active < 0 ? last : active;
+      i = Math.min(Math.max(i + keys[e.key], 0), last);
+      show(i, true);
+    });
+
+    let started = false;
+    const start = () => {
+      if (started) return; started = true;
+      fetch(fig.dataset.src, { cache: 'no-cache' })
+        .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+        .then((data) => {
+          pts = (data.points || []).filter((p) => Array.isArray(p) && typeof p[0] === 'string');
+          if (pts.filter((p) => p[1] != null).length < 2) throw new Error('no data');
+          render();
+          requestAnimationFrame(() => requestAnimationFrame(() => fig.classList.add('is-in')));
+          if ('ResizeObserver' in window) { let w = plot.clientWidth; new ResizeObserver(() => { if (plot.clientWidth !== w) { w = plot.clientWidth; requestAnimationFrame(render); } }).observe(plot); }
+        })
+        .catch(() => fig.classList.add('is-error'));
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => { if (entries.some((e) => e.isIntersecting)) { io.disconnect(); start(); } }, { rootMargin: '200px 0px' });
+      io.observe(fig);
+    } else start();
+  }
+
   /* ---------- Command palette (⌘K / Ctrl+K) ---------- */
   const dialog = $('#cmdk');
   if (!dialog || typeof dialog.showModal !== 'function') return;
