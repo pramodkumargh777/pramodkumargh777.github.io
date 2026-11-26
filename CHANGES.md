@@ -95,10 +95,10 @@ Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it
 | Azure Container Apps, Azure DevOps CI/CD across Dev, Test and Production; Azure AI Search; layout-aware document extraction | `enterprise-genai.html` | `dd3cd04` |
 | "Agents that admit doubt": evals, confidence, graceful "I don't know" | Stack depth, `enterprise-genai.html` | `dd3cd04` |
 | LLM Evals ("unit tests of GenAI"), Pydantic validation of LLM output, embeddings tuned on real queries, "prompt-only agents: never again", "Lost in the Middle" chunk ordering | Stack depth, `enterprise-genai.html` | `dd3cd04` |
-| Extra tools: LangGraph, SQLAlchemy, Alembic, Pydantic, Celery, Redis, Azure AI Search, Pytest, C++ | Stack | `dd3cd04` |
+| Extra tools: LangGraph, SQLAlchemy, Alembic, Pydantic, Celery, Redis, Azure AI Search, Pytest (C++ later removed to match the résumé) | Stack | `dd3cd04` |
 | AXISCADES 30% faster API "through query optimisation and indexing" | Proof strip, Career, `industrial-iot.html` | `dd3cd04` |
-| Philips: PACS in Python and C++, DICOM compliance for device interoperability, Remote | Career, healthcare card | `dd3cd04` |
-| Siemens Healthineers (name approved by you): angiography and X-ray performance tooling in C++/Python; Artis icono release and hazard-related safety features | Career, healthcare card | `dd3cd04` |
+| Philips: PACS in Python (C++ dropped to match the résumé), DICOM compliance for device interoperability, Remote | Career, healthcare card | `dd3cd04` |
+| Siemens Healthineers (name approved by you): angiography performance tooling in Python, X-ray visualisation to DICOM standards; Artis icono release and hazard-related safety features | Career, healthcare card | `dd3cd04` |
 | SJCE Mysuru, B.E. Electronics & Instrumentation, 2016–2020 | Career, JSON-LD `alumniOf` | `dd3cd04` |
 | "At heart I'm a backend engineer: APIs, data models, concurrency and systems that keep working at 3 a.m." | About | `dd3cd04` |
 | Portrait alt text (puffer jacket, Himalayan peaks) and the "Above the snowline" caption | Hero | `dd3cd04` / `42106e6` |
