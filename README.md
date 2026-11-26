@@ -12,6 +12,7 @@ assets/fonts/            self-hosted Instrument Serif, Geist, Geist Mono (OFL)
 assets/img/              responsive portrait (AVIF/WebP)
 assets/adike-naadi/      product screenshots (1x + @2x WebP)
 assets/og/source.html    source for og-image.png (render at 1200×630 in headless Chromium)
+googleddf0941e09246b25.html  Google Search Console ownership file — keep it, or verification is lost
 ```
 
 **Preview locally:** run `python3 -m http.server` in the repo root and open http://localhost:8000. Use a server rather than `file://`, because the pages use root-relative paths.
