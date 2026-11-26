@@ -127,31 +127,12 @@ Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it
 - **Assistant:** cited sources S1–S4 and D1–D4, the "How this answer was made" panel, the no-assumed-costs prompt, a data-only fallback, a refusal to paraphrase scanned text, 30 questions/hour, questions not stored, a Workers AI Qwen3 model and the disclaimers.
 - **Screenshots:** all 7 captures in [`assets/adike-naadi/`](assets/adike-naadi/) are real. None are placeholders.
 
-## TODO checklist — things only you can fill in
+## Optional additions
 
-Search the repo for `TODO`. Each one is marked in the HTML with a visible amber dashed badge and/or an HTML comment.
+All visible TODO placeholders were removed from the site on 27 Nov 2026. These can be added back later if you want them:
 
-### Files
-- [x] ~~Add `resume.pdf` to the repo root~~ — added from `Pramod_Kumar_GH_Gen_AI_Engineer_Resume.pdf` (18 Nov 2026).
-
-### Links
-- [ ] **Calendly link:** replace the `Calendly · TODO` pill in Contact. (`index.html:442–443`)
-- [ ] **Adike Naadi GitHub repo:** replace `GitHub · TODO` on the work card, or delete it if the repo is private. (`index.html:203`)
-
-### Facts
-- [x] ~~Adike Naadi start year~~ — 2025 — Present (from the résumé).
-
-### Adike Naadi case study (`work/adike-naadi.html`)
-- [ ] **Users:** add the user research. Who you spoke to, what they told you, how many people use it. (line 180–181)
-- [ ] **Decisions table:** review the "Why" column. I inferred it from how the product behaves; adjust it to your actual reasoning. (line 276)
-- [x] ~~Organic search~~ — 2.02K impressions, 65 clicks, 3.2% CTR, avg. position 7.9 (Search Console, last 28 days) and 186K views on the top Facebook reel (190K+ across reels), from your screenshots.
-- [x] ~~Site traffic~~ — 10.3K visits in 30 days and 9.9K pageviews in 14 days (Cloudflare), replacing the "monthly active users" placeholder.
-- [ ] **Results:** fill in or delete the remaining tiles: WhatsApp channel followers, assistant questions/month, p95 API latency, monthly infra cost.
-- [ ] **What's next:** add your roadmap. (lines 350–351)
-
-### Review
-- [ ] **Hero lede:** check the line "a live Kannada-first market tool for arecanut growers" and the "built and run independently" wording.
-- [ ] **ITC case study:** confirm the sanitized architecture diagram in `enterprise-genai.html` is fine to show publicly.
-
-### Before merging
-- [ ] **Merge `redesign` into `main`** when you're happy. GitHub Pages will deploy it as-is (`.nojekyll` is kept).
+- **Calendly** button in Contact (`index.html`, next to the GitHub button; the `#i-calendar` icon is already in the sprite).
+- **Adike Naadi GitHub** link on the work card, if the repo becomes public.
+- **More Adike Naadi results:** WhatsApp channel followers, assistant questions/month, p95 API latency, monthly infra cost (`work/adike-naadi.html`, Results).
+- **User research** paragraph in the Adike Naadi "Users" chapter, and a **roadmap** in "What's next".
+- **Decisions table:** the "Why" column was inferred from how the product behaves; worth a read to make sure it matches your reasoning.
