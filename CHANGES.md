@@ -10,7 +10,7 @@ Branch: `redesign` (small commits on top of `main` @ `4440823`). The site is sti
 | `/` | desktop | **100** | **100** | **100** | **100** | 0.3 s | 0 |
 | `/work/adike-naadi.html` | mobile / desktop | **100** / **100** | **100** / **100** | **100** / **100** | **100** / **100** | 1.1 s / 0.6 s | 0 |
 | `/work/enterprise-genai.html` | mobile / desktop | **100** / **100** | **100** / **100** | **100** / **100** | **100** / **100** | 1.4 s / 0.3 s | 0 |
-| `/work/industrial-iot.html` | mobile / desktop | **100** / **100** | **100** / **100** | **100** / **100** | **100** / **100** | 1.4 s / 0.3 s | 0 |
+| `/work/predictive-inventory.html` | mobile / desktop | **100** / **100** | **100** / **100** | **100** / **100** | **100** / **100** | 1.4 s / 0.3 s | 0 |
 | `/404.html` | mobile / desktop | 100 | 100 | 100 | 63\* | 1.1 s / 0.3 s | 0 |
 
 \* The 404 page is deliberately `noindex`, and Lighthouse's SEO check penalises that. This is expected.
@@ -23,6 +23,8 @@ Branch: `redesign` (small commits on top of `main` @ `4440823`). The site is sti
 Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it was installed outside the repo.
 
 ## What changed
+
+> **27 Nov follow-up:** "IoT" framing removed. The AXISCADES case study moved from `/work/industrial-iot.html` to `/work/predictive-inventory.html`, and the work card, career entry and meta descriptions now say backend & data. The portrait outline is now concentric (even gap all round) instead of an offset frame, on the site and in `og-image.png`.
 
 ### Design system
 - **Colour:** dark-first `#0b1410` with `#101b16` kept as the brand surface. One warm-lime accent `#cfe38a`. An optional light theme, saved in `localStorage` (wrapped in `try/catch`) and applied before first paint so there's no flash.
@@ -47,7 +49,7 @@ Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it
 2. **Proof strip (bento):** 40% fewer stockouts, ~$200K est. annual savings, 30% faster APIs, 75% faster deploys, 6+ years, and a live-product tile for Adike Naadi.
 3. **01 Selected work:** rich cards, each with role, years, a one-line problem, one outcome, stack chips and links.
    - **Adike Naadi** is the large hero card, with real captures in a browser frame and a phone frame.
-   - **ITC Infotech** (enterprise RAG and agents) and **AXISCADES** (industrial IoT).
+   - **ITC Infotech** (enterprise RAG and agents) and **AXISCADES** (predictive inventory backend).
    - **Regulated healthcare software** (Siemens Healthineers and Philips), reframed around DICOM, imaging pipelines and reliability.
 4. **Ticker:** a real marquee now. It was a clipped static strip before.
 5. **02 Career:** vertical timeline with company names styled as text "logos", dates in mono, 2–3 impact bullets each, and education. Hovering an entry dims its siblings. `id="experience"` is kept so old links still work.
@@ -62,7 +64,7 @@ Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it
   - Sticky table of contents with scroll-spy and a progress bar.
   - Seven captures in device frames.
 - **`/work/enterprise-genai.html`** (ITC Infotech): context, architecture SVG, RAG quality, agents and guardrails, outcomes. No client names, data or internal agent names.
-- **`/work/industrial-iot.html`** (AXISCADES): MQTT → Python ingestion → PostgreSQL → Flask APIs, plus Jenkins/Docker delivery. Results are stated as team outcomes.
+- **`/work/predictive-inventory.html`** (AXISCADES): MQTT → Python ingestion → PostgreSQL → Flask APIs, plus Jenkins/Docker delivery. Results are stated as team outcomes.
 - **`/404.html`** in the same style ("Lost *in the middle.*"), with the ⌘K palette.
 
 ### SEO / tech
@@ -96,7 +98,7 @@ Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it
 | "Agents that admit doubt": evals, confidence, graceful "I don't know" | Stack depth, `enterprise-genai.html` | `dd3cd04` |
 | LLM Evals ("unit tests of GenAI"), Pydantic validation of LLM output, embeddings tuned on real queries, "prompt-only agents: never again", "Lost in the Middle" chunk ordering | Stack depth, `enterprise-genai.html` | `dd3cd04` |
 | Extra tools: LangGraph, SQLAlchemy, Alembic, Pydantic, Celery, Redis, Azure AI Search, Pytest (C++ later removed to match the résumé) | Stack | `dd3cd04` |
-| AXISCADES 30% faster API "through query optimisation and indexing" | Proof strip, Career, `industrial-iot.html` | `dd3cd04` |
+| AXISCADES 30% faster API "through query optimisation and indexing" | Proof strip, Career, `predictive-inventory.html` | `dd3cd04` |
 | Philips: PACS in Python (C++ dropped to match the résumé), DICOM compliance for device interoperability, Remote | Career, healthcare card | `dd3cd04` |
 | Siemens Healthineers (name approved by you): angiography performance tooling in Python, X-ray visualisation to DICOM standards; Artis icono release and hazard-related safety features | Career, healthcare card | `dd3cd04` |
 | SJCE Mysuru, B.E. Electronics & Instrumentation, 2016–2020 | Career, JSON-LD `alumniOf` | `dd3cd04` |
@@ -115,6 +117,7 @@ Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it
 - **Résumé:** Adike Naadi "2025 – Present", "Founder & Sole Developer", AGMARKNET API ingestion with outlier checks against the recent median, automated tests gating deployment, Qwen3-30B + BGE-M3 on Workers AI, answer-sentence grounding checks with retry and data-only fallback, SEO-friendly market/variety pages, and automated daily rates videos with AI voice-over.
 - **Google Search Console** (adikenaadi.com, last 28 days): 65 clicks, 2.02K impressions, 3.2% CTR, avg. position 7.9.
 - **Facebook reels** (Adike Naadi page): 186K views on the top reel; the visible reels add up to 190K+.
+- **Cloudflare analytics** (adikenaadi.com): 10.31K visits and 32.02K requests in the last 30 days; 9.91K pageviews and 8.42K visits in the last 14 days. Singapore is the top country, which suggests part of this is crawler traffic, so the site says "visits", not "users".
 
 ### Read from the live site (adikenaadi.com, 27 Nov 2026)
 - **Sources:** MAMCOS, TSS, TMS Sirsi, TUMCOS and AGMARKNET/data.gov.in, plus KRAMA arrivals. Every rate carries its date and source.
@@ -142,7 +145,8 @@ Search the repo for `TODO`. Each one is marked in the HTML with a visible amber 
 - [ ] **Users:** add the user research. Who you spoke to, what they told you, how many people use it. (line 180–181)
 - [ ] **Decisions table:** review the "Why" column. I inferred it from how the product behaves; adjust it to your actual reasoning. (line 276)
 - [x] ~~Organic search~~ — 2.02K impressions, 65 clicks, 3.2% CTR, avg. position 7.9 (Search Console, last 28 days) and 186K views on the top Facebook reel (190K+ across reels), from your screenshots.
-- [ ] **Results:** fill in or delete the remaining tiles: monthly active users, WhatsApp channel followers, assistant questions/month, p95 API latency, monthly infra cost.
+- [x] ~~Site traffic~~ — 10.3K visits in 30 days and 9.9K pageviews in 14 days (Cloudflare), replacing the "monthly active users" placeholder.
+- [ ] **Results:** fill in or delete the remaining tiles: WhatsApp channel followers, assistant questions/month, p95 API latency, monthly infra cost.
 - [ ] **What's next:** add your roadmap. (lines 350–351)
 
 ### Review
