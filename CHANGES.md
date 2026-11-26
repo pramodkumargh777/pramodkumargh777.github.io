@@ -24,6 +24,13 @@ Tooling: Lighthouse 13.6, axe-core via Playwright, headless Brave 155. All of it
 
 ## What changed
 
+> **27 Nov — space optimisation across devices.** Checked at 14 real viewports (Android 360, iPhone SE/15, Pixel, iPad, Windows 1366×625 and 1536×730 at 125% scaling, 1920, MacBook Air/Pro, 1728, 2560):
+> - Hero is height-aware (`vh`-based spacing, headline capped at 12vh, portrait capped at 40vh), so the CTAs sit above the fold on every laptop, including 1366×625 and 1536×730 where they used to be cut off.
+> - Phones: the large portrait is replaced by a 2 KB face avatar in the status chip; the hero is ~330 px shorter and the page ~520 px shorter.
+> - Wide monitors: the content column grows to ~1420 px at 1920 and ~1620 px at 2560 (was fixed at 1200 px), and type steps up on 2200 px+ screens.
+> - Tighter section spacing; case-study heroes put the lede beside the title on desktop.
+> - `scrollbar-gutter: stable` so Windows scrollbars don't shift the layout.
+
 > **27 Nov follow-up:** "IoT" framing removed. The AXISCADES case study moved from `/work/industrial-iot.html` to `/work/predictive-inventory.html`, and the work card, career entry and meta descriptions now say backend & data. The portrait outline is now concentric (even gap all round) instead of an offset frame, on the site and in `og-image.png`.
 
 ### Design system
