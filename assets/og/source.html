@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>OG image source</title>
+<!-- Source for /og-image.png (1200×630). Re-render with any headless Chromium at a 1200×630 viewport. -->
+<style>
+@font-face { font-family: "Instrument Serif"; src: url("../fonts/instrument-serif-latin.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Serif"; font-style: italic; src: url("../fonts/instrument-serif-italic-latin.woff2") format("woff2"); }
+@font-face { font-family: "Geist"; src: url("../fonts/geist-latin-var.woff2") format("woff2"); font-weight: 300 700; }
+@font-face { font-family: "Geist Mono"; src: url("../fonts/geist-mono-latin-var.woff2") format("woff2"); font-weight: 400 600; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body { position: relative; background: #0b1410; color: #f3efe4; font-family: "Geist", sans-serif; }
+.glow { position: absolute; inset: 0; background: radial-gradient(42% 60% at 78% 30%, rgba(122,170,96,.32), transparent 70%), radial-gradient(30% 40% at 8% 0%, rgba(207,227,138,.12), transparent 70%); }
+.grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(243,239,228,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(243,239,228,.06) 1px, transparent 1px); background-size: 60px 60px; -webkit-mask-image: radial-gradient(60% 70% at 70% 35%, #000 10%, transparent 75%); }
+.grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.wrap { position: absolute; inset: 64px 72px; display: flex; flex-direction: column; justify-content: space-between; }
+.top { display: flex; justify-content: space-between; align-items: center; }
+.brand { font: 400 40px/1 "Instrument Serif", serif; }
+.brand span { color: #cfe38a; }
+.chip { display: inline-flex; align-items: center; gap: 12px; padding: 10px 18px; border: 1px solid rgba(243,239,228,.18); border-radius: 999px; font: 500 17px/1 "Geist Mono", monospace; color: #c3ccc4; background: rgba(18,31,25,.7); text-transform: none; letter-spacing: 0; }
+.chip i { width: 10px; height: 10px; border-radius: 50%; background: #8fd27a; box-shadow: 0 0 0 5px rgba(143,210,122,.18); }
+h1 { font: 400 92px/0.95 "Instrument Serif", serif; letter-spacing: -0.025em; max-width: 760px; }
+h1 em { color: #cfe38a; }
+.foot { display: flex; justify-content: space-between; align-items: flex-end; font: 500 18px/1.4 "Geist Mono", monospace; letter-spacing: .04em; color: #93a197; text-transform: uppercase; }
+.foot b { display: block; color: #f3efe4; font: 600 26px/1.2 "Geist", sans-serif; letter-spacing: -0.01em; text-transform: none; margin-bottom: 6px; }
+.portrait { position: absolute; right: 72px; top: 142px; width: 250px; height: 312px; border-radius: 125px 125px 16px 16px; overflow: hidden; border: 1px solid rgba(243,239,228,.2); box-shadow: 0 40px 90px -30px rgba(0,0,0,.8); }
+.portrait img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.85); }
+.ring { position: absolute; right: 60px; top: 154px; width: 250px; height: 312px; border-radius: 125px 125px 16px 16px; border: 1px solid rgba(207,227,138,.4); transform: translate(-0px, 0); }
+</style>
+</head>
+<body>
+<div class="glow"></div><div class="grid"></div>
+<div class="ring"></div>
+<div class="portrait"><img src="../img/portrait-640.webp" alt=""></div>
+<div class="wrap">
+  <div class="top"><div class="brand">Pramod<span>.</span></div></div>
+  <h1>I build AI systems that <em>hold up</em> in production.</h1>
+  <div class="foot">
+    <div><b>Pramod Kumar G H</b>Senior GenAI &amp; backend engineer · Bengaluru</div>
+    <div class="chip"><i></i>pramodkumargh777.github.io</div>
+  </div>
+</div>
+</body>
+</html>

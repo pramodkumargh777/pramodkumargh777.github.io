@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /audit/
+Disallow: /assets/og/
+
+Sitemap: https://pramodkumargh777.github.io/sitemap.xml
